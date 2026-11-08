@@ -1,0 +1,3 @@
+Named Entity Recognition (NER) is a sub-task of information extraction that classifies named entities in text into predefined categories. In this competition, the focus is exclusively on locations – address1/address2 fields, cities, countries, regions, and other geographical landmarks.
+
+The RU/UA languages, with their unique morphology and lexicon, present distinct challenges that demand specialized models. Your goal is to develop a model that achieves high precision and recall scores for recognizing these location entities in Russian and Ukrainian texts.

@@ -1,0 +1,2 @@
+experiment_id,encoder,tokenizer,seed,split_sha256,checkpoint_f1,checkpoint_precision,checkpoint_recall,calibration_thresholds,audit_f1,public_lb_f1,submission_date,notes
+ner_pilot_12k_seed42,BiGRU64x1,offset_words_punctuation_newline_v1,42,c6012fc91f72ae5d58d89267c72e45ea9a9c06b43fd3d9b17e68e5178b1bea70,0.5682255,0.4916851441241685,0.6729893778452201,,,,,12000 eligible fit groups; eight epochs; selected epoch 8; fixed argmax BIO; no calibration/audit/LB evaluation

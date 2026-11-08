@@ -1,0 +1,6 @@
+partition,rows,groups,loc_mentions,positive_rows,no_location_fraction
+audit,4000,4000,1322,920,0.77
+calibration,2000,2000,654,461,0.7695
+checkpoint,4000,4000,1328,922,0.7695
+excluded_overlap,52,52,11,6,0.8846153846153846
+fit,999948,997477,341799,231112,0.7688759815510406

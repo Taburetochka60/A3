@@ -1,0 +1,6 @@
+dataset,rows,missing_text,median_chars,p95_chars,median_tokens,duplicates,loc_mentions,empty_loc_fraction
+uk_train_all,1010000,0,91.0,197.0,13.0,2454,345114.0,0.768890099009901
+labeling_sample,26,0,217.5,814.0,31.5,0,32.0,0.38461538461538464
+test,477,0,264.0,1123.1999999999991,36.0,0,,
+uk_fit,1000000,0,91.0,197.0,13.0,2402,341810.0,0.768882
+uk_valid,10000,0,92.0,199.0,13.0,0,3304.0,0.7697

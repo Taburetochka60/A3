@@ -1,0 +1,4 @@
+ - Don't cheat!
+ - Apply yourself!
+ - Have fun!
+ - Manual labeling of test set is strictly forbidden!

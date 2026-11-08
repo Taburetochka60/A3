@@ -1,0 +1,495 @@
+{
+  "tokenizer": "Word/punctuation/newline, including underscores and combining marks; original offsets",
+  "token_pattern": "\\n|[^\\W_]+|[^\\s]",
+  "whitespace_policy": "Trim annotation edge whitespace for BIO only; original gold is retained for scoring",
+  "incompatible_fit_policy": "Exclude entire row from pilot fitting; never expand partial-word labels or infer unannotated O targets",
+  "heldout_policy": "Keep every checkpoint text and original gold, including incompatible rows; such rows are excluded only from token CE",
+  "by_partition": {
+    "fit": {
+      "rows": 999948,
+      "gold_spans": 341799,
+      "trimmed_whitespace_spans": 203,
+      "tokens": 18055911,
+      "long_text_rows": 0,
+      "alignment_incompatible_rows": 1485,
+      "roundtrip_passed_rows": 998463,
+      "roundtrip_passed_spans": 338824,
+      "partial_token_boundary": 1501
+    },
+    "excluded_overlap": {
+      "rows": 52,
+      "gold_spans": 11,
+      "trimmed_whitespace_spans": 0,
+      "tokens": 886,
+      "long_text_rows": 0,
+      "alignment_incompatible_rows": 0,
+      "roundtrip_passed_rows": 52,
+      "roundtrip_passed_spans": 11
+    },
+    "audit": {
+      "rows": 4000,
+      "gold_spans": 1322,
+      "trimmed_whitespace_spans": 1,
+      "tokens": 72628,
+      "long_text_rows": 0,
+      "alignment_incompatible_rows": 7,
+      "roundtrip_passed_rows": 3993,
+      "roundtrip_passed_spans": 1315,
+      "partial_token_boundary": 7
+    },
+    "checkpoint": {
+      "rows": 4000,
+      "gold_spans": 1328,
+      "trimmed_whitespace_spans": 1,
+      "tokens": 72939,
+      "long_text_rows": 0,
+      "alignment_incompatible_rows": 4,
+      "roundtrip_passed_rows": 3996,
+      "roundtrip_passed_spans": 1323,
+      "partial_token_boundary": 4
+    },
+    "calibration": {
+      "rows": 2000,
+      "gold_spans": 654,
+      "trimmed_whitespace_spans": 1,
+      "tokens": 36210,
+      "long_text_rows": 0,
+      "alignment_incompatible_rows": 4,
+      "roundtrip_passed_rows": 1996,
+      "roundtrip_passed_spans": 644,
+      "partial_token_boundary": 4
+    }
+  },
+  "eligibility_sha256": "fc86a7f4e03338ec3e6a507c3b57a037b46f37feacf4f0433fd1ced0b1b6da7b",
+  "examples": [
+    {
+      "row_id": 79,
+      "partition": "fit",
+      "text": "Елі Кара та Уріель Кельман вилетіли до Гонконга одразу після звільнення з в'язниці \"Маунт-Іден\".",
+      "spans": [
+        [
+          39,
+          52
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 623,
+      "partition": "fit",
+      "text": "Незабаром маршрутом № 41К «м-н Каскад – Онкодиспансер» будуть курсувати нові великогабаритні автобуси.",
+      "spans": [
+        [
+          20,
+          48
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 1890,
+      "partition": "fit",
+      "text": "Відпочивальники прибули з Борисполя в аеропорт Шарм-ель-Шейха, де здали тести ПЛР на COVID-19.",
+      "spans": [
+        [
+          26,
+          35
+        ],
+        [
+          47,
+          60
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 2493,
+      "partition": "fit",
+      "text": "Міністерство юстиції США й департамент фінансових служб Нью-Йорка запідозрили Deutsche Bank у роботі з російськими компаніями в обхід санкцій проти РФ, повідомляє The Financial Times.",
+      "spans": [
+        [
+          56,
+          64
+        ],
+        [
+          148,
+          150
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 4008,
+      "partition": "fit",
+      "text": "Автобусний маршрут № 52, що сполучає Рудне та вул. Варшавську, можуть продовжити до Духовної семінарії у Рудному.",
+      "spans": [
+        [
+          37,
+          42
+        ],
+        [
+          46,
+          71
+        ],
+        [
+          105,
+          112
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 4776,
+      "partition": "fit",
+      "text": "Відвідувачі виставки мали змогу побачити рідкісні листівки з зображенням втрачених, але не забутих ландшафтних й архітектурних шедеврів Києва і Київщини, зокрема Десятинну церква та історичне Межигір’я.",
+      "spans": [
+        [
+          136,
+          141
+        ],
+        [
+          144,
+          159
+        ],
+        [
+          192,
+          201
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 6546,
+      "partition": "fit",
+      "text": "Раніше в селі Білогородка під Києвом сталася пожежа на автомобільній заправціПластикова бочка, в якій зберігалося дизельне паливо, розплавилася від вогню, і потоки пального вилилися на проїжджу частину.",
+      "spans": [
+        [
+          14,
+          25
+        ],
+        [
+          30,
+          42
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 9956,
+      "partition": "fit",
+      "text": "На Грушевського та площі Конституції під Верховної Радою мітингують підприємці.",
+      "spans": [
+        [
+          3,
+          15
+        ],
+        [
+          19,
+          42
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 10137,
+      "partition": "fit",
+      "text": "Відслідковувати процес виведення курдських підрозділів з північно-східної Сирії, а також зі стратегічно важливих міст Манбидж і Тель-Ріфат на західному березі Євфрату, мають спільні російсько-турецькі патрулі.",
+      "spans": [
+        [
+          74,
+          79
+        ],
+        [
+          118,
+          125
+        ],
+        [
+          128,
+          137
+        ],
+        [
+          159,
+          166
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 10305,
+      "partition": "fit",
+      "text": "За останню добу найбільша кількість підтверджених випадків зареєстрована у Одеській області (814), у Києві (756), Запорізькій (675), Київській (592) та Харківській (520) областях.",
+      "spans": [
+        [
+          75,
+          91
+        ],
+        [
+          101,
+          106
+        ],
+        [
+          114,
+          125
+        ],
+        [
+          133,
+          142
+        ],
+        [
+          152,
+          174
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 10734,
+      "partition": "fit",
+      "text": "Наступного тижня засідатиме сесія Івано-Франківської міської ради 25 сесія Івано-Франківської міської ради відбудеться 25 квітня о 10.00 (вул. Грушевського, 21, зал засідань обласної ради (4 поверх).",
+      "spans": [
+        [
+          138,
+          159
+        ],
+        [
+          161,
+          178
+        ],
+        [
+          189,
+          197
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 11788,
+      "partition": "fit",
+      "text": "Дослівно: «За останню добу найбільша кількість підтверджених випадків зареєстрована у місті Київ (718), Дніпропетровській (537), Одеській (515), Запорізькій (453) та Миколаївській (414) областях».",
+      "spans": [
+        [
+          92,
+          96
+        ],
+        [
+          104,
+          121
+        ],
+        [
+          129,
+          137
+        ],
+        [
+          145,
+          156
+        ],
+        [
+          166,
+          188
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 12314,
+      "partition": "fit",
+      "text": "А 1979 року поблизу узбережжя Тобаго у Вест-Індії унаслідок зіткнення Atlantic Empress з іншим танкером у воду потрапило 287 тисяч тон сирої нафти.",
+      "spans": [
+        [
+          30,
+          36
+        ],
+        [
+          39,
+          57
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 12713,
+      "partition": "fit",
+      "text": "• Зйомки проводили у Великобританії, Німеччині та Австрії, на території автодромів Кадвел Парк, Брендс-Хетч, Нюрбургринг.",
+      "spans": [
+        [
+          21,
+          35
+        ],
+        [
+          37,
+          46
+        ],
+        [
+          50,
+          57
+        ],
+        [
+          83,
+          94
+        ],
+        [
+          96,
+          106
+        ],
+        [
+          109,
+          120
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 13669,
+      "partition": "fit",
+      "text": "Так, сильний вітер повалив дерево на машину на вулиці Польовій і Лютеранській.",
+      "spans": [
+        [
+          47,
+          75
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 14266,
+      "partition": "fit",
+      "text": "У Чилі стався землетрус магнітудою 6,1Зазначається, що епіцентр знаходився поблизу міста Монтелімар у регіоні Рона-Альпи, Поштовхи відчули також біля Ліона, уточнили в Національній мережі моніторингу сейсмічної активності.",
+      "spans": [
+        [
+          2,
+          6
+        ],
+        [
+          89,
+          99
+        ],
+        [
+          110,
+          119
+        ],
+        [
+          122,
+          130
+        ],
+        [
+          150,
+          155
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 14486,
+      "partition": "fit",
+      "text": "Івано-Франківщина – «Карпатський трамвай» – це унікальний туристичний маршрут вузькоколійкою в Карпатах, якому чотири роки.",
+      "spans": [
+        [
+          6,
+          25
+        ],
+        [
+          95,
+          103
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 15461,
+      "partition": "fit",
+      "text": "Сьогодні міський голова Львова Андрій Садовий з дружиною Катериною та колегами з Львівської мерії, перебуваючи в Нікополі, відвідали місцевий храм святого праведного Петра Калнишевського, який збудували в честь загиблих воїнів АТО.",
+      "spans": [
+        [
+          24,
+          30
+        ],
+        [
+          81,
+          97
+        ],
+        [
+          113,
+          136
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 16971,
+      "partition": "fit",
+      "text": "Через туман закрито рух суден через Бузько-Дніпровсько-лиманський канал і Херсонський морський канал від 22 жовтня.",
+      "spans": [
+        [
+          36,
+          42
+        ],
+        [
+          43,
+          70
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    },
+    {
+      "row_id": 17614,
+      "partition": "fit",
+      "text": "«Перша УПА це була Українська повстанська армія Тараса Бульби-Боровця.",
+      "spans": [
+        [
+          19,
+          35
+        ]
+      ],
+      "issues": [
+        "partial_token_boundary"
+      ]
+    }
+  ],
+  "test": {
+    "rows": 477,
+    "longer_than_128_tokens": 83,
+    "maximum_tokens": 626,
+    "total_windows": 598,
+    "all_token_positions_covered": true,
+    "checked_token_positions": 35679
+  },
+  "final_audit_model_evaluation": false
+}

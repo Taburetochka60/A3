@@ -1,0 +1,22 @@
+{
+  "partition": "checkpoint",
+  "rows": 4000,
+  "tp": 887,
+  "fp": 917,
+  "fn": 431,
+  "precision": 0.4916851441241685,
+  "recall": 0.6729893778452201,
+  "f1": 0.5682255,
+  "macro_f1": 0.821628785225,
+  "exact_set_accuracy": 0.7785,
+  "f1_95ci": [
+    0.545694812115378,
+    0.5906746682407468
+  ],
+  "bootstrap_groups": 4000,
+  "repetitions": 2000,
+  "seed": 42,
+  "limitation": "Conditional on one fitted model and this source-domain partition; excludes training-seed and domain-shift uncertainty.",
+  "positive_text_macro_f1": 0.6404719532537961,
+  "empty_gold_text_false_positive_rate": 0.12410656270305392
+}

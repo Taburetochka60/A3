@@ -1,0 +1,29 @@
+{
+  "overall": {
+    "tp": 879,
+    "fp": 929,
+    "fn": 439,
+    "precision": 0.48617256637168144,
+    "recall": 0.6669195751138088,
+    "f1": 0.56238004
+  },
+  "novelty": {
+    "seen": {
+      "tp": 752,
+      "fp": 166,
+      "fn": 128,
+      "precision": 0.8191721132897604,
+      "recall": 0.8545454545454545,
+      "f1": 0.8364849833147943
+    },
+    "unseen": {
+      "tp": 127,
+      "fp": 763,
+      "fn": 311,
+      "precision": 0.14269662921348314,
+      "recall": 0.2899543378995434,
+      "f1": 0.19126506024096385
+    }
+  },
+  "definition": "NFC, casefold, whitespace collapse; digits/punctuation retained. Diagnostic, not official score."
+}

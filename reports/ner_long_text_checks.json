@@ -1,0 +1,16 @@
+{
+  "rows": 477,
+  "long_text_rows": 83,
+  "total_windows": 598,
+  "checked_token_positions": 35679,
+  "all_positions_covered": true,
+  "maximum_tokens": 626,
+  "finite_normalized_probabilities": true,
+  "all_prediction_offsets_in_bounds": true,
+  "predicted_entities": 1100,
+  "orphan_I_repaired": 40,
+  "model_sha256": "ca15bc6e9e03560b6674355fa7070f86a32ea1a320d22955fd4c1d486a71e6c4",
+  "no_test_labels_read": true,
+  "no_test_quality_metric_computed": true,
+  "meaning": "Structural/inference check only: valid spans do not imply correct locations."
+}

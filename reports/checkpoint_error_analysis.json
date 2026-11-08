@@ -1,0 +1,183 @@
+{
+  "overall": {
+    "tp": 887,
+    "fp": 917,
+    "fn": 431,
+    "precision": 0.4916851441241685,
+    "recall": 0.6729893778452201,
+    "f1": 0.5682255
+  },
+  "novelty": {
+    "seen": {
+      "tp": 756,
+      "fp": 182,
+      "fn": 125,
+      "precision": 0.8059701492537313,
+      "recall": 0.8581157775255391,
+      "f1": 0.8312259483232546,
+      "recall_95ci": [
+        0.8344557873090481,
+        0.8811208182184602
+      ],
+      "f1_95ci": [
+        0.8128957973517559,
+        0.8493615100551124
+      ],
+      "raw_gold_mentions": 889,
+      "strict_exact_mention_recall": 0.8526434195725534
+    },
+    "unseen": {
+      "tp": 131,
+      "fp": 735,
+      "fn": 306,
+      "precision": 0.151270207852194,
+      "recall": 0.2997711670480549,
+      "f1": 0.20107444359171142,
+      "recall_95ci": [
+        0.2506015862996405,
+        0.3478320922411722
+      ],
+      "f1_95ci": [
+        0.1676822169100184,
+        0.2334839049952361
+      ],
+      "raw_gold_mentions": 439,
+      "strict_exact_mention_recall": 0.29157175398633256
+    }
+  },
+  "frequency_slices": [
+    {
+      "frequency_bin": "unseen_0",
+      "tp": 131,
+      "fp": 735,
+      "fn": 306,
+      "precision": 0.151270207852194,
+      "recall": 0.2997711670480549,
+      "f1": 0.20107444359171142
+    },
+    {
+      "frequency_bin": "seen_1",
+      "tp": 63,
+      "fp": 42,
+      "fn": 53,
+      "precision": 0.6,
+      "recall": 0.5431034482758621,
+      "f1": 0.5701357466063348
+    },
+    {
+      "frequency_bin": "seen_2_to_4",
+      "tp": 112,
+      "fp": 37,
+      "fn": 37,
+      "precision": 0.7516778523489933,
+      "recall": 0.7516778523489933,
+      "f1": 0.7516778523489933
+    },
+    {
+      "frequency_bin": "seen_5_plus",
+      "tp": 581,
+      "fp": 103,
+      "fn": 35,
+      "precision": 0.8494152046783626,
+      "recall": 0.9431818181818182,
+      "f1": 0.8938461538461538
+    }
+  ],
+  "gold_token_OOV_slices": [
+    {
+      "gold_slice": "all_tokens_in_vocab",
+      "gold": 947,
+      "tp": 763,
+      "recall": 0.805702217529039
+    },
+    {
+      "gold_slice": "contains_UNK",
+      "gold": 371,
+      "tp": 124,
+      "recall": 0.33423180592991913
+    }
+  ],
+  "strict_span_score": {
+    "tp": 886,
+    "fp": 936,
+    "fn": 442,
+    "precision": 0.4862788144895719,
+    "recall": 0.6671686746987951,
+    "f1": 0.56253968
+  },
+  "strict_span_totals": {
+    "exact_matches": 886,
+    "unmatched_gold": 442,
+    "unmatched_pred": 936,
+    "gold_with_no_pred_overlap": 325,
+    "pred_with_no_gold_overlap": 810
+  },
+  "overlap_pair_relations": {
+    "missing_name_material": 49,
+    "extra_neighbor_material": 42,
+    "punctuation_or_whitespace": 15,
+    "shifted_partial_overlap": 1,
+    "word_ending_fragment": 1
+  },
+  "overlap_component_topology": {
+    "split_location": 17,
+    "one_to_one_boundary": 82,
+    "merged_locations": 9
+  },
+  "official_error_categories": [
+    {
+      "kind": "FP",
+      "category": "other_unannotated_FP",
+      "count": 622
+    },
+    {
+      "kind": "FN",
+      "category": "missed_seen_surface",
+      "count": 70
+    },
+    {
+      "kind": "FN",
+      "category": "missed_with_UNK",
+      "count": 196
+    },
+    {
+      "kind": "FP",
+      "category": "PER_annotation_overlap",
+      "count": 52
+    },
+    {
+      "kind": "FP",
+      "category": "boundary_overlap",
+      "count": 117
+    },
+    {
+      "kind": "FN",
+      "category": "boundary_overlap",
+      "count": 108
+    },
+    {
+      "kind": "FP",
+      "category": "ORG_annotation_overlap",
+      "count": 126
+    },
+    {
+      "kind": "FN",
+      "category": "missed_unseen_surface_known_tokens",
+      "count": 57
+    }
+  ],
+  "erroneous_texts": 886,
+  "review_cases": 200,
+  "review_FP": 100,
+  "review_FN": 100,
+  "selection_policy": "Seed 2026; unique texts; 100 FP and 100 FN focal events, up to 50 overlap and 50 non-overlap per kind. Diagnostic sample, not prevalence estimator.",
+  "annotation_policy": "Automated overlap/frequency categories are evidence, not proof of semantic cause. LOC absence is not proof of hallucination.",
+  "interval_policy": "Paired document bootstrap (checkpoint groups unique), 2000 repetitions, seed 42; conditional on selected pilot.",
+  "model_sha256": "ca15bc6e9e03560b6674355fa7070f86a32ea1a320d22955fd4c1d486a71e6c4",
+  "pilot_selection_sha256": "253bf1f3aab0a7f5e74dc2fbec4cb735b875782ca593fe834024cf91ef67d828",
+  "final_audit_evaluated": false,
+  "calibration_evaluated": false,
+  "test_targets_read": false,
+  "conservative_distinct_training_surfaces": 1598,
+  "official_distinct_training_surfaces": 1594
+}

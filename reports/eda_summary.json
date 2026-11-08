@@ -1,0 +1,1066 @@
+{
+  "summary": {
+    "uk_train_all": {
+      "rows": 1010000,
+      "columns": [
+        "text",
+        "loc_markers",
+        "org_markers",
+        "per_markers",
+        "is_valid"
+      ],
+      "missing_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_excess": 2454,
+      "canonical_duplicate_excess": 2523,
+      "chars": {
+        "count": 1010000.0,
+        "mean": 102.07024455445544,
+        "std": 46.574345640182166,
+        "min": 39.0,
+        "50%": 91.0,
+        "90%": 170.0,
+        "95%": 197.0,
+        "99%": 238.0,
+        "max": 255.0
+      },
+      "tokens": {
+        "count": 1010000.0,
+        "mean": 14.57089801980198,
+        "std": 6.439022331122765,
+        "min": 3.0,
+        "50%": 13.0,
+        "90%": 24.0,
+        "95%": 27.0,
+        "99%": 33.0,
+        "max": 50.0
+      },
+      "whitespace_token_overflow_rates": {
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      },
+      "feature_rates": {
+        "has_url": 0.00028415841584158416,
+        "has_newline": 0.0,
+        "has_latin": 0.06645742574257425,
+        "has_ua_specific": 0.987349504950495,
+        "has_ru_specific": 0.0007861386138613861,
+        "has_astral_unicode": 0.0
+      },
+      "loc_mentions": 345114,
+      "positive_rows": 233421,
+      "valid_loc_mentions": 345114,
+      "missing_loc_markers": 0,
+      "no_location_rows": 776579,
+      "no_location_fraction": 0.768890099009901,
+      "mentions_per_text": {
+        "count": 1010000.0,
+        "mean": 0.3416970297029703,
+        "std": 0.7648219596378469,
+        "min": 0.0,
+        "50%": 0.0,
+        "90%": 1.0,
+        "99%": 3.0,
+        "max": 21.0
+      },
+      "loc_count_distribution": {
+        "0": 776579,
+        "1": 161061,
+        "2": 48937,
+        "3": 14815,
+        "4": 4907,
+        "5": 1979,
+        "6": 842,
+        "7": 401,
+        "8": 219,
+        "9": 127,
+        "10": 71,
+        "11": 35,
+        "12": 15,
+        "13": 5,
+        "14": 1,
+        "15": 1,
+        "16": 3,
+        "19": 1,
+        "21": 1
+      },
+      "entity_char_lengths": {
+        "count": 345114.0,
+        "mean": 8.765129783202072,
+        "std": 5.272434161966021,
+        "min": 1.0,
+        "25%": 6.0,
+        "50%": 7.0,
+        "75%": 9.0,
+        "max": 82.0
+      },
+      "entity_token_lengths": {
+        "count": 345114.0,
+        "mean": 1.1861790596730355,
+        "std": 0.4870009870334713,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 11.0
+      },
+      "multiword_entity_fraction": 0.15385061168193698,
+      "location_character_fraction": 0.029342722014184232,
+      "distinct_raw_entities": 45430,
+      "distinct_normalized_entities": 43540,
+      "normalization_collision_groups": 1303,
+      "normalization_collision_examples": [
+        {
+          "normalized": "львові",
+          "surfaces": [
+            "Львові",
+            "Львові "
+          ]
+        },
+        {
+          "normalized": "україни",
+          "surfaces": [
+            "УкраЇни",
+            "України",
+            "України ",
+            "України 30 ",
+            "України П",
+            "України і"
+          ]
+        },
+        {
+          "normalized": "білорусі",
+          "surfaces": [
+            "Білорусі",
+            "Білорусі "
+          ]
+        },
+        {
+          "normalized": "донецька",
+          "surfaces": [
+            "Донецька",
+            "Донецька 31"
+          ]
+        },
+        {
+          "normalized": "україні",
+          "surfaces": [
+            "Україні",
+            "Україні213",
+            "Україні5"
+          ]
+        },
+        {
+          "normalized": "польщі",
+          "surfaces": [
+            "Польщі",
+            "Польщі 4"
+          ]
+        },
+        {
+          "normalized": "україна",
+          "surfaces": [
+            "Україна",
+            "Україна в 2018"
+          ]
+        },
+        {
+          "normalized": "києві",
+          "surfaces": [
+            "Києві",
+            "Києві ",
+            "Києві (Ster",
+            "Києві н",
+            "Києві у з"
+          ]
+        },
+        {
+          "normalized": "луцьк",
+          "surfaces": [
+            "Луцьк",
+            "Луцькa"
+          ]
+        },
+        {
+          "normalized": "рф",
+          "surfaces": [
+            "РФ",
+            "РФ)"
+          ]
+        }
+      ],
+      "top10_mention_fraction": 0.2514850165452575,
+      "singleton_surface_fraction": 0.6911575562700965,
+      "top_locations": [
+        [
+          "україни",
+          24441
+        ],
+        [
+          "україні",
+          16851
+        ],
+        [
+          "сша",
+          8862
+        ],
+        [
+          "росії",
+          7704
+        ],
+        [
+          "україна",
+          7426
+        ],
+        [
+          "києві",
+          6547
+        ],
+        [
+          "києва",
+          4064
+        ],
+        [
+          "україну",
+          4036
+        ],
+        [
+          "криму",
+          3510
+        ],
+        [
+          "рф",
+          3350
+        ],
+        [
+          "росія",
+          3132
+        ],
+        [
+          "донбасі",
+          3064
+        ],
+        [
+          "київ",
+          2633
+        ],
+        [
+          "польщі",
+          2456
+        ],
+        [
+          "львові",
+          2278
+        ]
+      ],
+      "issues": {
+        "duplicate_spans": 0,
+        "per_text_normalization_collapses": 3051,
+        "whitespace_boundaries": 206,
+        "empty_after_normalization": 311,
+        "overlapping_spans": 0
+      },
+      "invalid_examples": [],
+      "exact_duplicate_groups_conflicting_loc_labels": 0
+    },
+    "labeling_sample": {
+      "rows": 26,
+      "columns": [
+        "text",
+        "locations",
+        "loc_markers"
+      ],
+      "missing_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_excess": 0,
+      "canonical_duplicate_excess": 0,
+      "chars": {
+        "count": 26.0,
+        "mean": 294.38461538461536,
+        "std": 289.24523531744853,
+        "min": 6.0,
+        "50%": 217.5,
+        "90%": 708.0,
+        "95%": 814.0,
+        "99%": 1049.75,
+        "max": 1118.0
+      },
+      "tokens": {
+        "count": 26.0,
+        "mean": 42.88461538461539,
+        "std": 41.42301478461163,
+        "min": 1.0,
+        "50%": 31.5,
+        "90%": 101.0,
+        "95%": 113.75,
+        "99%": 151.75,
+        "max": 164.0
+      },
+      "whitespace_token_overflow_rates": {
+        "128": 0.038461538461538464,
+        "256": 0.0,
+        "512": 0.0
+      },
+      "feature_rates": {
+        "has_url": 0.0,
+        "has_newline": 0.8076923076923077,
+        "has_latin": 0.23076923076923078,
+        "has_ua_specific": 0.9230769230769231,
+        "has_ru_specific": 0.038461538461538464,
+        "has_astral_unicode": 0.6153846153846154
+      },
+      "loc_mentions": 32,
+      "positive_rows": 16,
+      "valid_loc_mentions": 32,
+      "missing_loc_markers": 0,
+      "no_location_rows": 10,
+      "no_location_fraction": 0.38461538461538464,
+      "mentions_per_text": {
+        "count": 26.0,
+        "mean": 1.2307692307692308,
+        "std": 2.025985040570484,
+        "min": 0.0,
+        "50%": 1.0,
+        "90%": 2.0,
+        "99%": 8.5,
+        "max": 10.0
+      },
+      "loc_count_distribution": {
+        "0": 10,
+        "1": 10,
+        "2": 4,
+        "4": 1,
+        "10": 1
+      },
+      "entity_char_lengths": {
+        "count": 32.0,
+        "mean": 9.875,
+        "std": 5.3082407024209735,
+        "min": 4.0,
+        "25%": 6.0,
+        "50%": 8.5,
+        "75%": 11.0,
+        "max": 22.0
+      },
+      "entity_token_lengths": {
+        "count": 32.0,
+        "mean": 1.34375,
+        "std": 0.60157722803504,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 2.0,
+        "max": 3.0
+      },
+      "multiword_entity_fraction": 0.28125,
+      "location_character_fraction": 0.04128560229945127,
+      "distinct_raw_entities": 30,
+      "distinct_normalized_entities": 30,
+      "normalization_collision_groups": 0,
+      "normalization_collision_examples": [],
+      "top10_mention_fraction": 0.375,
+      "singleton_surface_fraction": 0.9333333333333333,
+      "top_locations": [
+        [
+          "київщині",
+          2
+        ],
+        [
+          "києва",
+          2
+        ],
+        [
+          "проспект бандери",
+          1
+        ],
+        [
+          "чорнобиль",
+          1
+        ],
+        [
+          "київ",
+          1
+        ],
+        [
+          "тетерів",
+          1
+        ],
+        [
+          "фастів",
+          1
+        ],
+        [
+          "біла церква",
+          1
+        ],
+        [
+          "миронівка",
+          1
+        ],
+        [
+          "бориспіль",
+          1
+        ],
+        [
+          "яготин",
+          1
+        ],
+        [
+          "баришівка",
+          1
+        ],
+        [
+          "проспекті івасюка",
+          1
+        ],
+        [
+          "хелма",
+          1
+        ],
+        [
+          "києву",
+          1
+        ]
+      ],
+      "issues": {
+        "duplicate_spans": 0,
+        "per_text_normalization_collapses": 0,
+        "locations_span_set_mismatch": 0,
+        "whitespace_boundaries": 0,
+        "empty_after_normalization": 0,
+        "overlapping_spans": 0
+      },
+      "invalid_examples": [],
+      "unseen_entity_mention_fraction": 0.21875
+    },
+    "test": {
+      "rows": 477,
+      "columns": [
+        "text_id",
+        "text",
+        "locations"
+      ],
+      "missing_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_excess": 0,
+      "canonical_duplicate_excess": 0,
+      "chars": {
+        "count": 477.0,
+        "mean": 395.41299790356396,
+        "std": 428.53764344279756,
+        "min": 3.0,
+        "50%": 264.0,
+        "90%": 849.8000000000008,
+        "95%": 1123.1999999999991,
+        "99%": 1969.0000000000007,
+        "max": 3682.0
+      },
+      "tokens": {
+        "count": 477.0,
+        "mean": 54.85324947589098,
+        "std": 58.775668940274144,
+        "min": 1.0,
+        "50%": 36.0,
+        "90%": 118.00000000000017,
+        "95%": 158.5999999999999,
+        "99%": 285.6400000000001,
+        "max": 509.0
+      },
+      "whitespace_token_overflow_rates": {
+        "128": 0.0859538784067086,
+        "256": 0.018867924528301886,
+        "512": 0.0
+      },
+      "feature_rates": {
+        "has_url": 0.039832285115303984,
+        "has_newline": 0.8511530398322851,
+        "has_latin": 0.3165618448637317,
+        "has_ua_specific": 0.8972746331236897,
+        "has_ru_specific": 0.07127882599580712,
+        "has_astral_unicode": 0.5324947589098532
+      },
+      "missing_ids": 0,
+      "duplicate_ids": 0,
+      "locations_is_placeholder": true
+    },
+    "uk_fit": {
+      "rows": 1000000,
+      "columns": [
+        "text",
+        "loc_markers",
+        "org_markers",
+        "per_markers",
+        "is_valid"
+      ],
+      "missing_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_excess": 2402,
+      "canonical_duplicate_excess": 2471,
+      "chars": {
+        "count": 1000000.0,
+        "mean": 102.063964,
+        "std": 46.57087546367521,
+        "min": 39.0,
+        "50%": 91.0,
+        "90%": 170.0,
+        "95%": 197.0,
+        "99%": 238.0,
+        "max": 255.0
+      },
+      "tokens": {
+        "count": 1000000.0,
+        "mean": 14.56999,
+        "std": 6.4384579561911295,
+        "min": 3.0,
+        "50%": 13.0,
+        "90%": 24.0,
+        "95%": 27.0,
+        "99%": 33.0,
+        "max": 50.0
+      },
+      "whitespace_token_overflow_rates": {
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      },
+      "feature_rates": {
+        "has_url": 0.000285,
+        "has_newline": 0.0,
+        "has_latin": 0.066487,
+        "has_ua_specific": 0.987356,
+        "has_ru_specific": 0.000787,
+        "has_astral_unicode": 0.0
+      },
+      "loc_mentions": 341810,
+      "positive_rows": 231118,
+      "valid_loc_mentions": 341810,
+      "missing_loc_markers": 0,
+      "no_location_rows": 768882,
+      "no_location_fraction": 0.768882,
+      "mentions_per_text": {
+        "count": 1000000.0,
+        "mean": 0.34181,
+        "std": 0.7651512983433468,
+        "min": 0.0,
+        "50%": 0.0,
+        "90%": 1.0,
+        "99%": 3.0,
+        "max": 21.0
+      },
+      "loc_count_distribution": {
+        "0": 768882,
+        "1": 159435,
+        "2": 48454,
+        "3": 14695,
+        "4": 4865,
+        "5": 1959,
+        "6": 834,
+        "7": 400,
+        "8": 218,
+        "9": 126,
+        "10": 71,
+        "11": 35,
+        "12": 14,
+        "13": 5,
+        "14": 1,
+        "15": 1,
+        "16": 3,
+        "19": 1,
+        "21": 1
+      },
+      "entity_char_lengths": {
+        "count": 341810.0,
+        "mean": 8.76517070887335,
+        "std": 5.272082151810557,
+        "min": 1.0,
+        "25%": 6.0,
+        "50%": 7.0,
+        "75%": 9.0,
+        "max": 82.0
+      },
+      "entity_token_lengths": {
+        "count": 341810.0,
+        "mean": 1.1861619028115036,
+        "std": 0.48681868376366044,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 11.0
+      },
+      "multiword_entity_fraction": 0.1538808109768585,
+      "location_character_fraction": 0.02935436644416437,
+      "distinct_raw_entities": 45110,
+      "distinct_normalized_entities": 43241,
+      "normalization_collision_groups": 1291,
+      "normalization_collision_examples": [
+        {
+          "normalized": "львові",
+          "surfaces": [
+            "Львові",
+            "Львові "
+          ]
+        },
+        {
+          "normalized": "україни",
+          "surfaces": [
+            "УкраЇни",
+            "України",
+            "України ",
+            "України 30 ",
+            "України П",
+            "України і"
+          ]
+        },
+        {
+          "normalized": "білорусі",
+          "surfaces": [
+            "Білорусі",
+            "Білорусі "
+          ]
+        },
+        {
+          "normalized": "донецька",
+          "surfaces": [
+            "Донецька",
+            "Донецька 31"
+          ]
+        },
+        {
+          "normalized": "україні",
+          "surfaces": [
+            "Україні",
+            "Україні213",
+            "Україні5"
+          ]
+        },
+        {
+          "normalized": "польщі",
+          "surfaces": [
+            "Польщі",
+            "Польщі 4"
+          ]
+        },
+        {
+          "normalized": "україна",
+          "surfaces": [
+            "Україна",
+            "Україна в 2018"
+          ]
+        },
+        {
+          "normalized": "києві",
+          "surfaces": [
+            "Києві",
+            "Києві ",
+            "Києві (Ster",
+            "Києві н",
+            "Києві у з"
+          ]
+        },
+        {
+          "normalized": "луцьк",
+          "surfaces": [
+            "Луцьк",
+            "Луцькa"
+          ]
+        },
+        {
+          "normalized": "рф",
+          "surfaces": [
+            "РФ",
+            "РФ)"
+          ]
+        }
+      ],
+      "top10_mention_fraction": 0.25146426377227116,
+      "singleton_surface_fraction": 0.6910570985869892,
+      "top_locations": [
+        [
+          "україни",
+          24182
+        ],
+        [
+          "україні",
+          16688
+        ],
+        [
+          "сша",
+          8773
+        ],
+        [
+          "росії",
+          7635
+        ],
+        [
+          "україна",
+          7363
+        ],
+        [
+          "києві",
+          6489
+        ],
+        [
+          "києва",
+          4032
+        ],
+        [
+          "україну",
+          3992
+        ],
+        [
+          "криму",
+          3481
+        ],
+        [
+          "рф",
+          3318
+        ],
+        [
+          "росія",
+          3093
+        ],
+        [
+          "донбасі",
+          3037
+        ],
+        [
+          "київ",
+          2596
+        ],
+        [
+          "польщі",
+          2427
+        ],
+        [
+          "львові",
+          2255
+        ]
+      ],
+      "issues": {
+        "duplicate_spans": 0,
+        "per_text_normalization_collapses": 3022,
+        "whitespace_boundaries": 203,
+        "empty_after_normalization": 309,
+        "overlapping_spans": 0
+      },
+      "invalid_examples": []
+    },
+    "uk_valid": {
+      "rows": 10000,
+      "columns": [
+        "text",
+        "loc_markers",
+        "org_markers",
+        "per_markers",
+        "is_valid"
+      ],
+      "missing_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_excess": 0,
+      "canonical_duplicate_excess": 0,
+      "chars": {
+        "count": 10000.0,
+        "mean": 102.6983,
+        "std": 46.91816714824712,
+        "min": 40.0,
+        "50%": 92.0,
+        "90%": 173.0,
+        "95%": 199.0,
+        "99%": 237.0,
+        "max": 255.0
+      },
+      "tokens": {
+        "count": 10000.0,
+        "mean": 14.6617,
+        "std": 6.494895801869936,
+        "min": 4.0,
+        "50%": 13.0,
+        "90%": 24.0,
+        "95%": 28.0,
+        "99%": 33.0,
+        "max": 42.0
+      },
+      "whitespace_token_overflow_rates": {
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      },
+      "feature_rates": {
+        "has_url": 0.0002,
+        "has_newline": 0.0,
+        "has_latin": 0.0635,
+        "has_ua_specific": 0.9867,
+        "has_ru_specific": 0.0007,
+        "has_astral_unicode": 0.0
+      },
+      "loc_mentions": 3304,
+      "positive_rows": 2303,
+      "valid_loc_mentions": 3304,
+      "missing_loc_markers": 0,
+      "no_location_rows": 7697,
+      "no_location_fraction": 0.7697,
+      "mentions_per_text": {
+        "count": 10000.0,
+        "mean": 0.3304,
+        "std": 0.7310877436593318,
+        "min": 0.0,
+        "50%": 0.0,
+        "90%": 1.0,
+        "99%": 3.0,
+        "max": 12.0
+      },
+      "loc_count_distribution": {
+        "0": 7697,
+        "1": 1626,
+        "2": 483,
+        "3": 120,
+        "4": 42,
+        "5": 20,
+        "6": 8,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "12": 1
+      },
+      "entity_char_lengths": {
+        "count": 3304.0,
+        "mean": 8.76089588377724,
+        "std": 5.309526445098768,
+        "min": 1.0,
+        "25%": 6.0,
+        "50%": 7.0,
+        "75%": 9.0,
+        "max": 55.0
+      },
+      "entity_token_lengths": {
+        "count": 3304.0,
+        "mean": 1.187953995157385,
+        "std": 0.5055790974102833,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 7.0
+      },
+      "multiword_entity_fraction": 0.15072639225181597,
+      "location_character_fraction": 0.02818547142455133,
+      "distinct_raw_entities": 1424,
+      "distinct_normalized_entities": 1417,
+      "normalization_collision_groups": 7,
+      "normalization_collision_examples": [
+        {
+          "normalized": "києва",
+          "surfaces": [
+            "Києва",
+            "Києва "
+          ]
+        },
+        {
+          "normalized": "-",
+          "surfaces": [
+            "-",
+            "Н-31"
+          ]
+        },
+        {
+          "normalized": "серії",
+          "surfaces": [
+            "Серії А",
+            "Серії А."
+          ]
+        },
+        {
+          "normalized": "сполученого королівства",
+          "surfaces": [
+            "Сполученого Королівства",
+            "Сполученого королівства"
+          ]
+        },
+        {
+          "normalized": "будинку",
+          "surfaces": [
+            "Будинку",
+            "будинку"
+          ]
+        },
+        {
+          "normalized": "",
+          "surfaces": [
+            ".",
+            "Mars"
+          ]
+        },
+        {
+          "normalized": "грушевського,",
+          "surfaces": [
+            "Грушевського, 1",
+            "Грушевського, 22"
+          ]
+        }
+      ],
+      "top10_mention_fraction": 0.2581719128329298,
+      "singleton_surface_fraction": 0.7614678899082569,
+      "top_locations": [
+        [
+          "україни",
+          259
+        ],
+        [
+          "україні",
+          163
+        ],
+        [
+          "сша",
+          89
+        ],
+        [
+          "росії",
+          69
+        ],
+        [
+          "україна",
+          63
+        ],
+        [
+          "києві",
+          58
+        ],
+        [
+          "україну",
+          44
+        ],
+        [
+          "росія",
+          39
+        ],
+        [
+          "київ",
+          37
+        ],
+        [
+          "києва",
+          32
+        ],
+        [
+          "рф",
+          32
+        ],
+        [
+          "польщі",
+          29
+        ],
+        [
+          "криму",
+          29
+        ],
+        [
+          "донбасі",
+          27
+        ],
+        [
+          "львові",
+          23
+        ]
+      ],
+      "issues": {
+        "whitespace_boundaries": 3,
+        "empty_after_normalization": 2,
+        "duplicate_spans": 0,
+        "overlapping_spans": 0,
+        "per_text_normalization_collapses": 29
+      },
+      "invalid_examples": [],
+      "unseen_entity_mention_fraction": 0.09110169491525423
+    }
+  },
+  "processed": {
+    "rows": 1010000,
+    "columns": [
+      "tokens",
+      "labels",
+      "is_valid"
+    ],
+    "split_counts": {
+      "0": 1000000,
+      "1": 10000
+    },
+    "tag_counts": {
+      "O": 17384464,
+      "LOC": 424864
+    },
+    "token_label_length_mismatch": 0,
+    "unknown_tag_rows": 0,
+    "all_O_token_accuracy": 0.9761437377086883,
+    "tokens_per_sequence": {
+      "count": 1010000.0,
+      "mean": 17.63299801980198,
+      "std": 7.816023129229284,
+      "min": 5.0,
+      "50%": 16.0,
+      "95%": 33.0,
+      "99%": 41.0,
+      "max": 81.0
+    },
+    "raw_processed_row_count_equal": true,
+    "raw_processed_split_equal": true,
+    "io_run_count_differs_from_raw_mentions_rows": 6171
+  },
+  "overlap": {
+    "uk_train_all__test": {
+      "exact_shared_unique": 0,
+      "exact_rows_in_second": 0,
+      "canonical_rows_in_second": 0
+    },
+    "uk_train_all__labeling_sample": {
+      "exact_shared_unique": 0,
+      "exact_rows_in_second": 0,
+      "canonical_rows_in_second": 0
+    },
+    "labeling_sample__test": {
+      "exact_shared_unique": 0,
+      "exact_rows_in_second": 0,
+      "canonical_rows_in_second": 0
+    },
+    "uk_fit__uk_valid": {
+      "exact_shared_unique": 52,
+      "exact_rows_in_second": 52,
+      "canonical_rows_in_second": 52
+    }
+  },
+  "shift": {
+    "characters": {
+      "ks_statistic": 0.5629803246362373,
+      "pvalue": 3.958210890321237e-143
+    },
+    "whitespace_tokens": {
+      "ks_statistic": 0.5532472632168878,
+      "pvalue": 8.792083281119885e-138
+    }
+  },
+  "files": {
+    "uk_geo_dataset.csv": {
+      "bytes": 211462728,
+      "sha256": "551afb6a09bef80adad496a11876f1ff14fb9e34e33fee869efb0da85d060874"
+    },
+    "uk_geo_dataset_processed_v1.parquet": {
+      "bytes": 189519062,
+      "sha256": "3b4527ef246e4e6daa19e960823efa2c23fb3d0e5f39fb1f9dab28cb20e7ee75"
+    },
+    "test.csv": {
+      "bytes": 345572,
+      "sha256": "8cd69906e64b9626d85a9fcb33df4e6b0d7c3d93290c1b562e4586878688b60d"
+    },
+    "labeling_sample.csv": {
+      "bytes": 15055,
+      "sha256": "e1c9ab5022422c1ecfafb62c2d47a535078a3271fcdb5d00e9a9fbc25ce2653e"
+    },
+    "kaggle_pages.json": {
+      "bytes": 5089,
+      "sha256": "528cb482e112470e499e7ce2d433c16ebe8c4254be44dbe105e0522fe84e0f11"
+    }
+  },
+  "metric_parity_random_cases": 500,
+  "scope": "Full Ukrainian raw CSV and processed parquet + full test + labeling sample. Russian auxiliary corpus not analyzed."
+}

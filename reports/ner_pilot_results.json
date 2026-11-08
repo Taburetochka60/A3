@@ -1,0 +1,106 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "torch_version": "2.11.0+cu130",
+  "train_rows": 12000,
+  "train_monitor_rows": 2048,
+  "checkpoint_rows": 4000,
+  "epochs": 8,
+  "best_epoch": 8,
+  "encoder_config": {
+    "embedding_dim": 64,
+    "hidden_size": 64,
+    "dropout": 0.2
+  },
+  "vocabulary_size": 30002,
+  "vocabulary_fit": "Pilot fit texts only",
+  "tag_counts": [
+    212951,
+    3962,
+    889
+  ],
+  "class_weights": [
+    1.0,
+    7.331327438354492,
+    8.0
+  ],
+  "optimizer": "AdamW",
+  "lr": 0.002,
+  "weight_decay": 0.01,
+  "max_tokens": 128,
+  "window_overlap": 32,
+  "padding_label": -100,
+  "best_train_monitor": {
+    "tp": 585,
+    "fp": 231,
+    "fn": 38,
+    "precision": 0.7169117647058824,
+    "recall": 0.9390048154093098,
+    "f1": 0.81306463,
+    "exact_raw_span_f1": 0.80027454,
+    "exact_trimmed_span_f1": 0.80027454,
+    "unweighted_token_ce": 0.02333533191983359,
+    "ce_tokens": 37271,
+    "ce_excluded_incompatible_rows": 0,
+    "rows": 2048,
+    "orphan_I_repaired": 9,
+    "empty_gold_text_fp_rate": 0.05493133583021224
+  },
+  "best_checkpoint": {
+    "tp": 887,
+    "fp": 917,
+    "fn": 431,
+    "precision": 0.4916851441241685,
+    "recall": 0.6729893778452201,
+    "f1": 0.5682255,
+    "exact_raw_span_f1": 0.56253968,
+    "exact_trimmed_span_f1": 0.56253968,
+    "unweighted_token_ce": 0.06872304243302395,
+    "ce_tokens": 72831,
+    "ce_excluded_incompatible_rows": 4,
+    "rows": 4000,
+    "orphan_I_repaired": 32,
+    "empty_gold_text_fp_rate": 0.12410656270305392
+  },
+  "tiny_memorization": {
+    "rows": 32,
+    "positive_rows": 16,
+    "negative_rows": 16,
+    "updates": 20,
+    "final_metrics": {
+      "tp": 22,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_raw_span_f1": 1.0,
+      "exact_trimmed_span_f1": 1.0,
+      "unweighted_token_ce": 0.0004933566495568933,
+      "ce_tokens": 548,
+      "ce_excluded_incompatible_rows": 0,
+      "rows": 32,
+      "orphan_I_repaired": 0,
+      "empty_gold_text_fp_rate": 0.0
+    },
+    "passed": true,
+    "meaning": "Intentional memorization of fit-only examples tests wiring, not generalization.",
+    "history": [
+      {
+        "update": 20,
+        "weighted_ce": 0.0008185079548554064,
+        "f1": 1.0,
+        "span_f1": 1.0
+      }
+    ]
+  },
+  "generalization_gap": 0.2448391299999999,
+  "checkpoint_OOV_token_fraction": 0.14361315619901563,
+  "elapsed_seconds": 29.042941331863403,
+  "split_sha256": "c6012fc91f72ae5d58d89267c72e45ea9a9c06b43fd3d9b17e68e5178b1bea70",
+  "evaluation_policy": "Argmax BIO, orphan I becomes B, mean overlapping probabilities before global decoding; no threshold tuning",
+  "calibration_evaluated": false,
+  "final_audit_evaluated": false,
+  "target_labels_evaluated": false,
+  "limitations": "One seed, 12k subset, eight epochs. Checkpoint selects epoch and is a development score. Gap does not alone establish overfitting."
+}

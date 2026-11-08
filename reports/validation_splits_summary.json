@@ -1,0 +1,51 @@
+{
+  "seed": 42,
+  "grouping": "sha256(NFC + casefold + whitespace collapse)",
+  "partitions": [
+    {
+      "partition": "audit",
+      "rows": 4000,
+      "groups": 4000,
+      "loc_mentions": 1322,
+      "positive_rows": 920,
+      "no_location_fraction": 0.77
+    },
+    {
+      "partition": "calibration",
+      "rows": 2000,
+      "groups": 2000,
+      "loc_mentions": 654,
+      "positive_rows": 461,
+      "no_location_fraction": 0.7695
+    },
+    {
+      "partition": "checkpoint",
+      "rows": 4000,
+      "groups": 4000,
+      "loc_mentions": 1328,
+      "positive_rows": 922,
+      "no_location_fraction": 0.7695
+    },
+    {
+      "partition": "excluded_overlap",
+      "rows": 52,
+      "groups": 52,
+      "loc_mentions": 11,
+      "positive_rows": 6,
+      "no_location_fraction": 0.8846153846153846
+    },
+    {
+      "partition": "fit",
+      "rows": 999948,
+      "groups": 997477,
+      "loc_mentions": 341799,
+      "positive_rows": 231112,
+      "no_location_fraction": 0.7688759815510406
+    }
+  ],
+  "excluded_fit_rows": 52,
+  "cross_partition_duplicate_groups": 0,
+  "manifest_sha256": "c6012fc91f72ae5d58d89267c72e45ea9a9c06b43fd3d9b17e68e5178b1bea70",
+  "dataset_sha256": "551afb6a09bef80adad496a11876f1ff14fb9e34e33fee869efb0da85d060874",
+  "rule": "Official is_valid=1 only: SGKF(5), folds 0/1 checkpoint, 2 calibration, 3/4 audit. Fit excludes reserved/sample/test canonical overlaps."
+}

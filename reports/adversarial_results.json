@@ -1,0 +1,57 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "source_rows": 477,
+  "test_rows": 477,
+  "encoder": "RecurrentEncoder: embedding + 1-layer bidirectional GRU; no attention",
+  "encoder_config": {
+    "embedding_dim": 64,
+    "hidden_size": 64,
+    "dropout": 0.2
+  },
+  "epochs": 10,
+  "batch_size": 64,
+  "optimizer": "AdamW",
+  "lr": 0.002,
+  "weight_decay": 0.01,
+  "maximum_tokens": 128,
+  "tokenizer": "\\n|[^\\W_]+|[^\\s]",
+  "vocabulary_cap": 12000,
+  "vocabulary_fit": "Each domain-training fold only; unknown index=1, padding index=0",
+  "oof_roc_auc": 0.949285585573707,
+  "oof_accuracy": 0.8784067085953878,
+  "oof_bce": 0.44214310386309236,
+  "bootstrap_auc_95ci": [
+    0.9359016872574486,
+    0.96259103235192
+  ],
+  "bootstrap_caveat": "Conditional text bootstrap of fixed OOF predictions; does not include retraining/seed uncertainty.",
+  "folds": [
+    {
+      "fold": 0,
+      "train_rows": 636,
+      "heldout_rows": 318,
+      "auc": 0.9576757248526562,
+      "oov_token_fraction": 0.2368568009573195,
+      "vocab_size": 8506
+    },
+    {
+      "fold": 1,
+      "train_rows": 636,
+      "heldout_rows": 318,
+      "auc": 0.9668921324314703,
+      "oov_token_fraction": 0.2595802194307521,
+      "vocab_size": 8282
+    },
+    {
+      "fold": 2,
+      "train_rows": 636,
+      "heldout_rows": 318,
+      "auc": 0.978996084015664,
+      "oov_token_fraction": 0.2455618988034723,
+      "vocab_size": 8342
+    }
+  ],
+  "domain_label_definition": "0=uniform sampled Ukrainian fit text; 1=unlabeled competition test text",
+  "main_task_status": "Shared BiGRU encoder/tokenizer; short NER pilot is documented separately. Final full-scale model is not fixed. Rerun AV if final encoder/preprocessing changes."
+}

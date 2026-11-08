@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+/data/
+/outputs/
+/.uv-cache/
+.env.*
+*.pt
+*.pth
+*.ckpt

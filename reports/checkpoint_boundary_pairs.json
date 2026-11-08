@@ -1,0 +1,1514 @@
+[
+  {
+    "row_id": 1000085,
+    "gold": [
+      34,
+      49
+    ],
+    "pred": [
+      34,
+      41
+    ],
+    "gold_text": "Мінську Україна",
+    "pred_text": "Мінську",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000210,
+    "gold": [
+      18,
+      24
+    ],
+    "pred": [
+      12,
+      24
+    ],
+    "gold_text": "Харків",
+    "pred_text": "місту Харків",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1000416,
+    "gold": [
+      64,
+      86
+    ],
+    "pred": [
+      64,
+      75
+    ],
+    "gold_text": "Нідерландів Аранчі Рус",
+    "pred_text": "Нідерландів",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000416,
+    "gold": [
+      134,
+      157
+    ],
+    "pred": [
+      134,
+      139
+    ],
+    "gold_text": "Санта Маргеріта ді Пула",
+    "pred_text": "Санта",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000550,
+    "gold": [
+      194,
+      216
+    ],
+    "pred": [
+      200,
+      216
+    ],
+    "gold_text": "Києво-Печерської лаври",
+    "pred_text": "Печерської лаври",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000617,
+    "gold": [
+      156,
+      174
+    ],
+    "pred": [
+      169,
+      174
+    ],
+    "gold_text": "Лівадійський палац",
+    "pred_text": "палац",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000650,
+    "gold": [
+      71,
+      88
+    ],
+    "pred": [
+      76,
+      88
+    ],
+    "gold_text": "Івано-Франківська",
+    "pred_text": "-Франківська",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000666,
+    "gold": [
+      22,
+      52
+    ],
+    "pred": [
+      16,
+      52
+    ],
+    "gold_text": "Демократичної Республіки Конго",
+    "pred_text": "сході Демократичної Республіки Конго",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1000684,
+    "gold": [
+      65,
+      78
+    ],
+    "pred": [
+      65,
+      70
+    ],
+    "gold_text": "Росію, ховаюч",
+    "pred_text": "Росію",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000722,
+    "gold": [
+      45,
+      64
+    ],
+    "pred": [
+      45,
+      58
+    ],
+    "gold_text": "Європейського Союзу",
+    "pred_text": "Європейського",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000779,
+    "gold": [
+      32,
+      62
+    ],
+    "pred": [
+      32,
+      49
+    ],
+    "gold_text": "Повітрофлотського шляхопроводу",
+    "pred_text": "Повітрофлотського",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1000977,
+    "gold": [
+      55,
+      64
+    ],
+    "pred": [
+      55,
+      65
+    ],
+    "gold_text": "Єрусалимі",
+    "pred_text": "Єрусалимі.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1000978,
+    "gold": [
+      39,
+      44
+    ],
+    "pred": [
+      39,
+      45
+    ],
+    "gold_text": "Львів",
+    "pred_text": "Львів\"",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1001115,
+    "gold": [
+      96,
+      109
+    ],
+    "pred": [
+      104,
+      109
+    ],
+    "gold_text": "Прем`єр Палас",
+    "pred_text": "Палас",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1001290,
+    "gold": [
+      24,
+      32
+    ],
+    "pred": [
+      24,
+      42
+    ],
+    "gold_text": "Карпатах",
+    "pred_text": "Карпатах здорожчав",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001341,
+    "gold": [
+      117,
+      123
+    ],
+    "pred": [
+      117,
+      129
+    ],
+    "gold_text": "Львові",
+    "pred_text": "Львові імені",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001371,
+    "gold": [
+      97,
+      128
+    ],
+    "pred": [
+      110,
+      128
+    ],
+    "gold_text": "Луганської і Донецької областей",
+    "pred_text": "Донецької областей",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1001467,
+    "gold": [
+      26,
+      38
+    ],
+    "pred": [
+      26,
+      59
+    ],
+    "gold_text": "-Франківську",
+    "pred_text": "-Франківську приваблює інвесторів",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001484,
+    "gold": [
+      167,
+      186
+    ],
+    "pred": [
+      179,
+      186
+    ],
+    "gold_text": "Челябінська область",
+    "pred_text": "область",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1001553,
+    "gold": [
+      79,
+      99
+    ],
+    "pred": [
+      79,
+      98
+    ],
+    "gold_text": "вулиці Кирилівській\"",
+    "pred_text": "вулиці Кирилівській",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1001664,
+    "gold": [
+      14,
+      33
+    ],
+    "pred": [
+      29,
+      33
+    ],
+    "gold_text": "Чорнобильської зони",
+    "pred_text": "зони",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1001681,
+    "gold": [
+      78,
+      85
+    ],
+    "pred": [
+      65,
+      88
+    ],
+    "gold_text": "-Хасака",
+    "pred_text": "провінції Аль-Хасака на",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001681,
+    "gold": [
+      106,
+      111
+    ],
+    "pred": [
+      89,
+      111
+    ],
+    "gold_text": "Сирії",
+    "pred_text": "північному сході Сирії",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001690,
+    "gold": [
+      33,
+      41
+    ],
+    "pred": [
+      33,
+      56
+    ],
+    "gold_text": "Угорщині",
+    "pred_text": "Угорщині розбудовується",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1001777,
+    "gold": [
+      24,
+      49
+    ],
+    "pred": [
+      29,
+      49
+    ],
+    "gold_text": "Івано-Франківскій області",
+    "pred_text": "-Франківскій області",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1001787,
+    "gold": [
+      131,
+      149
+    ],
+    "pred": [
+      131,
+      150
+    ],
+    "gold_text": "Індійського океану",
+    "pred_text": "Індійського океану.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1002212,
+    "gold": [
+      11,
+      18
+    ],
+    "pred": [
+      11,
+      29
+    ],
+    "gold_text": "Полтаві",
+    "pred_text": "Полтаві розпочинає",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1002601,
+    "gold": [
+      17,
+      33
+    ],
+    "pred": [
+      26,
+      33
+    ],
+    "gold_text": "Західної України",
+    "pred_text": "України",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1002635,
+    "gold": [
+      38,
+      53
+    ],
+    "pred": [
+      46,
+      53
+    ],
+    "gold_text": "Східній Україні",
+    "pred_text": "Україні",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1002823,
+    "gold": [
+      2,
+      21
+    ],
+    "pred": [
+      2,
+      31
+    ],
+    "gold_text": "Полтавському районі",
+    "pred_text": "Полтавському районі лісівники",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1002892,
+    "gold": [
+      141,
+      154
+    ],
+    "pred": [
+      141,
+      156
+    ],
+    "gold_text": "Чернігівській",
+    "pred_text": "Чернігівській (",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1002893,
+    "gold": [
+      90,
+      99
+    ],
+    "pred": [
+      90,
+      107
+    ],
+    "gold_text": "Донеччині",
+    "pred_text": "Донеччині виявили",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1003091,
+    "gold": [
+      2,
+      21
+    ],
+    "pred": [
+      2,
+      14
+    ],
+    "gold_text": "Атлантичному океані",
+    "pred_text": "Атлантичному",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1003092,
+    "gold": [
+      52,
+      71
+    ],
+    "pred": [
+      52,
+      64
+    ],
+    "gold_text": "Покровському районі",
+    "pred_text": "Покровському",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1003360,
+    "gold": [
+      73,
+      84
+    ],
+    "pred": [
+      73,
+      86
+    ],
+    "gold_text": "Кримужурнал",
+    "pred_text": "Кримужурнал «",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1003664,
+    "gold": [
+      131,
+      152
+    ],
+    "pred": [
+      131,
+      137
+    ],
+    "gold_text": "вулиця Шовковична, 10",
+    "pred_text": "вулиця",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1003947,
+    "gold": [
+      133,
+      161
+    ],
+    "pred": [
+      133,
+      140
+    ],
+    "gold_text": "Чорного або Азовського морів",
+    "pred_text": "Чорного",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1003973,
+    "gold": [
+      34,
+      47
+    ],
+    "pred": [
+      34,
+      58
+    ],
+    "gold_text": "вул. Зарічній",
+    "pred_text": "вул. Зарічній в Рівному.",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1004029,
+    "gold": [
+      15,
+      28
+    ],
+    "pred": [
+      15,
+      21
+    ],
+    "gold_text": "Буенос-Айресі",
+    "pred_text": "Буенос",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004149,
+    "gold": [
+      112,
+      129
+    ],
+    "pred": [
+      116,
+      125
+    ],
+    "gold_text": "вул.Молодіжна, 58",
+    "pred_text": "Молодіжна",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004149,
+    "gold": [
+      131,
+      163
+    ],
+    "pred": [
+      131,
+      157
+    ],
+    "gold_text": "вул. Набережна енергетиків 7/15.",
+    "pred_text": "вул. Набережна енергетиків",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004470,
+    "gold": [
+      115,
+      133
+    ],
+    "pred": [
+      127,
+      135
+    ],
+    "gold_text": "Мартел-валь-Мартел",
+    "pred_text": "Мартелло",
+    "kind": "shifted_partial_overlap"
+  },
+  {
+    "row_id": 1004538,
+    "gold": [
+      173,
+      188
+    ],
+    "pred": [
+      173,
+      182
+    ],
+    "gold_text": "Близького Сходу",
+    "pred_text": "Близького",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004613,
+    "gold": [
+      30,
+      38
+    ],
+    "pred": [
+      30,
+      45
+    ],
+    "gold_text": "Білорусі",
+    "pred_text": "Білорусі доволі",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1004647,
+    "gold": [
+      25,
+      35
+    ],
+    "pred": [
+      25,
+      28
+    ],
+    "gold_text": "РСР Грузія",
+    "pred_text": "РСР",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004834,
+    "gold": [
+      7,
+      19
+    ],
+    "pred": [
+      2,
+      19
+    ],
+    "gold_text": "-Франківську",
+    "pred_text": "Івано-Франківську",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1004857,
+    "gold": [
+      53,
+      62
+    ],
+    "pred": [
+      53,
+      72
+    ],
+    "gold_text": "Австралії",
+    "pred_text": "Австралії приблизно",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1004883,
+    "gold": [
+      54,
+      73
+    ],
+    "pred": [
+      65,
+      73
+    ],
+    "gold_text": "Карибських островів",
+    "pred_text": "островів",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1004933,
+    "gold": [
+      7,
+      19
+    ],
+    "pred": [
+      2,
+      29
+    ],
+    "gold_text": "-Франківську",
+    "pred_text": "Івано-Франківську свідоцтво",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1004942,
+    "gold": [
+      29,
+      46
+    ],
+    "pred": [
+      29,
+      55
+    ],
+    "gold_text": "Івано-Франківську",
+    "pred_text": "Івано-Франківську вокально",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005121,
+    "gold": [
+      14,
+      33
+    ],
+    "pred": [
+      7,
+      33
+    ],
+    "gold_text": "Харківської області",
+    "pred_text": "Мурафа Харківської області",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005161,
+    "gold": [
+      2,
+      50
+    ],
+    "pred": [
+      30,
+      50
+    ],
+    "gold_text": "Волинській, Закарпатській і Харківській областях",
+    "pred_text": "Харківській областях",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005312,
+    "gold": [
+      64,
+      69
+    ],
+    "pred": [
+      64,
+      70
+    ],
+    "gold_text": "Техас",
+    "pred_text": "Техас.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1005344,
+    "gold": [
+      94,
+      100
+    ],
+    "pred": [
+      86,
+      100
+    ],
+    "gold_text": "Чикаго",
+    "pred_text": "аеропот Чикаго",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005345,
+    "gold": [
+      32,
+      44
+    ],
+    "pred": [
+      39,
+      44
+    ],
+    "gold_text": "Чорним морем",
+    "pred_text": "морем",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005367,
+    "gold": [
+      86,
+      92
+    ],
+    "pred": [
+      86,
+      98
+    ],
+    "gold_text": "Львова",
+    "pred_text": "Львова згори",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005373,
+    "gold": [
+      21,
+      41
+    ],
+    "pred": [
+      21,
+      33
+    ],
+    "gold_text": "Карпатському регіоні",
+    "pred_text": "Карпатському",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005379,
+    "gold": [
+      89,
+      111
+    ],
+    "pred": [
+      100,
+      111
+    ],
+    "gold_text": "Обєднаного королівства",
+    "pred_text": "королівства",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005408,
+    "gold": [
+      6,
+      25
+    ],
+    "pred": [
+      5,
+      37
+    ],
+    "gold_text": "Франківська область",
+    "pred_text": "-Франківська область забезпечена",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005494,
+    "gold": [
+      158,
+      167
+    ],
+    "pred": [
+      158,
+      168
+    ],
+    "gold_text": "Ясинувата",
+    "pred_text": "Ясинувата-",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1005667,
+    "gold": [
+      32,
+      67
+    ],
+    "pred": [
+      32,
+      43
+    ],
+    "gold_text": "Софіївській та Михайлівській площах",
+    "pred_text": "Софіївській",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005787,
+    "gold": [
+      7,
+      35
+    ],
+    "pred": [
+      7,
+      55
+    ],
+    "gold_text": "Роздольне Зміївського району",
+    "pred_text": "Роздольне Зміївського району Харківської області",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005839,
+    "gold": [
+      2,
+      8
+    ],
+    "pred": [
+      2,
+      15
+    ],
+    "gold_text": "Японії",
+    "pred_text": "Японії свіжим",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1005884,
+    "gold": [
+      52,
+      64
+    ],
+    "pred": [
+      60,
+      64
+    ],
+    "gold_text": "Східній Азії",
+    "pred_text": "Азії",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1005957,
+    "gold": [
+      61,
+      70
+    ],
+    "pred": [
+      61,
+      66
+    ],
+    "gold_text": "Парк-Сіті",
+    "pred_text": "Парк-",
+    "kind": "word_ending_fragment"
+  },
+  {
+    "row_id": 1005984,
+    "gold": [
+      54,
+      73
+    ],
+    "pred": [
+      54,
+      63
+    ],
+    "gold_text": "Російська Федерація",
+    "pred_text": "Російська",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1006148,
+    "gold": [
+      93,
+      99
+    ],
+    "pred": [
+      93,
+      112
+    ],
+    "gold_text": "Заході",
+    "pred_text": "Заході говоритимуть",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1006206,
+    "gold": [
+      10,
+      35
+    ],
+    "pred": [
+      10,
+      27
+    ],
+    "gold_text": "Сполучених Штатів Америки",
+    "pred_text": "Сполучених Штатів",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1006235,
+    "gold": [
+      98,
+      114
+    ],
+    "pred": [
+      98,
+      106
+    ],
+    "gold_text": "Древньої Олімпії",
+    "pred_text": "Древньої",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1006351,
+    "gold": [
+      95,
+      106
+    ],
+    "pred": [
+      95,
+      130
+    ],
+    "gold_text": "України окр",
+    "pred_text": "України окремих актів законодавства",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1006390,
+    "gold": [
+      32,
+      40
+    ],
+    "pred": [
+      32,
+      51
+    ],
+    "gold_text": "Сирецько",
+    "pred_text": "Сирецько-Печерській",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1006483,
+    "gold": [
+      44,
+      56
+    ],
+    "pred": [
+      39,
+      56
+    ],
+    "gold_text": "-Франківську",
+    "pred_text": "Івано-Франківську",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1006541,
+    "gold": [
+      53,
+      57
+    ],
+    "pred": [
+      45,
+      57
+    ],
+    "gold_text": "Лідо",
+    "pred_text": "острові Лідо",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1006577,
+    "gold": [
+      31,
+      50
+    ],
+    "pred": [
+      31,
+      41
+    ],
+    "gold_text": "Донецькому напрямку",
+    "pred_text": "Донецькому",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1006624,
+    "gold": [
+      165,
+      194
+    ],
+    "pred": [
+      177,
+      194
+    ],
+    "gold_text": "Слов'янська Донецької області",
+    "pred_text": "Донецької області",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1006710,
+    "gold": [
+      193,
+      212
+    ],
+    "pred": [
+      205,
+      212
+    ],
+    "gold_text": "Московської області",
+    "pred_text": "області",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1007081,
+    "gold": [
+      214,
+      219
+    ],
+    "pred": [
+      214,
+      220
+    ],
+    "gold_text": "Криму",
+    "pred_text": "Криму\"",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1007297,
+    "gold": [
+      23,
+      32
+    ],
+    "pred": [
+      26,
+      32
+    ],
+    "gold_text": "на Подолі",
+    "pred_text": "Подолі",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1007301,
+    "gold": [
+      2,
+      8
+    ],
+    "pred": [
+      2,
+      17
+    ],
+    "gold_text": "Москві",
+    "pred_text": "Москві уточнили",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007340,
+    "gold": [
+      88,
+      93
+    ],
+    "pred": [
+      88,
+      106
+    ],
+    "gold_text": "Криму",
+    "pred_text": "Криму переслідують",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007390,
+    "gold": [
+      47,
+      63
+    ],
+    "pred": [
+      47,
+      74
+    ],
+    "gold_text": "вул. Московської",
+    "pred_text": "вул. Московської в напрямку",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007390,
+    "gold": [
+      75,
+      82
+    ],
+    "pred": [
+      75,
+      83
+    ],
+    "gold_text": "Садовій",
+    "pred_text": "Садовій.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1007638,
+    "gold": [
+      128,
+      140
+    ],
+    "pred": [
+      133,
+      140
+    ],
+    "gold_text": "Схід України",
+    "pred_text": "України",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1007643,
+    "gold": [
+      30,
+      40
+    ],
+    "pred": [
+      30,
+      34
+    ],
+    "gold_text": "Тель-Авіві",
+    "pred_text": "Тель",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1007683,
+    "gold": [
+      2,
+      14
+    ],
+    "pred": [
+      2,
+      6
+    ],
+    "gold_text": "Діми Кийкова",
+    "pred_text": "Діми",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1007792,
+    "gold": [
+      61,
+      70
+    ],
+    "pred": [
+      54,
+      70
+    ],
+    "gold_text": "студентів",
+    "pred_text": "Палаці студентів",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007792,
+    "gold": [
+      74,
+      92
+    ],
+    "pred": [
+      74,
+      101
+    ],
+    "gold_text": "вулиці Пушкінській",
+    "pred_text": "вулиці Пушкінській відбувся",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007875,
+    "gold": [
+      196,
+      202
+    ],
+    "pred": [
+      191,
+      202
+    ],
+    "gold_text": "Європі",
+    "pred_text": "усій Європі",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007953,
+    "gold": [
+      15,
+      22
+    ],
+    "pred": [
+      15,
+      40
+    ],
+    "gold_text": "Мінську",
+    "pred_text": "Мінську дівчина піднялася",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1007999,
+    "gold": [
+      2,
+      11
+    ],
+    "pred": [
+      2,
+      22
+    ],
+    "gold_text": "Швейцарії",
+    "pred_text": "Швейцарії виставлять",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1008012,
+    "gold": [
+      42,
+      69
+    ],
+    "pred": [
+      42,
+      70
+    ],
+    "gold_text": "парку імені Тараса Шевченка",
+    "pred_text": "парку імені Тараса Шевченка.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1008014,
+    "gold": [
+      93,
+      108
+    ],
+    "pred": [
+      93,
+      114
+    ],
+    "gold_text": "Кіровоградській",
+    "pred_text": "Кіровоградській (двоє",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1008088,
+    "gold": [
+      25,
+      35
+    ],
+    "pred": [
+      25,
+      49
+    ],
+    "gold_text": "Антарктиді",
+    "pred_text": "Антарктиді розпускаються",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1008116,
+    "gold": [
+      48,
+      65
+    ],
+    "pred": [
+      48,
+      54
+    ],
+    "gold_text": "Москви, у тому чи",
+    "pred_text": "Москви",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1008120,
+    "gold": [
+      116,
+      125
+    ],
+    "pred": [
+      116,
+      126
+    ],
+    "gold_text": "Луганщини",
+    "pred_text": "Луганщини.",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1008203,
+    "gold": [
+      77,
+      84
+    ],
+    "pred": [
+      77,
+      82
+    ],
+    "gold_text": "Одесі, ",
+    "pred_text": "Одесі",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1008314,
+    "gold": [
+      12,
+      29
+    ],
+    "pred": [
+      22,
+      29
+    ],
+    "gold_text": "вулиці С. Ковпака",
+    "pred_text": "Ковпака",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1008399,
+    "gold": [
+      40,
+      45
+    ],
+    "pred": [
+      40,
+      49
+    ],
+    "gold_text": "Кітті",
+    "pred_text": "Кітті-Хок",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1008497,
+    "gold": [
+      49,
+      59
+    ],
+    "pred": [
+      54,
+      59
+    ],
+    "gold_text": "Зіді-Бузід",
+    "pred_text": "Бузід",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1008775,
+    "gold": [
+      87,
+      106
+    ],
+    "pred": [
+      87,
+      102
+    ],
+    "gold_text": "вул. Рейтарська, 13",
+    "pred_text": "вул. Рейтарська",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1008905,
+    "gold": [
+      44,
+      50
+    ],
+    "pred": [
+      44,
+      51
+    ],
+    "gold_text": "Львові",
+    "pred_text": "Львові\"",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1008962,
+    "gold": [
+      157,
+      162
+    ],
+    "pred": [
+      157,
+      164
+    ],
+    "gold_text": "Дорал",
+    "pred_text": "Дорал (",
+    "kind": "punctuation_or_whitespace"
+  },
+  {
+    "row_id": 1009279,
+    "gold": [
+      22,
+      29
+    ],
+    "pred": [
+      22,
+      43
+    ],
+    "gold_text": "Харкові",
+    "pred_text": "Харкові запалили шини",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1009660,
+    "gold": [
+      49,
+      56
+    ],
+    "pred": [
+      49,
+      71
+    ],
+    "gold_text": "Лозовій",
+    "pred_text": "Лозовій слідчі виявили",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1009674,
+    "gold": [
+      47,
+      73
+    ],
+    "pred": [
+      47,
+      67
+    ],
+    "gold_text": "Дніпровському районі міста",
+    "pred_text": "Дніпровському районі",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1009719,
+    "gold": [
+      160,
+      188
+    ],
+    "pred": [
+      160,
+      183
+    ],
+    "gold_text": "вул.Володимира Великого, 2-4",
+    "pred_text": "вул.Володимира Великого",
+    "kind": "missing_name_material"
+  },
+  {
+    "row_id": 1009798,
+    "gold": [
+      12,
+      29
+    ],
+    "pred": [
+      2,
+      29
+    ],
+    "gold_text": "Донецької області",
+    "pred_text": "Маріуполі Донецької області",
+    "kind": "extra_neighbor_material"
+  },
+  {
+    "row_id": 1009811,
+    "gold": [
+      26,
+      46
+    ],
+    "pred": [
+      26,
+      39
+    ],
+    "gold_text": "Криворізького району",
+    "pred_text": "Криворізького",
+    "kind": "missing_name_material"
+  }
+]
