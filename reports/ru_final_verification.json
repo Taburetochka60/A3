@@ -1,0 +1,12 @@
+{
+  "full_RU_rows": 8028840,
+  "manifest_covers_all_rows": true,
+  "partition_rows_sum": true,
+  "protected_overlap_counts_zero": true,
+  "nine_saved_prediction_F1s_independently_verified": true,
+  "matched_24k_optimizer_updates": true,
+  "original_UA_manifest_unchanged": true,
+  "no_final_audit": true,
+  "no_calibration": true,
+  "no_test_target_score": true
+}

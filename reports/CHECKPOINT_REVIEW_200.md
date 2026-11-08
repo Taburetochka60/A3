@@ -1,7 +1,7 @@
-# Контекстный разбор 200 ошибок checkpoint
+# Contextual review of 200 checkpoint errors
 
-100 FP и 100 FN из 200 разных текстов. Выборка диагностическая, с усиленным покрытием ошибок границ; её доли не оценивают частоты во всём корпусе.
-Все контексты просмотрены Codex. Это AI-assisted review, а не независимая экспертная разметка. Исходный gold не исправлялся. Категории, связанные с качеством разметки, — кандидаты на человеческую проверку.
+100 FP and 100 FN focal cases from 200 distinct texts. This diagnostic sample emphasizes boundary coverage; its proportions do not estimate corpus-wide prevalence.
+All contexts were reviewed by Codex. This is AI-assisted review, not independent expert annotation. Original gold is unchanged. Annotation-quality categories identify candidates for human review. Original NER text and entity strings are preserved in their source languages.
 
 ## 001. FN · row_id=1003092 · missing_name_material
 
@@ -9,11 +9,11 @@
 
 **Gold:** ["Покровському районі", "Кривого Рогу"]
 
-**Предсказание:** ["Покровському"]
+**Prediction:** ["Покровському"]
 
-**Фокус:** Покровському районі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Покровському районі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Покровському районі» не совпала с «Покровському»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 002. FN · row_id=1001115 · multiword_name
 
@@ -21,11 +21,11 @@
 
 **Gold:** ["Києві", "Прем`єр Палас"]
 
-**Предсказание:** ["Києві", "Палас"]
+**Prediction:** ["Києві", "Палас"]
 
-**Фокус:** Прем`єр Палас; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Прем`єр Палас; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Название гостиницы потеряло первый компонент и апостроф; остался только «Палас».
+**Review:** The hotel name loses its first component and apostrophe; only the second component is returned.
 
 ## 003. FN · row_id=1006624 · granularity_policy
 
@@ -33,11 +33,11 @@
 
 **Gold:** ["Слов'янська Донецької області"]
 
-**Предсказание:** ["Донецької області"]
+**Prediction:** ["Донецької області"]
 
-**Фокус:** Слов'янська Донецької області; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Слов'янська Донецької області; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold объединяет город и область в одну сущность; предсказана только область. Зафиксировать правило вложенности адреса.
+**Review:** Gold combines the city and region into one entity; only the region is predicted. Specify the address-nesting convention.
 
 ## 004. FN · row_id=1008314 · address_boundary
 
@@ -45,11 +45,11 @@
 
 **Gold:** ["Яремчі", "вулиці С. Ковпака", "О. Довбуша"]
 
-**Предсказание:** ["Яремчі", "вулиці", "Ковпака"]
+**Prediction:** ["Яремчі", "вулиці", "Ковпака"]
 
-**Фокус:** вулиці С. Ковпака; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вулиці С. Ковпака; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Разорвано название улицы с инициалом; «вулиці» и «Ковпака» предсказаны отдельно.
+**Review:** The street name with an initial is fragmented; the street-type word and surname are predicted separately.
 
 ## 005. FN · row_id=1001484 · entity_type_context
 
@@ -57,11 +57,11 @@
 
 **Gold:** ["Челябінська область"]
 
-**Предсказание:** ["Дніпро", "Міасс", "область"]
+**Prediction:** ["Дніпро", "Міасс", "область"]
 
-**Фокус:** Челябінська область; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Челябінська область; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** В этом же тексте «Дніпро» — название программы, а «Міасс» размечен ORG; это смешивает типы с географическими словами.
+**Review:** Elsewhere in this sentence, Dnipro names a program and Miass is annotated as ORG. Geographic words can therefore occur under other entity types.
 
 ## 006. FN · row_id=1001664 · missing_name_material
 
@@ -69,11 +69,11 @@
 
 **Gold:** ["Чорнобильської зони"]
 
-**Предсказание:** ["екосистемах", "зони"]
+**Prediction:** ["екосистемах", "зони"]
 
-**Фокус:** Чорнобильської зони; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Чорнобильської зони; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Граница «Чорнобильської зони» не совпала с «зони»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 007. FN · row_id=1000779 · split_location
 
@@ -81,11 +81,11 @@
 
 **Gold:** ["Повітрофлотського шляхопроводу", "Києві"]
 
-**Предсказание:** ["Повітрофлотського", "шляхопроводу", "Києві"]
+**Prediction:** ["Повітрофлотського", "шляхопроводу", "Києві"]
 
-**Фокус:** Повітрофлотського шляхопроводу; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Повітрофлотського шляхопроводу; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Одно название путепровода разбито на две предсказанные сущности.
+**Review:** One bridge name is split into two predicted entities.
 
 ## 008. FN · row_id=1008116 · possible_annotation_error
 
@@ -93,11 +93,11 @@
 
 **Gold:** ["Москви, у тому чи"]
 
-**Предсказание:** ["Москви"]
+**Prediction:** ["Москви"]
 
-**Фокус:** Москви, у тому чи; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Москви, у тому чи; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold «Москви, у тому чи» захватывает обрывок следующей фразы. Предсказание «Москви» выглядит семантически разумнее, но считается ошибкой.
+**Review:** The gold span includes Moscow followed by a truncated fragment of the next phrase. The shorter prediction looks semantically more reasonable but is scored as wrong.
 
 ## 009. FN · row_id=1005408 · granularity_policy
 
@@ -105,11 +105,11 @@
 
 **Gold:** ["Івано", "Франківська область"]
 
-**Предсказание:** ["Івано", "-Франківська область забезпечена", "вакцинами КПК", "кір", "паротит", "краснуха"]
+**Prediction:** ["Івано", "-Франківська область забезпечена", "вакцинами КПК", "кір", "паротит", "краснуха"]
 
-**Фокус:** Франківська область; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Франківська область; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold разделяет «Івано-Франківська» на части; модель дополнительно захватывает сказуемое.
+**Review:** Gold splits the hyphenated city name; the model additionally absorbs the following predicate.
 
 ## 010. FN · row_id=1008088 · extra_neighbor_material
 
@@ -117,11 +117,11 @@
 
 **Gold:** ["Антарктиді"]
 
-**Предсказание:** ["Антарктиді розпускаються", "зелений колір"]
+**Prediction:** ["Антарктиді розпускаються", "зелений колір"]
 
-**Фокус:** Антарктиді; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Антарктиді; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Антарктиді» не совпала с «Антарктиді розпускаються»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 011. FN · row_id=1006148 · extra_neighbor_material
 
@@ -129,11 +129,11 @@
 
 **Gold:** ["РФ", "Заході", "Росії"]
 
-**Предсказание:** ["РФ", "Заході говоритимуть", "Росії"]
+**Prediction:** ["РФ", "Заході говоритимуть", "Росії"]
 
-**Фокус:** Заході; частота в пилотном fit: 7; UNK: False.
+**Focal surface:** Заході; pilot fit frequency: 7; UNK: False.
 
-**Разбор:** Граница «Заході» не совпала с «Заході говоритимуть»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 012. FN · row_id=1006577 · missing_name_material
 
@@ -141,11 +141,11 @@
 
 **Gold:** ["Донецькому напрямку", "Мар’їнки", "Новомихайлівки"]
 
-**Предсказание:** ["Донецькому", "підступах", "Мар’їнки", "Новомихайлівки"]
+**Prediction:** ["Донецькому", "підступах", "Мар’їнки", "Новомихайлівки"]
 
-**Фокус:** Донецькому напрямку; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Донецькому напрямку; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Граница «Донецькому напрямку» не совпала с «Донецькому»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 013. FN · row_id=1002893 · extra_neighbor_material
 
@@ -153,11 +153,11 @@
 
 **Gold:** ["Дружківці", "Донеччині"]
 
-**Предсказание:** ["штабі", "Дружківці", "Донеччині виявили"]
+**Prediction:** ["штабі", "Дружківці", "Донеччині виявили"]
 
-**Фокус:** Донеччині; частота в пилотном fit: 5; UNK: False.
+**Focal surface:** Донеччині; pilot fit frequency: 5; UNK: False.
 
-**Разбор:** Граница «Донеччині» не совпала с «Донеччині виявили»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 014. FN · row_id=1001467 · granularity_policy
 
@@ -165,11 +165,11 @@
 
 **Gold:** ["Івано", "-Франківську"]
 
-**Предсказание:** ["Елітна", "Івано", "-Франківську приваблює інвесторів", "позначці"]
+**Prediction:** ["Елітна", "Івано", "-Франківську приваблює інвесторів", "позначці"]
 
-**Фокус:** -Франківську; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** -Франківську; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Дефисное название в gold разбито; помимо этого модель захватывает следующие слова.
+**Review:** Gold splits the hyphenated name, while the model also captures following words.
 
 ## 015. FN · row_id=1007340 · extra_neighbor_material
 
@@ -177,11 +177,11 @@
 
 **Gold:** ["України", "Криму"]
 
-**Предсказание:** ["України", "Криму переслідують"]
+**Prediction:** ["України", "Криму переслідують"]
 
-**Фокус:** Криму; частота в пилотном fit: 29; UNK: False.
+**Focal surface:** Криму; pilot fit frequency: 29; UNK: False.
 
-**Разбор:** Граница «Криму» не совпала с «Криму переслідують»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 016. FN · row_id=1007301 · extra_neighbor_material
 
@@ -189,11 +189,11 @@
 
 **Gold:** ["Москві", "Київ", "Донбасі", "Кремлі", "Росія", "Донбасу"]
 
-**Предсказание:** ["Москві уточнили", "Київ", "Донбасі", "Кремлі", "внутрішньоукраїнською", "Росія", "підтримувані", "Донбасу"]
+**Prediction:** ["Москві уточнили", "Київ", "Донбасі", "Кремлі", "внутрішньоукраїнською", "Росія", "підтримувані", "Донбасу"]
 
-**Фокус:** Москві; частота в пилотном fit: 11; UNK: False.
+**Focal surface:** Москві; pilot fit frequency: 11; UNK: False.
 
-**Разбор:** Граница «Москві» не совпала с «Москві уточнили»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 017. FN · row_id=1005379 · missing_name_material
 
@@ -201,11 +201,11 @@
 
 **Gold:** ["Росія", "Арктику", "Обєднаного королівства"]
 
-**Предсказание:** ["Росія", "королівства"]
+**Prediction:** ["Росія", "королівства"]
 
-**Фокус:** Обєднаного королівства; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Обєднаного королівства; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Обєднаного королівства» не совпала с «королівства»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 018. FN · row_id=1004883 · multiword_name
 
@@ -213,11 +213,11 @@
 
 **Gold:** ["Івано", "-Франківська", "Карибських островів"]
 
-**Предсказание:** ["Івано", "-Франківська", "островів"]
+**Prediction:** ["Івано", "-Франківська", "островів"]
 
-**Фокус:** Карибських островів; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Карибських островів; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Для Карибских островов потеряно определение. Второй город в gold отдельно разбит по дефису.
+**Review:** The modifier in the Caribbean Islands name is lost. The other city in gold is also split at its hyphen.
 
 ## 019. FN · row_id=1005367 · extra_neighbor_material
 
@@ -225,11 +225,11 @@
 
 **Gold:** ["Львів", "Львова"]
 
-**Предсказание:** ["Львів", "панораму", "Львова згори"]
+**Prediction:** ["Львів", "панораму", "Львова згори"]
 
-**Фокус:** Львова; частота в пилотном fit: 28; UNK: False.
+**Focal surface:** Львова; pilot fit frequency: 28; UNK: False.
 
-**Разбор:** Граница «Львова» не совпала с «Львова згори»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 020. FN · row_id=1005667 · coordinated_locations
 
@@ -237,11 +237,11 @@
 
 **Gold:** ["Софіївській та Михайлівській площах"]
 
-**Предсказание:** ["Софіївській"]
+**Prediction:** ["Софіївській"]
 
-**Фокус:** Софіївській та Михайлівській площах; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Софіївській та Михайлівській площах; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold объединяет две площади и союз в одну сущность; модель находит лишь первое определение.
+**Review:** Gold combines two squares and their conjunction into one entity; the model finds only the first modifier.
 
 ## 021. FN · row_id=1004857 · extra_neighbor_material
 
@@ -249,11 +249,11 @@
 
 **Gold:** ["Австралії", "Землею"]
 
-**Предсказание:** ["орбіті", "Австралії приблизно", "Землею"]
+**Prediction:** ["орбіті", "Австралії приблизно", "Землею"]
 
-**Фокус:** Австралії; частота в пилотном fit: 4; UNK: False.
+**Focal surface:** Австралії; pilot fit frequency: 4; UNK: False.
 
-**Разбор:** Граница «Австралії» не совпала с «Австралії приблизно»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 022. FN · row_id=1003973 · merged_locations
 
@@ -261,11 +261,11 @@
 
 **Gold:** ["вул. Зарічній", "Рівному"]
 
-**Предсказание:** ["вул. Зарічній в Рівному."]
+**Prediction:** ["вул. Зарічній в Рівному."]
 
-**Фокус:** вул. Зарічній; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вул. Зарічній; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Улица и город слиты в один адресный фрагмент; gold требует двух отдельных сущностей.
+**Review:** The street and city are merged into one address fragment; gold requires two separate entities.
 
 ## 023. FN · row_id=1002212 · extra_neighbor_material
 
@@ -273,11 +273,11 @@
 
 **Gold:** ["Полтаві"]
 
-**Предсказание:** ["Полтаві розпочинає", "триденний"]
+**Prediction:** ["Полтаві розпочинає", "триденний"]
 
-**Фокус:** Полтаві; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Полтаві; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Граница «Полтаві» не совпала с «Полтаві розпочинає»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 024. FN · row_id=1005161 · coordinated_locations
 
@@ -285,11 +285,11 @@
 
 **Gold:** ["Волинській, Закарпатській і Харківській областях"]
 
-**Предсказание:** ["Волинській", "Закарпатській", "Харківській областях"]
+**Prediction:** ["Волинській", "Закарпатській", "Харківській областях"]
 
-**Фокус:** Волинській, Закарпатській і Харківській областях; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Волинській, Закарпатській і Харківській областях; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Три области перечисления размечены одной сущностью, а модель выдаёт три. Это вопрос гранулярности, а не полного незнания географии.
+**Review:** Three coordinated regions form one gold entity, while the model emits three. This is a granularity issue, not complete failure to recognize geography.
 
 ## 025. FN · row_id=1007953 · extra_neighbor_material
 
@@ -297,11 +297,11 @@
 
 **Gold:** ["Мінську"]
 
-**Предсказание:** ["Мінську дівчина піднялася", "колоді"]
+**Prediction:** ["Мінську дівчина піднялася", "колоді"]
 
-**Фокус:** Мінську; частота в пилотном fit: 7; UNK: False.
+**Focal surface:** Мінську; pilot fit frequency: 7; UNK: False.
 
-**Разбор:** Граница «Мінську» не совпала с «Мінську дівчина піднялася»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 026. FN · row_id=1003664 · address_boundary
 
@@ -309,11 +309,11 @@
 
 **Gold:** ["Київ", "вулиця Шовковична, 10"]
 
-**Предсказание:** ["Київ", "вулиця"]
+**Prediction:** ["Київ", "вулиця"]
 
-**Фокус:** вулиця Шовковична, 10; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вулиця Шовковична, 10; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** В адресе остался только родовой термин «вулиця»: имя улицы и номер не извлечены.
+**Review:** Only the generic street-type word remains; the street name and number are not extracted.
 
 ## 027. FN · row_id=1009798 · merged_locations
 
@@ -321,11 +321,11 @@
 
 **Gold:** ["Маріуполі", "Донецької області", "площі Перемоги"]
 
-**Предсказание:** ["Маріуполі Донецької області", "площі Перемоги"]
+**Prediction:** ["Маріуполі Донецької області", "площі Перемоги"]
 
-**Фокус:** Донецької області; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Донецької області; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Маріуполь и Донецька область объединены моделью, хотя gold разделяет их.
+**Review:** The model merges Mariupol and Donetsk region, while gold keeps them separate.
 
 ## 028. FN · row_id=1001341 · boundary_and_aux_quality
 
@@ -333,11 +333,11 @@
 
 **Gold:** ["Львові"]
 
-**Предсказание:** ["Львові імені"]
+**Prediction:** ["Львові імені"]
 
-**Фокус:** Львові; частота в пилотном fit: 19; UNK: False.
+**Focal surface:** Львові; pilot fit frequency: 19; UNK: False.
 
-**Разбор:** К городу добавлено «імені». Вспомогательный ORG-span также выглядит обрезанным; вспомогательные метки нельзя считать безошибочными.
+**Review:** The word meaning named after is added to the city. The auxiliary ORG span also looks truncated; auxiliary labels should not be assumed error-free.
 
 ## 029. FN · row_id=1001371 · coordinated_locations
 
@@ -345,11 +345,11 @@
 
 **Gold:** ["Росії", "Луганської і Донецької областей"]
 
-**Предсказание:** ["ЛНР", "Росії", "Луганської", "Донецької областей"]
+**Prediction:** ["ЛНР", "Росії", "Луганської", "Донецької областей"]
 
-**Фокус:** Луганської і Донецької областей; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Луганської і Донецької областей; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold объединяет две области союзом; модель разделяет перечисление.
+**Review:** Gold joins two regions with a conjunction; the model separates the coordinated names.
 
 ## 030. FN · row_id=1000416 · possible_annotation_error
 
@@ -357,11 +357,11 @@
 
 **Gold:** ["Нідерландів Аранчі Рус", "Санта Маргеріта ді Пула", "Італія"]
 
-**Предсказание:** ["Нідерландів", "Санта", "Пула", "Італія"]
+**Prediction:** ["Нідерландів", "Санта", "Пула", "Італія"]
 
-**Фокус:** Нідерландів Аранчі Рус; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Нідерландів Аранчі Рус; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** LOC «Нідерландів Аранчі Рус» включает имя теннисистки. Нужна проверка типа и конца gold-span.
+**Review:** The LOC span combines the Netherlands with the tennis player's name. Review the gold type and end boundary.
 
 ## 031. FN · row_id=1007875 · extra_neighbor_material
 
@@ -369,11 +369,11 @@
 
 **Gold:** ["Європі"]
 
-**Предсказание:** ["усій Європі"]
+**Prediction:** ["усій Європі"]
 
-**Фокус:** Європі; частота в пилотном fit: 16; UNK: False.
+**Focal surface:** Європі; pilot fit frequency: 16; UNK: False.
 
-**Разбор:** Граница «Європі» не совпала с «усій Європі»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 032. FN · row_id=1006541 · boundary_convention
 
@@ -381,11 +381,11 @@
 
 **Gold:** ["Лідо"]
 
-**Предсказание:** ["острові Лідо"]
+**Prediction:** ["острові Лідо"]
 
-**Фокус:** Лідо; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Лідо; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Остров Лідо распознан, но gold исключает слово «острові». Нужно единое правило для родовых терминов.
+**Review:** Lido island is recognized, but gold excludes the generic island word. A consistent rule for such descriptors is needed.
 
 ## 033. FN · row_id=1000722 · split_location
 
@@ -393,11 +393,11 @@
 
 **Gold:** ["Європейського Союзу"]
 
-**Предсказание:** ["Європейського", "Союзу"]
+**Prediction:** ["Європейського", "Союзу"]
 
-**Фокус:** Європейського Союзу; частота в пилотном fit: 6; UNK: False.
+**Focal surface:** Європейського Союзу; pilot fit frequency: 6; UNK: False.
 
-**Разбор:** Устойчивое название «Європейського Союзу» разбито на два фрагмента.
+**Review:** The established name European Union is split into two fragments.
 
 ## 034. FN · row_id=1001681 · boundary_and_granularity
 
@@ -405,11 +405,11 @@
 
 **Gold:** ["Іраку", "Аль", "-Хасака", "Сирії"]
 
-**Предсказание:** ["Іраку", "провінції Аль-Хасака на", "північному сході Сирії"]
+**Prediction:** ["Іраку", "провінції Аль-Хасака на", "північному сході Сирії"]
 
-**Фокус:** Сирії; частота в пилотном fit: 11; UNK: False.
+**Focal surface:** Сирії; pilot fit frequency: 11; UNK: False.
 
-**Разбор:** Есть лишние пространственные слова; другое название «Аль-Хасака» в gold разбито по дефису.
+**Review:** Extra spatial words are included; another hyphenated name in gold is split into parts.
 
 ## 035. FN · row_id=1006235 · multiword_name
 
@@ -417,11 +417,11 @@
 
 **Gold:** ["Олімпійського вогню", "Афіни", "Древньої Олімпії"]
 
-**Предсказание:** ["Афіни", "Древньої"]
+**Prediction:** ["Афіни", "Древньої"]
 
-**Фокус:** Древньої Олімпії; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Древньої Олімпії; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Из названия Древней Олимпии осталось только определение. «Олімпійського вогню» в LOC также требует проверки политики типов.
+**Review:** Only the modifier remains from Ancient Olympia. The Olympic flame being labeled LOC also calls for a type-policy review.
 
 ## 036. FN · row_id=1000684 · possible_annotation_error
 
@@ -429,11 +429,11 @@
 
 **Gold:** ["Україні", "Росію, ховаюч"]
 
-**Предсказание:** ["Україні", "Росію", "прикордонному"]
+**Prediction:** ["Україні", "Росію", "прикордонному"]
 
-**Фокус:** Росію, ховаюч; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Росію, ховаюч; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold «Росію, ховаюч» обрывается внутри следующего глагола; короткое предсказание «Росію» не обязательно семантическая ошибка.
+**Review:** The gold span ends inside the following verb after Russia. Predicting just the country is not necessarily a semantic error.
 
 ## 037. FN · row_id=1005884 · missing_name_material
 
@@ -441,11 +441,11 @@
 
 **Gold:** ["Австралії", "Східній Азії", "США", "Росії"]
 
-**Предсказание:** ["Австралії", "Азії", "США", "Росії"]
+**Prediction:** ["Австралії", "Азії", "США", "Росії"]
 
-**Фокус:** Східній Азії; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Східній Азії; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Східній Азії» не совпала с «Азії»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 038. FN · row_id=1006483 · hyphen_granularity
 
@@ -453,11 +453,11 @@
 
 **Gold:** ["Івано", "-Франківську"]
 
-**Предсказание:** ["Івано-Франківську"]
+**Prediction:** ["Івано-Франківську"]
 
-**Фокус:** -Франківську; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** -Франківську; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Модель выдала цельное «Івано-Франківську», gold требует двух частей. Не исправлять модель механическим разрезанием всех дефисов.
+**Review:** The model emits the complete hyphenated city name, while gold requires two parts. Do not fix this by mechanically splitting every hyphenated name.
 
 ## 039. FN · row_id=1004933 · hyphen_granularity
 
@@ -465,11 +465,11 @@
 
 **Gold:** ["Івано", "-Франківську"]
 
-**Предсказание:** ["Івано-Франківську свідоцтво", "Івано", "Франківськстандартметрологія"]
+**Prediction:** ["Івано-Франківську свідоцтво", "Івано", "Франківськстандартметрологія"]
 
-**Фокус:** -Франківську; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** -Франківську; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Помимо несовпадения дефисной гранулярности добавлено «свідоцтво»; это две разные проблемы.
+**Review:** Beyond the hyphen-granularity mismatch, a following noun is absorbed. These are two distinct issues.
 
 ## 040. FN · row_id=1001553 · quote_convention
 
@@ -477,11 +477,11 @@
 
 **Gold:** ["вулиці Кирилівській\""]
 
-**Предсказание:** ["вулиці Кирилівській"]
+**Prediction:** ["вулиці Кирилівській"]
 
-**Фокус:** вулиці Кирилівській"; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вулиці Кирилівській"; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Модель исключила закрывающую кавычку, которая входит в gold. Опубликованный regex не удаляет её ожидаемым образом.
+**Review:** The model excludes a closing quotation mark that belongs to gold. The published regex does not remove it as one might expect.
 
 ## 041. FN · row_id=1006390 · hyphen_granularity
 
@@ -489,11 +489,11 @@
 
 **Gold:** ["Сирецько", "Печерській лінії"]
 
-**Предсказание:** ["Нові вагони", "Сирецько-Печерській"]
+**Prediction:** ["Нові вагони", "Сирецько-Печерській"]
 
-**Фокус:** Сирецько; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Сирецько; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Название линии частично объединено моделью, а gold разделяет компоненты и включает слово «лінії».
+**Review:** The model partially combines a metro-line name; gold separates components and includes the generic line word.
 
 ## 042. FN · row_id=1000617 · missing_name_material
 
@@ -501,11 +501,11 @@
 
 **Gold:** ["Лівадійський палац"]
 
-**Предсказание:** ["палац"]
+**Prediction:** ["палац"]
 
-**Фокус:** Лівадійський палац; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Лівадійський палац; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Лівадійський палац» не совпала с «палац»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 043. FN · row_id=1004149 · address_boundary
 
@@ -513,11 +513,11 @@
 
 **Gold:** ["Леніна, 37", "вул.Молодіжна, 58", "вул. Набережна енергетиків 7/15."]
 
-**Предсказание:** ["вул", "Молодіжна", "вул. Набережна енергетиків"]
+**Prediction:** ["вул", "Молодіжна", "вул. Набережна енергетиків"]
 
-**Фокус:** вул.Молодіжна, 58; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вул.Молодіжна, 58; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Из адреса потеряны «вул.» и номер. В тексте есть и другие адреса без LOC-меток; полноту разметки нужно проверить.
+**Review:** The street abbreviation and number are omitted. Other addresses in this text lack LOC labels; annotation completeness needs review.
 
 ## 044. FN · row_id=1004834 · hyphen_granularity
 
@@ -525,11 +525,11 @@
 
 **Gold:** ["Івано", "-Франківську"]
 
-**Предсказание:** ["Івано-Франківську"]
+**Prediction:** ["Івано-Франківську"]
 
-**Фокус:** -Франківську; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** -Франківську; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Цельное название города против разделённого gold; это не просто неправильный топоним.
+**Review:** A complete city name conflicts with split gold. This is not simply a wrong place name.
 
 ## 045. FN · row_id=1003360 · possible_text_corruption
 
@@ -537,11 +537,11 @@
 
 **Gold:** ["Кримужурнал"]
 
-**Предсказание:** ["хімкомпаній", "Кримужурнал «"]
+**Prediction:** ["хімкомпаній", "Кримужурнал «"]
 
-**Фокус:** Кримужурнал; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Кримужурнал; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Кримужурнал» выглядит склейкой текста и подписи источника. Даже корректные символьные границы не гарантируют чистый обучающий пример.
+**Review:** A location word appears fused with a source/publication fragment. Bounds-valid offsets do not guarantee a clean training example.
 
 ## 046. FN · row_id=1004647 · missing_name_material
 
@@ -549,11 +549,11 @@
 
 **Gold:** ["Абхазія", "РСР Грузія"]
 
-**Предсказание:** ["1931", "РСР", "Абхазія", "РСР"]
+**Prediction:** ["1931", "РСР", "Абхазія", "РСР"]
 
-**Фокус:** РСР Грузія; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** РСР Грузія; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «РСР Грузія» не совпала с «РСР»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.
 
 ## 047. FN · row_id=1005787 · merged_locations
 
@@ -561,11 +561,11 @@
 
 **Gold:** ["Роздольне Зміївського району", "Харківської області"]
 
-**Предсказание:** ["Роздольне Зміївського району Харківської області"]
+**Prediction:** ["Роздольне Зміївського району Харківської області"]
 
-**Фокус:** Харківської області; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Харківської області; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Модель объединяет населённый пункт, район и область; gold отделяет область.
+**Review:** The model merges the settlement, district and region; gold keeps the region separate.
 
 ## 048. FN · row_id=1003091 · vocabulary_cap
 
@@ -573,11 +573,11 @@
 
 **Gold:** ["Атлантичному океані"]
 
-**Предсказание:** ["Атлантичному"]
+**Prediction:** ["Атлантичному"]
 
-**Фокус:** Атлантичному океані; частота в пилотном fit: 1; UNK: True.
+**Focal surface:** Атлантичному океані; pilot fit frequency: 1; UNK: True.
 
-**Разбор:** Поверхность встречалась в пилоте, но часть её токенов стала UNK: знакомая сущность не гарантирует наличие всех слов в ограниченном словаре.
+**Review:** The surface appeared in the pilot, but a component maps to UNK. A seen entity does not guarantee that all its words survived the vocabulary cap.
 
 ## 049. FN · row_id=1004029 · hyphen_split
 
@@ -585,11 +585,11 @@
 
 **Gold:** ["Буенос-Айресі", "Бразилії"]
 
-**Предсказание:** ["Буенос", "Айресі"]
+**Prediction:** ["Буенос", "Айресі"]
 
-**Фокус:** Буенос-Айресі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Буенос-Айресі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Обе части Буэнос-Айреса найдены отдельно; требуется сохранить цельное название.
+**Review:** Both parts of Buenos Aires are found separately; the full name should be retained.
 
 ## 050. FN · row_id=1005121 · merged_locations
 
@@ -597,11 +597,11 @@
 
 **Gold:** ["Мурафа", "Харківської області"]
 
-**Предсказание:** ["Мурафа Харківської області"]
+**Prediction:** ["Мурафа Харківської області"]
 
-**Фокус:** Харківської області; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Харківської області; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Село Мурафа и область слиты; оба географических компонента присутствуют в предсказании.
+**Review:** The village and region are merged; both geographic components are present in the prediction.
 
 ## 051. FN · row_id=1000126 · detection_miss
 
@@ -609,11 +609,11 @@
 
 **Gold:** ["Дніпра", "України"]
 
-**Предсказание:** ["України"]
+**Prediction:** ["України"]
 
-**Фокус:** Дніпра; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** Дніпра; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Дніпра» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 052. FN · row_id=1002625 · possible_annotation_error
 
@@ -621,11 +621,11 @@
 
 **Gold:** ["США", "Путіна"]
 
-**Предсказание:** ["США", "Росії"]
+**Prediction:** ["США", "Росії"]
 
-**Фокус:** Путіна; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Путіна; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Путіна» в данном контексте относится к человеку, но находится в LOC gold. «Росії» в этом же тексте не имеет LOC-метки.
+**Review:** Putin refers to a person in this context but is included in LOC gold. Russia elsewhere in the same sentence has no LOC annotation.
 
 ## 053. FN · row_id=1009985 · building_or_ORG_policy
 
@@ -633,11 +633,11 @@
 
 **Gold:** ["Ради", "Майдану Незалежності", "вулиці Інститутській"]
 
-**Предсказание:** ["Майдану Незалежності", "вулиці Інститутській"]
+**Prediction:** ["Майдану Незалежності", "вулиці Інститутській"]
 
-**Фокус:** Ради; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Ради; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold содержит только «Ради», а контекст говорит о здании Верховной Рады. Нужно уточнить границы и политику зданий/учреждений.
+**Review:** Gold contains only a fragment of the parliamentary name, while the context refers to a building. Clarify boundaries and the building/institution convention.
 
 ## 054. FN · row_id=1001927 · detection_miss
 
@@ -645,11 +645,11 @@
 
 **Gold:** ["Брюсселя", "України", "Москви"]
 
-**Предсказание:** ["України", "Москви"]
+**Prediction:** ["України", "Москви"]
 
-**Фокус:** Брюсселя; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** Брюсселя; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Брюсселя» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 055. FN · row_id=1000883 · detection_miss
 
@@ -657,11 +657,11 @@
 
 **Gold:** ["Шотландія", "ЄС"]
 
-**Предсказание:** ["ЄС"]
+**Prediction:** ["ЄС"]
 
-**Фокус:** Шотландія; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Шотландія; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Шотландія» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 056. FN · row_id=1008086 · detection_miss
 
@@ -669,11 +669,11 @@
 
 **Gold:** ["Сан-Фернандо", "Каліфорнії"]
 
-**Предсказание:** ["Каліфорнії"]
+**Prediction:** ["Каліфорнії"]
 
-**Фокус:** Сан-Фернандо; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Сан-Фернандо; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Сан-Фернандо» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 057. FN · row_id=1005536 · detection_miss
 
@@ -681,11 +681,11 @@
 
 **Gold:** ["Сомаліленд"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Сомаліленд; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Сомаліленд; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Сомаліленд» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 058. FN · row_id=1006833 · possible_annotation_omission
 
@@ -693,11 +693,11 @@
 
 **Gold:** ["Західну", "Східну частини"]
 
-**Предсказание:** ["України"]
+**Prediction:** ["України"]
 
-**Фокус:** Західну; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Західну; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Модель пропускает размеченные части страны, но дополнительно находит неразмеченное «України». Это кандидат на проверку полноты gold.
+**Review:** The model misses the annotated parts of the country but also finds an unannotated Ukraine mention. This is a candidate for a gold-completeness check.
 
 ## 059. FN · row_id=1000596 · vocabulary_cap
 
@@ -705,11 +705,11 @@
 
 **Gold:** ["Лисичанська"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Лисичанська; частота в пилотном fit: 1; UNK: True.
+**Focal surface:** Лисичанська; pilot fit frequency: 1; UNK: True.
 
-**Разбор:** Название ранее встречалось как LOC, но его токен отсутствует в сохранённом словаре пилота.
+**Review:** The name appeared as LOC before, but its token is missing from the saved pilot vocabulary.
 
 ## 060. FN · row_id=1002510 · seen_context_miss
 
@@ -717,11 +717,11 @@
 
 **Gold:** ["Львів"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Львів; частота в пилотном fit: 9; UNK: False.
+**Focal surface:** Львів; pilot fit frequency: 9; UNK: False.
 
-**Разбор:** Знакомый Львов пропущен в начале короткого предложения; нельзя объяснить ошибку только новизной слов.
+**Review:** A seen Lviv surface is missed at the start of a short sentence. Word novelty alone cannot explain the error.
 
 ## 061. FN · row_id=1006326 · detection_miss
 
@@ -729,11 +729,11 @@
 
 **Gold:** ["Росія", "Керченську протоку", "Азовське море"]
 
-**Предсказание:** ["Росія"]
+**Prediction:** ["Росія"]
 
-**Фокус:** Керченську протоку; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Керченську протоку; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Керченську протоку» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 062. FN · row_id=1000689 · detection_miss
 
@@ -741,11 +741,11 @@
 
 **Gold:** ["Російська Федерація"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Російська Федерація; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** Російська Федерація; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Російська Федерація» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 063. FN · row_id=1002094 · generic_location_FP
 
@@ -753,11 +753,11 @@
 
 **Gold:** ["Путилівка"]
 
-**Предсказание:** ["заповідну зону"]
+**Prediction:** ["заповідну зону"]
 
-**Фокус:** Путилівка; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Путилівка; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Река Путилівка пропущена, вместо неё предсказано общее описание «заповідну зону».
+**Review:** The river name is missed, and a generic protected-area description is predicted instead.
 
 ## 064. FN · row_id=1001794 · possible_annotation_error
 
@@ -765,11 +765,11 @@
 
 **Gold:** ["Схід Сокола"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Схід Сокола; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Схід Сокола; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Схід Сокола» в контексте прямо описывает название фильма, а не место.
+**Review:** The context explicitly describes a film title, rather than a place, but it appears in LOC gold.
 
 ## 065. FN · row_id=1006068 · detection_miss
 
@@ -777,11 +777,11 @@
 
 **Gold:** ["Дрогобич", "Галичини"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Дрогобич; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Дрогобич; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Дрогобич» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 066. FN · row_id=1002624 · detection_miss
 
@@ -789,11 +789,11 @@
 
 **Gold:** ["Київ", "України", "Запорозьку Січ"]
 
-**Предсказание:** ["Київ", "України"]
+**Prediction:** ["Київ", "України"]
 
-**Фокус:** Запорозьку Січ; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Запорозьку Січ; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Запорозьку Січ» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 067. FN · row_id=1006181 · detection_miss
 
@@ -801,11 +801,11 @@
 
 **Gold:** ["Сарненському", "Березнівському", "Костопільському", "Польщі"]
 
-**Предсказание:** ["Сарненському", "Польщі"]
+**Prediction:** ["Сарненському", "Польщі"]
 
-**Фокус:** Костопільському; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Костопільському; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Костопільському» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 068. FN · row_id=1005354 · administrative_policy
 
@@ -813,11 +813,11 @@
 
 **Gold:** ["Проценківської сільради"]
 
-**Предсказание:** ["ОТГ"]
+**Prediction:** ["ОТГ"]
 
-**Фокус:** Проценківської сільради; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Проценківської сільради; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Сельсовет может обозначать учреждение или территорию; для основного gold нужно единое правило. Предсказано другое учреждение «ОТГ».
+**Review:** A village council can refer to an institution or territory. Gold needs a consistent policy; the prediction instead names another administrative entity.
 
 ## 069. FN · row_id=1009334 · detection_miss
 
@@ -825,11 +825,11 @@
 
 **Gold:** ["Албанія", "Косово"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Косово; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Косово; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Косово» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 070. FN · row_id=1006382 · possible_type_error
 
@@ -837,11 +837,11 @@
 
 **Gold:** ["Ворскла", "Полтави"]
 
-**Предсказание:** ["Полтави"]
+**Prediction:** ["Полтави"]
 
-**Фокус:** Ворскла; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Ворскла; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Ворскла» здесь играет футбольный финал: контекст указывает на клуб, хотя gold размечает LOC.
+**Review:** Vorskla is playing in a football final here: context indicates a club, although gold labels LOC.
 
 ## 071. FN · row_id=1002340 · detection_miss
 
@@ -849,11 +849,11 @@
 
 **Gold:** ["Єгипет", "Каїр"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Каїр; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Каїр; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Каїр» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 072. FN · row_id=1001485 · detection_miss
 
@@ -861,11 +861,11 @@
 
 **Gold:** ["Січі"]
 
-**Предсказание:** ["каліки", "старці"]
+**Prediction:** ["каліки", "старці"]
 
-**Фокус:** Січі; частота в пилотном fit: 1; UNK: True.
+**Focal surface:** Січі; pilot fit frequency: 1; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Січі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 073. FN · row_id=1002916 · generic_gold_fragment
 
@@ -873,11 +873,11 @@
 
 **Gold:** ["Будинку"]
 
-**Предсказание:** ["соцполітики виконкому"]
+**Prediction:** ["соцполітики виконкому"]
 
-**Фокус:** Будинку; частота в пилотном fit: 3; UNK: False.
+**Focal surface:** Будинку; pilot fit frequency: 3; UNK: False.
 
-**Разбор:** Gold — только «Будинку» из полного названия учреждения. Нужна проверка того, считаются ли такие обобщённые фрагменты целевыми именами.
+**Review:** Gold contains only a generic building-word fragment from an institution name. Check whether such fragments are intended target names.
 
 ## 074. FN · row_id=1009522 · nested_ORG_policy
 
@@ -885,11 +885,11 @@
 
 **Gold:** ["України"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** України; частота в пилотном fit: 266; UNK: False.
+**Focal surface:** України; pilot fit frequency: 266; UNK: False.
 
-**Разбор:** Страна внутри названия церкви размечена LOC, тогда как в других примерах страны внутри учреждений исключены; нужна проверка последовательности политики.
+**Review:** A country inside a church name is labeled LOC, whereas geographic components inside institutions are excluded in other cases. Check policy consistency.
 
 ## 075. FN · row_id=1001633 · detection_miss
 
@@ -897,11 +897,11 @@
 
 **Gold:** ["Земля"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Земля; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Земля; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Земля» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 076. FN · row_id=1006770 · detection_miss
 
@@ -909,11 +909,11 @@
 
 **Gold:** ["Нідерландів", "Панську"]
 
-**Предсказание:** ["Ролс", "вряди", "годи", "Нідерландів"]
+**Prediction:** ["Ролс", "вряди", "годи", "Нідерландів"]
 
-**Фокус:** Панську; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Панську; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Панську» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 077. FN · row_id=1004538 · detection_miss
 
@@ -921,11 +921,11 @@
 
 **Gold:** ["Тегеран", "Київ", "Близького Сходу"]
 
-**Предсказание:** ["Київ", "Близького", "Сходу"]
+**Prediction:** ["Київ", "Близького", "Сходу"]
 
-**Фокус:** Тегеран; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Тегеран; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Тегеран» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 078. FN · row_id=1001304 · ORG_region_policy
 
@@ -933,11 +933,11 @@
 
 **Gold:** ["Східного партнерства"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Східного партнерства; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Східного партнерства; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** «Східного партнерства» — политическая инициатива/объединение в этом контексте; проверить правило LOC versus ORG.
+**Review:** Eastern Partnership denotes a political initiative or grouping in this context; review the LOC-versus-ORG convention.
 
 ## 079. FN · row_id=1007999 · detection_miss
 
@@ -945,11 +945,11 @@
 
 **Gold:** ["Швейцарії", "Екваторіальної Гвінеї"]
 
-**Предсказание:** ["Швейцарії виставлять"]
+**Prediction:** ["Швейцарії виставлять"]
 
-**Фокус:** Екваторіальної Гвінеї; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Екваторіальної Гвінеї; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Екваторіальної Гвінеї» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 080. FN · row_id=1003075 · detection_miss
 
@@ -957,11 +957,11 @@
 
 **Gold:** ["Слов'янську"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Слов'янську; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Слов'янську; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Слов'янську» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 081. FN · row_id=1008292 · detection_miss
 
@@ -969,11 +969,11 @@
 
 **Gold:** ["Делі"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Делі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Делі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Делі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 082. FN · row_id=1008331 · name_fragment_policy
 
@@ -981,11 +981,11 @@
 
 **Gold:** ["Траффорд"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Траффорд; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Траффорд; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** В тексте «Олд Траффорд», gold содержит только «Траффорд»; отдельно проверить название объекта и его метонимическое употребление.
+**Review:** The text contains Old Trafford, while gold includes only its second component. Check both object-name boundaries and metonymic usage.
 
 ## 083. FN · row_id=1007575 · detection_miss
 
@@ -993,11 +993,11 @@
 
 **Gold:** ["Вайомінг"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Вайомінг; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Вайомінг; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Вайомінг» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 084. FN · row_id=1008521 · possible_annotation_error
 
@@ -1005,11 +1005,11 @@
 
 **Gold:** ["Шлапак"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Шлапак; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Шлапак; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Шлапак» в конце заголовка выглядит атрибуцией высказывания человеку, а не географическим объектом.
+**Review:** The final surname in the headline looks like attribution to a speaker, rather than a geographic entity.
 
 ## 085. FN · row_id=1005340 · hyphen_granularity
 
@@ -1017,11 +1017,11 @@
 
 **Gold:** ["Серро", "Негро"]
 
-**Предсказание:** ["Негро"]
+**Prediction:** ["Негро"]
 
-**Фокус:** Серро; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Серро; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Название вулкана Серро-Негро размечено двумя сущностями. Это отличается от некоторых других дефисных имён.
+**Review:** The volcano name is annotated as two entities, unlike some other hyphenated names.
 
 ## 086. FN · row_id=1009019 · possible_type_error
 
@@ -1029,11 +1029,11 @@
 
 **Gold:** ["Вашингтон Кепіталз", "Сан-Хосе Шаркс"]
 
-**Предсказание:** ["букмекери"]
+**Prediction:** ["букмекери"]
 
-**Фокус:** Сан-Хосе Шаркс; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Сан-Хосе Шаркс; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Полные названия спортивных команд в контексте матча попали в LOC gold; не считать это бесспорным пропуском города.
+**Review:** Full sports-team names in a match context appear as LOC gold. This is not an unambiguous failure to find a city.
 
 ## 087. FN · row_id=1003834 · possible_annotation_omission
 
@@ -1041,11 +1041,11 @@
 
 **Gold:** ["Каліфорнії", "Канзасі", "Орегоні", "Іллінойсі", "Індіані", "Міннесоті"]
 
-**Предсказание:** ["Каліфорнії", "Іллінойсі", "Індіані", "Міннесоті", "Міссурі", "Флориді", "Джорджії", "Міссісіпі", "Небрасці"]
+**Prediction:** ["Каліфорнії", "Іллінойсі", "Індіані", "Міннесоті", "Міссурі", "Флориді", "Джорджії", "Міссісіпі", "Небрасці"]
 
-**Фокус:** Орегоні; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Орегоні; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** В длинном списке штатов размечена только часть названий; дополнительные разумные предсказания могут формально считаться FP.
+**Review:** Only some state names in a long list are annotated. Additional reasonable predictions can therefore count as FP.
 
 ## 088. FN · row_id=1009861 · detection_miss
 
@@ -1053,11 +1053,11 @@
 
 **Gold:** ["Молдові"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Молдові; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Молдові; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Молдові» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 089. FN · row_id=1001890 · detection_miss
 
@@ -1065,11 +1065,11 @@
 
 **Gold:** ["Бессарабці"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Бессарабці; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Бессарабці; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Бессарабці» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 090. FN · row_id=1001457 · detection_miss
 
@@ -1077,11 +1077,11 @@
 
 **Gold:** ["Седнівської", "Олишівської", "Слабинської", "Роїщенської", "Білоуської"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Білоуської; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Білоуської; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Білоуської» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 091. FN · row_id=1000941 · detection_miss
 
@@ -1089,11 +1089,11 @@
 
 **Gold:** ["Атлантику"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Атлантику; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Атлантику; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Атлантику» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 092. FN · row_id=1000090 · insufficient_context
 
@@ -1101,11 +1101,11 @@
 
 **Gold:** ["Каракурт"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Каракурт; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Каракурт; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** По одной фразе о переводе имени «Каракурт» недостаточно контекста, чтобы подтвердить географический тип.
+**Review:** A single phrase explaining the translation of this name provides insufficient context to confirm its geographic type.
 
 ## 093. FN · row_id=1003290 · unusual_landmark_names
 
@@ -1113,11 +1113,11 @@
 
 **Gold:** ["Голець", "Колобок", "Австрійка", "Парус", "Тюльпан", "Бівачка", "Броненосець", "Шуршун"]
 
-**Предсказание:** ["Голець"]
+**Prediction:** ["Голець"]
 
-**Фокус:** Шуршун; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Шуршун; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Обычные слова здесь — собственные названия скал. Жёсткий словарь только городов или запрет общих слов ухудшит такие случаи.
+**Review:** Ordinary words are proper names of rocks in this context. A city-only dictionary or a blanket common-word ban would hurt these cases.
 
 ## 094. FN · row_id=1008876 · detection_miss
 
@@ -1125,11 +1125,11 @@
 
 **Gold:** ["Орлівку", "Авдіївкою"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Орлівку; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Орлівку; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Орлівку» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 095. FN · row_id=1006509 · detection_miss
 
@@ -1137,11 +1137,11 @@
 
 **Gold:** ["Вишгорода"]
 
-**Предсказание:** ["привілейоване"]
+**Prediction:** ["привілейоване"]
 
-**Фокус:** Вишгорода; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Вишгорода; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Вишгорода» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 096. FN · row_id=1000580 · detection_miss
 
@@ -1149,11 +1149,11 @@
 
 **Gold:** ["Лондона", "Бельбек", "Севастополь", "АРК"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Бельбек; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Бельбек; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Бельбек» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 097. FN · row_id=1002396 · detection_miss
 
@@ -1161,11 +1161,11 @@
 
 **Gold:** ["Іванчі"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Іванчі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Іванчі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Іванчі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 098. FN · row_id=1003222 · detection_miss
 
@@ -1173,11 +1173,11 @@
 
 **Gold:** ["Грузія"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Грузія; частота в пилотном fit: 3; UNK: False.
+**Focal surface:** Грузія; pilot fit frequency: 3; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Грузія» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 3; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 3; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 099. FN · row_id=1002278 · detection_miss
 
@@ -1185,11 +1185,11 @@
 
 **Gold:** ["Шотландії"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Шотландії; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Шотландії; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Размеченное географическое имя «Шотландії» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.
 
 ## 100. FN · row_id=1000740 · detection_miss
 
@@ -1197,11 +1197,11 @@
 
 **Gold:** ["Карачун"]
 
-**Предсказание:** []
+**Prediction:** []
 
-**Фокус:** Карачун; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Карачун; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Размеченное географическое имя «Карачун» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.
+**Review:** The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.
 
 ## 101. FP · row_id=1006351 · possible_annotation_error
 
@@ -1209,11 +1209,11 @@
 
 **Gold:** ["України окр"]
 
-**Предсказание:** ["України окремих актів законодавства", "Союзу РСР"]
+**Prediction:** ["України окремих актів законодавства", "Союзу РСР"]
 
-**Фокус:** України окремих актів законодавства; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** України окремих актів законодавства; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold «України окр» обрезан внутри следующего слова. Модель тоже переудлиняет span; обе проблемы следует разделить.
+**Review:** Gold ends inside the word following Ukraine. The model also overextends the span; these two problems should be separated.
 
 ## 102. FP · row_id=1006206 · split_location
 
@@ -1221,11 +1221,11 @@
 
 **Gold:** ["Сполучених Штатів Америки"]
 
-**Предсказание:** ["Сполучених Штатів", "Америки"]
+**Prediction:** ["Сполучених Штатів", "Америки"]
 
-**Фокус:** Америки; частота в пилотном fit: 3; UNK: False.
+**Focal surface:** Америки; pilot fit frequency: 3; UNK: False.
 
-**Разбор:** Полное название США разбито на два предсказания.
+**Review:** The complete United States name is split into two predictions.
 
 ## 103. FP · row_id=1004942 · extra_neighbor
 
@@ -1233,11 +1233,11 @@
 
 **Gold:** ["Івано-Франківську"]
 
-**Предсказание:** ["сольним", "Івано-Франківську вокально", "інструментальний", "романтичною"]
+**Prediction:** ["сольним", "Івано-Франківську вокально", "інструментальний", "романтичною"]
 
-**Фокус:** Івано-Франківську вокально; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Івано-Франківську вокально; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** В конец города захвачена первая часть слова «вокально-інструментальний».
+**Review:** The city absorbs the first component of the following hyphenated adjective.
 
 ## 104. FP · row_id=1007081 · quote_convention
 
@@ -1245,11 +1245,11 @@
 
 **Gold:** ["Україні", "Кремля", "Криму"]
 
-**Предсказание:** ["Україні", "Кремля", "окупацію", "Криму\""]
+**Prediction:** ["Україні", "Кремля", "окупацію", "Криму\""]
 
-**Фокус:** Криму"; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Криму"; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Лишняя закрывающая кавычка; это настоящее несовпадение строк по опубликованному scorer.
+**Review:** An extra closing quote causes a real string mismatch under the published scorer.
 
 ## 105. FP · row_id=1009719 · address_components
 
@@ -1257,11 +1257,11 @@
 
 **Gold:** ["вул.Володимира Великого, 2-4", "Львові"]
 
-**Предсказание:** ["поверховість", "вул.Володимира Великого", "Львові"]
+**Prediction:** ["поверховість", "вул.Володимира Великого", "Львові"]
 
-**Фокус:** вул.Володимира Великого; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** вул.Володимира Великого; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Граница адреса не включает «, 2-4». Удаление цифр scorer не гарантирует совпадение: пунктуация тоже влияет.
+**Review:** The address boundary excludes its comma and building-number suffix. Digit removal does not guarantee a match because punctuation also matters.
 
 ## 106. FP · row_id=1008775 · address_and_PER
 
@@ -1269,11 +1269,11 @@
 
 **Gold:** ["Київ", "Запоріжжя", "Полтава", "вул. Рейтарська, 13"]
 
-**Предсказание:** ["Егіазорян", "Київ", "Гарик", "Куригиян", "Запоріжжя", "Сейрак", "Маргариян", "вул. Рейтарська"]
+**Prediction:** ["Егіазорян", "Київ", "Гарик", "Куригиян", "Запоріжжя", "Сейрак", "Маргариян", "вул. Рейтарська"]
 
-**Фокус:** вул. Рейтарська; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вул. Рейтарська; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** У адреса потерян номер и запятая, а в этом же тексте имена художников дополнительно выдаются как LOC.
+**Review:** The address loses its number and comma; artist names in the same sentence are also emitted as LOC.
 
 ## 107. FP · row_id=1000978 · quote_and_entity_type
 
@@ -1281,11 +1281,11 @@
 
 **Gold:** ["Львів", "Львівській області"]
 
-**Предсказание:** ["адміністративному", "аеропорту", "Львів\"", "імені", "Данила", "Галицького", "України", "Львівській області"]
+**Prediction:** ["адміністративному", "аеропорту", "Львів\"", "імені", "Данила", "Галицького", "України", "Львівській області"]
 
-**Фокус:** Львів"; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Львів"; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Лишняя кавычка после Львова; параллельно имена людей и слова учреждения вызывают FP.
+**Review:** An extra quote follows Lviv; person names and institution words also generate FP in this sentence.
 
 ## 108. FP · row_id=1005984 · missing_multiword_tail
 
@@ -1293,11 +1293,11 @@
 
 **Gold:** ["Російська Федерація"]
 
-**Предсказание:** ["України", "Російська"]
+**Prediction:** ["України", "Російська"]
 
-**Фокус:** Російська; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Російська; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** От полного названия государства осталось только прилагательное.
+**Review:** Only the adjective remains from the full country name.
 
 ## 109. FP · row_id=1007792 · extra_neighbor
 
@@ -1305,11 +1305,11 @@
 
 **Gold:** ["студентів", "вулиці Пушкінській", "Харківської області"]
 
-**Предсказание:** ["помаранчевої зони", "Палаці студентів", "вулиці Пушкінській відбувся"]
+**Prediction:** ["помаранчевої зони", "Палаці студентів", "вулиці Пушкінській відбувся"]
 
-**Фокус:** вулиці Пушкінській відбувся; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вулиці Пушкінській відбувся; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** После названия улицы захвачен глагол; границы объекта и следующего события не отделены.
+**Review:** The street name absorbs the following verb; the object boundary is not separated from the next event.
 
 ## 110. FP · row_id=1005494 · hyphen_convention
 
@@ -1317,11 +1317,11 @@
 
 **Gold:** ["Ясинувата", "Горлівка"]
 
-**Предсказание:** ["штабі", "буферній", "траси", "Ясинувата-", "Горлівка", "обстрілюють"]
+**Prediction:** ["штабі", "буферній", "траси", "Ясинувата-", "Горлівка", "обстрілюють"]
 
-**Фокус:** Ясинувата-; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Ясинувата-; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** К первому городу добавлен разделительный дефис маршрута.
+**Review:** The route-separating hyphen is appended to the first city.
 
 ## 111. FP · row_id=1009674 · boundary_convention
 
@@ -1329,11 +1329,11 @@
 
 **Gold:** ["Дніпровському районі міста", "Дарницькому", "Солом’янському", "Шевченківському"]
 
-**Предсказание:** ["Дніпровському районі", "Дарницькому", "Солом’янському", "Шевченківському"]
+**Prediction:** ["Дніпровському районі", "Дарницькому", "Солом’янському", "Шевченківському"]
 
-**Фокус:** Дніпровському районі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Дніпровському районі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold включает «міста», предсказание заканчивается на «районі». Требуется уточнить родовые термины в аннотациях.
+**Review:** Gold includes the generic city word, while the prediction stops at district. Clarify generic descriptors in the annotation rules.
 
 ## 112. FP · row_id=1000085 · possible_annotation_error
 
@@ -1341,11 +1341,11 @@
 
 **Gold:** ["Мінську Україна", "Керчі"]
 
-**Предсказание:** ["Мінську", "Україна", "Керчі"]
+**Prediction:** ["Мінську", "Україна", "Керчі"]
 
-**Фокус:** Україна; частота в пилотном fit: 92; UNK: False.
+**Focal surface:** Україна; pilot fit frequency: 92; UNK: False.
 
-**Разбор:** Gold объединяет разные города/страны «Мінську Україна» через границу обстоятельства и подлежащего; нужны отдельные сущности.
+**Review:** Gold merges Minsk and Ukraine across an adverbial/subject boundary. These are candidates for separate entities.
 
 ## 113. FP · row_id=1009660 · extra_neighbor
 
@@ -1353,11 +1353,11 @@
 
 **Gold:** ["вулиці Молодіжна", "Лозовій"]
 
-**Предсказание:** ["вулиці Молодіжна", "Лозовій слідчі виявили"]
+**Prediction:** ["вулиці Молодіжна", "Лозовій слідчі виявили"]
 
-**Фокус:** Лозовій слідчі виявили; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Лозовій слідчі виявили; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** К названию города добавлены субъект и глагол следующей части предложения.
+**Review:** The city absorbs the subject and verb of the following clause.
 
 ## 114. FP · row_id=1002635 · missing_modifier
 
@@ -1365,11 +1365,11 @@
 
 **Gold:** ["Східній Україні"]
 
-**Предсказание:** ["Україні"]
+**Prediction:** ["Україні"]
 
-**Фокус:** Україні; частота в пилотном fit: 187; UNK: False.
+**Focal surface:** Україні; pilot fit frequency: 187; UNK: False.
 
-**Разбор:** Из географического названия «Східній Україні» выпало определение.
+**Review:** The geographic modifier is dropped from Eastern Ukraine.
 
 ## 115. FP · row_id=1004613 · extra_neighbor_material
 
@@ -1377,11 +1377,11 @@
 
 **Gold:** ["Білорусі"]
 
-**Предсказание:** ["Білорусі доволі"]
+**Prediction:** ["Білорусі доволі"]
 
-**Фокус:** Білорусі доволі; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Білорусі доволі; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Граница «Білорусі доволі» не совпала с «Білорусі»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 116. FP · row_id=1000650 · hyphen_granularity
 
@@ -1389,11 +1389,11 @@
 
 **Gold:** ["України", "Івано-Франківська"]
 
-**Предсказание:** ["України", "Івано", "-Франківська"]
+**Prediction:** ["України", "Івано", "-Франківська"]
 
-**Фокус:** -Франківська; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** -Франківська; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Здесь gold требует цельное название Ивано-Франковска, в отличие от нескольких FN-кейсов, где оно разделено.
+**Review:** Gold requires a complete hyphenated city here, unlike several FN cases where the same city is split.
 
 ## 117. FP · row_id=1007643 · hyphen_split
 
@@ -1401,11 +1401,11 @@
 
 **Gold:** ["Тель-Авіві"]
 
-**Предсказание:** ["Тель"]
+**Prediction:** ["Тель"]
 
-**Фокус:** Тель; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Тель; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Из Тель-Авива осталась только первая часть.
+**Review:** Only the first part of Tel Aviv remains.
 
 ## 118. FP · row_id=1000666 · boundary_convention
 
@@ -1413,11 +1413,11 @@
 
 **Gold:** ["Бені", "Демократичної Республіки Конго"]
 
-**Предсказание:** ["місті", "Бені", "сході Демократичної Республіки Конго"]
+**Prediction:** ["місті", "Бені", "сході Демократичної Республіки Конго"]
 
-**Фокус:** сході Демократичної Республіки Конго; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** сході Демократичної Республіки Конго; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** К названию страны добавлен пространственный родовой компонент «сході».
+**Review:** A generic directional component is added to the country name.
 
 ## 119. FP · row_id=1008399 · possible_annotation_error
 
@@ -1425,11 +1425,11 @@
 
 **Gold:** ["Кітті"]
 
-**Предсказание:** ["Кітті-Хок"]
+**Prediction:** ["Кітті-Хок"]
 
-**Фокус:** Кітті-Хок; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Кітті-Хок; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Модель нашла цельное «Кітті-Хок» после слова «місті»; gold размечает «Кітті» как LOC, а «Хок» как PER.
+**Review:** The model finds the complete hyphenated city after the word city; gold labels the first part LOC and the second part PER.
 
 ## 120. FP · row_id=1009811 · missing_name_material
 
@@ -1437,11 +1437,11 @@
 
 **Gold:** ["Кривому Рогу", "Криворізького району"]
 
-**Предсказание:** ["Криворізького"]
+**Prediction:** ["Криворізького"]
 
-**Фокус:** Криворізького; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Криворізького; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Из района потерян родовой термин, одновременно пропущен Кривой Рог.
+**Review:** The generic district word is dropped, and Kryvyi Rih is also missed.
 
 ## 121. FP · row_id=1001777 · hyphen_split
 
@@ -1449,11 +1449,11 @@
 
 **Gold:** ["Івано-Франківскій області"]
 
-**Предсказание:** ["Івано", "-Франківскій області"]
+**Prediction:** ["Івано", "-Франківскій області"]
 
-**Фокус:** Івано; частота в пилотном fit: 15; UNK: False.
+**Focal surface:** Івано; pilot fit frequency: 15; UNK: False.
 
-**Разбор:** Дефисное название области разделено на два предсказания.
+**Review:** The hyphenated region name is split into two predictions.
 
 ## 122. FP · row_id=1005373 · missing_name_material
 
@@ -1461,11 +1461,11 @@
 
 **Gold:** ["Карпатському регіоні"]
 
-**Предсказание:** ["сході країни", "Карпатському"]
+**Prediction:** ["сході країни", "Карпатському"]
 
-**Фокус:** Карпатському; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Карпатському; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Выпало «регіоні»; общее «сході країни» дополнительно предсказано как имя.
+**Review:** The generic region word is lost; a generic eastern-part description is additionally predicted as a name.
 
 ## 123. FP · row_id=1008203 · punctuation_gold_policy
 
@@ -1473,11 +1473,11 @@
 
 **Gold:** ["Одесі, "]
 
-**Предсказание:** ["Одесі", "будівлі"]
+**Prediction:** ["Одесі", "будівлі"]
 
-**Фокус:** Одесі; частота в пилотном fit: 15; UNK: False.
+**Focal surface:** Одесі; pilot fit frequency: 15; UNK: False.
 
-**Разбор:** Gold «Одесі, » содержит запятую и пробел. Модель находит город, но scorer считает строку другой.
+**Review:** Gold contains Odesa followed by a comma and a space. The city is found, but the scorer treats its string as different.
 
 ## 124. FP · row_id=1004470 · possible_annotation_error
 
@@ -1485,11 +1485,11 @@
 
 **Gold:** ["Мартел-валь-Мартел"]
 
-**Предсказание:** ["стартом", "шостому", "італійському", "валь", "Мартелло"]
+**Prediction:** ["стартом", "шостому", "італійському", "валь", "Мартелло"]
 
-**Фокус:** валь; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** валь; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold заканчивается внутри «Мартелло»; модель ещё и разбивает сложное название. Нельзя свести весь случай к незнакомому слову.
+**Review:** Gold ends inside the final component of the name; the model also fragments it. This cannot be reduced to an unknown-word problem.
 
 ## 125. FP · row_id=1001290 · extra_neighbor_material
 
@@ -1497,11 +1497,11 @@
 
 **Gold:** ["Карпатах"]
 
-**Предсказание:** ["Карпатах здорожчав"]
+**Prediction:** ["Карпатах здорожчав"]
 
-**Фокус:** Карпатах здорожчав; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Карпатах здорожчав; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Карпатах здорожчав» не совпала с «Карпатах»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 126. FP · row_id=1000550 · hyphen_split
 
@@ -1509,11 +1509,11 @@
 
 **Gold:** ["Києво-Печерської лаври"]
 
-**Предсказание:** ["Києво", "Печерської лаври"]
+**Prediction:** ["Києво", "Печерської лаври"]
 
-**Фокус:** Києво; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Києво; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Киево-Печерская лавра разбита на две сущности.
+**Review:** The Kyiv-Pechersk Lavra name is split into two entities.
 
 ## 127. FP · row_id=1002601 · missing_modifier
 
@@ -1521,11 +1521,11 @@
 
 **Gold:** ["Західної України", "Москву", "СРСР"]
 
-**Предсказание:** ["України", "Москву", "територіями", "СРСР"]
+**Prediction:** ["України", "Москву", "територіями", "СРСР"]
 
-**Фокус:** України; частота в пилотном fit: 266; UNK: False.
+**Focal surface:** України; pilot fit frequency: 266; UNK: False.
 
-**Разбор:** Потеряно «Західної»; «територіями» не является именованным местом в этом контексте.
+**Review:** The western modifier is omitted. An additional generic territory noun is not a named place in this context.
 
 ## 128. FP · row_id=1005344 · boundary_convention
 
@@ -1533,11 +1533,11 @@
 
 **Gold:** ["Чикаго"]
 
-**Предсказание:** ["аеропот Чикаго"]
+**Prediction:** ["аеропот Чикаго"]
 
-**Фокус:** аеропот Чикаго; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** аеропот Чикаго; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Добавлено родовое слово с опечаткой «аеропот» перед Чикаго.
+**Review:** A misspelled generic airport word is included before Chicago.
 
 ## 129. FP · row_id=1007297 · boundary_convention
 
@@ -1545,11 +1545,11 @@
 
 **Gold:** ["на Подолі"]
 
-**Предсказание:** ["Подолі"]
+**Prediction:** ["Подолі"]
 
-**Фокус:** Подолі; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** Подолі; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** Gold включает предлог «на», предсказан сам Подол. Нужно явно описать правило предлогов в названиях.
+**Review:** Gold includes a preposition, while only the place name is predicted. Specify whether prepositions belong in names.
 
 ## 130. FP · row_id=1008497 · hyphen_split
 
@@ -1557,11 +1557,11 @@
 
 **Gold:** ["Зіді-Бузід"]
 
-**Предсказание:** ["Зіді", "Бузід"]
+**Prediction:** ["Зіді", "Бузід"]
 
-**Фокус:** Зіді; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Зіді; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Имя города Зіді-Бузід разбито на две части.
+**Review:** The hyphenated city name is split into two parts.
 
 ## 131. FP · row_id=1006710 · missing_modifier
 
@@ -1569,11 +1569,11 @@
 
 **Gold:** ["Росії", "Московської області"]
 
-**Предсказание:** ["Росії", "області"]
+**Prediction:** ["Росії", "області"]
 
-**Фокус:** області; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** області; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Вместо Московской области осталось общее слово «області».
+**Review:** Only the generic region word remains; the proper modifier is lost.
 
 ## 132. FP · row_id=1005957 · hyphen_and_punctuation
 
@@ -1581,11 +1581,11 @@
 
 **Gold:** ["Парк-Сіті", "Юта"]
 
-**Предсказание:** ["Парк-", "Сіті (", "Юта"]
+**Prediction:** ["Парк-", "Сіті (", "Юта"]
 
-**Фокус:** Сіті (; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Сіті (; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** Парк-Сіті разбит, к одной части добавлена скобка.
+**Review:** The hyphenated city is fragmented, and a bracket is added to one component.
 
 ## 133. FP · row_id=1008905 · quote_convention
 
@@ -1593,11 +1593,11 @@
 
 **Gold:** ["Львові"]
 
-**Предсказание:** ["Львові\""]
+**Prediction:** ["Львові\""]
 
-**Фокус:** Львові"; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Львові"; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** К названию Львова присоединена закрывающая кавычка.
+**Review:** A closing quote is attached to the Lviv name.
 
 ## 134. FP · row_id=1008014 · extra_neighbor
 
@@ -1605,11 +1605,11 @@
 
 **Gold:** ["Волинській області", "Кіровоградській"]
 
-**Предсказание:** ["Волинській області", "Кіровоградській (двоє"]
+**Prediction:** ["Волинській області", "Кіровоградській (двоє"]
 
-**Фокус:** Кіровоградській (двоє; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Кіровоградській (двоє; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** В span попало начало скобочного пояснения о количестве людей.
+**Review:** The span captures the beginning of a parenthetical explanation about a count of people.
 
 ## 135. FP · row_id=1002823 · extra_neighbor
 
@@ -1617,11 +1617,11 @@
 
 **Gold:** ["Полтавському районі"]
 
-**Предсказание:** ["Полтавському районі лісівники"]
+**Prediction:** ["Полтавському районі лісівники"]
 
-**Фокус:** Полтавському районі лісівники; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Полтавському районі лісівники; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** К району добавлено подлежащее следующего сообщения.
+**Review:** The district absorbs the subject of the next statement.
 
 ## 136. FP · row_id=1000210 · boundary_convention
 
@@ -1629,11 +1629,11 @@
 
 **Gold:** ["Харків"]
 
-**Предсказание:** ["місту Харків"]
+**Prediction:** ["місту Харків"]
 
-**Фокус:** місту Харків; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** місту Харків; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Добавлено родовое «місту», тогда как gold содержит только Харків.
+**Review:** A generic city descriptor is added, while gold contains only Kharkiv.
 
 ## 137. FP · row_id=1009279 · extra_neighbor
 
@@ -1641,11 +1641,11 @@
 
 **Gold:** ["РФ", "Харкові"]
 
-**Предсказание:** ["РФ", "Харкові запалили шини", "фаєри"]
+**Prediction:** ["РФ", "Харкові запалили шини", "фаєри"]
 
-**Фокус:** Харкові запалили шини; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Харкові запалили шини; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** После города захвачены глагол и объект события.
+**Review:** The city absorbs a verb and the object of the event.
 
 ## 138. FP · row_id=1007683 · possible_type_error
 
@@ -1653,11 +1653,11 @@
 
 **Gold:** ["Діми Кийкова"]
 
-**Предсказание:** ["Діми"]
+**Prediction:** ["Діми"]
 
-**Фокус:** Діми; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Діми; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Gold «Діми Кийкова» в контексте болезни обозначает человека, но находится в LOC.
+**Review:** The gold name refers to a person in a leukemia context, but it is labeled LOC.
 
 ## 139. FP · row_id=1001690 · extra_neighbor_material
 
@@ -1665,11 +1665,11 @@
 
 **Gold:** ["Угорщині"]
 
-**Предсказание:** ["Угорщині розбудовується"]
+**Prediction:** ["Угорщині розбудовується"]
 
-**Фокус:** Угорщині розбудовується; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Угорщині розбудовується; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Граница «Угорщині розбудовується» не совпала с «Угорщині»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 140. FP · row_id=1005345 · missing_modifier
 
@@ -1677,11 +1677,11 @@
 
 **Gold:** ["Карпатами", "Чорним морем", "Житомирщини"]
 
-**Предсказание:** ["Карпатами", "морем", "Житомирщини"]
+**Prediction:** ["Карпатами", "морем", "Житомирщини"]
 
-**Фокус:** морем; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** морем; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Потеряно собственное определение «Чорним», осталось общее «морем».
+**Review:** The proper modifier Black is omitted, leaving only the generic sea word.
 
 ## 141. FP · row_id=1007390 · extra_neighbor
 
@@ -1689,11 +1689,11 @@
 
 **Gold:** ["вул. Великій Морській", "вул. Московської", "Садовій"]
 
-**Предсказание:** ["вул. Великій Морській", "вул. Московської в напрямку", "Садовій."]
+**Prediction:** ["вул. Великій Морській", "вул. Московської в напрямку", "Садовій."]
 
-**Фокус:** вул. Московської в напрямку; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вул. Московської в напрямку; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** К улице добавлен переход «в напрямку» перед другим названием.
+**Review:** The street absorbs a directional transition before another name.
 
 ## 142. FP · row_id=1003947 · coordinated_locations
 
@@ -1701,11 +1701,11 @@
 
 **Gold:** ["Чорного або Азовського морів", "Карпати"]
 
-**Предсказание:** ["Чорного", "Карпати"]
+**Prediction:** ["Чорного", "Карпати"]
 
-**Фокус:** Чорного; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Чорного; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Gold объединяет альтернативное перечисление морей, модель оставляет только первое определение.
+**Review:** Gold combines an alternative list of seas, while the model keeps only the first modifier.
 
 ## 143. FP · row_id=1005839 · extra_neighbor_material
 
@@ -1713,11 +1713,11 @@
 
 **Gold:** ["Японії"]
 
-**Предсказание:** ["Японії свіжим"]
+**Prediction:** ["Японії свіжим"]
 
-**Фокус:** Японії свіжим; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Японії свіжим; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Граница «Японії свіжим» не совпала с «Японії»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.
+**Review:** The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.
 
 ## 144. FP · row_id=1006189 · generic_word_FP
 
@@ -1725,11 +1725,11 @@
 
 **Gold:** ["Канади", "США"]
 
-**Предсказание:** ["сході", "Канади", "вильотів", "північно-східні", "США"]
+**Prediction:** ["сході", "Канади", "вильотів", "північно-східні", "США"]
 
-**Фокус:** вильотів; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** вильотів; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Вильотів» обозначает действие/рейсы, а не именованное место.
+**Review:** The focal word describes departures/flights, not a named place.
 
 ## 145. FP · row_id=1006983 · generic_word_FP
 
@@ -1737,11 +1737,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["переговорах"]
+**Prediction:** ["переговорах"]
 
-**Фокус:** переговорах; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** переговорах; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Переговоры — событие; здесь нет LOC gold.
+**Review:** Negotiations are an event; this sentence has no LOC gold.
 
 ## 146. FP · row_id=1000692 · generic_place_FP
 
@@ -1749,11 +1749,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["горище", "стрибнула"]
+**Prediction:** ["горище", "стрибнула"]
 
-**Фокус:** горище; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** горище; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Горище» — общее место без собственного имени, не целевая географическая сущность.
+**Review:** An unnamed attic is a generic place, not a target geographic named entity.
 
 ## 147. FP · row_id=1000234 · generic_word_FP
 
@@ -1761,11 +1761,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["ахілловому"]
+**Prediction:** ["ахілловому"]
 
-**Фокус:** ахілловому; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** ахілловому; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Прилагательное из анатомического термина ошибочно выдано как LOC.
+**Review:** An adjective from an anatomical term is incorrectly emitted as LOC.
 
 ## 148. FP · row_id=1003276 · numeric_normalization
 
@@ -1773,11 +1773,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["166"]
+**Prediction:** ["166"]
 
-**Фокус:** 166; частота в пилотном fit: 1; UNK: True.
+**Focal surface:** 166; pilot fit frequency: 1; UNK: True.
 
-**Разбор:** Число 166 ошибочно выделено. После нормализации получается пустая строка, которая всё равно считается FP, а не [] .
+**Review:** The number 166 is incorrectly extracted. It normalizes to an empty string, which still counts as FP rather than an empty list.
 
 ## 149. FP · row_id=1000594 · generic_word_FP
 
@@ -1785,11 +1785,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["шлунком", "кишечником"]
+**Prediction:** ["шлунком", "кишечником"]
 
-**Фокус:** шлунком; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** шлунком; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Шлунком» и «кишечником» — анатомические слова, а не география.
+**Review:** The stomach and intestine words are anatomical terms, not geography.
 
 ## 150. FP · row_id=1003995 · nested_ORG_policy
 
@@ -1797,11 +1797,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Казахстану"]
+**Prediction:** ["Казахстану"]
 
-**Фокус:** Казахстану; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** Казахстану; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** Казахстан входит в размеченное название МВД. Это может быть политика отсутствия вложенных LOC, а не путаница всей организации с местом.
+**Review:** Kazakhstan is part of the annotated ministry name. This may reflect a non-nested LOC policy rather than confusion of the entire institution with a place.
 
 ## 151. FP · row_id=1001590 · generic_word_FP
 
@@ -1809,11 +1809,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["підказувала"]
+**Prediction:** ["підказувала"]
 
-**Фокус:** підказувала; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** підказувала; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Глагол «підказувала» не обозначает место.
+**Review:** The focal verb does not denote a place.
 
 ## 152. FP · row_id=1004493 · generic_word_FP
 
@@ -1821,11 +1821,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["пічці", "компот"]
+**Prediction:** ["пічці", "компот"]
 
-**Фокус:** компот; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** компот; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Компот» — обычное существительное; контекст о приготовлении пищи.
+**Review:** Compote is an ordinary noun in a food-preparation context.
 
 ## 153. FP · row_id=1006836 · generic_word_FP
 
@@ -1833,11 +1833,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["курсах"]
+**Prediction:** ["курсах"]
 
-**Фокус:** курсах; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** курсах; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Курсах» относится к валютному курсу, не географическому объекту.
+**Review:** The focal word refers to an exchange rate, not a geographic object.
 
 ## 154. FP · row_id=1005037 · generic_word_FP
 
@@ -1845,11 +1845,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["святі"]
+**Prediction:** ["святі"]
 
-**Фокус:** святі; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** святі; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Святі» обозначает мероприятие без собственного имени.
+**Review:** The focal word denotes an event without a proper place name.
 
 ## 155. FP · row_id=1008120 · generic_region_FP
 
@@ -1857,11 +1857,11 @@
 
 **Gold:** ["Росією", "Криму", "Донеччини", "Луганщини"]
 
-**Предсказание:** ["усіх областях", "Росією", "Криму", "Донеччини", "Луганщини."]
+**Prediction:** ["усіх областях", "Росією", "Криму", "Донеччини", "Луганщини."]
 
-**Фокус:** усіх областях; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** усіх областях; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Усіх областях» — обобщённое описание, а не собственное название области.
+**Review:** An all-regions phrase is a generic description, not the proper name of a region.
 
 ## 156. FP · row_id=1002808 · ORG_as_LOC
 
@@ -1869,11 +1869,11 @@
 
 **Gold:** ["Онишківці", "Шумського району", "Тернопільщині"]
 
-**Предсказание:** ["Онишківці", "Шумського району", "Тернопільщині", "ВАЗ", "2106", "райцентр"]
+**Prediction:** ["Онишківці", "Шумського району", "Тернопільщині", "ВАЗ", "2106", "райцентр"]
 
-**Фокус:** ВАЗ; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** ВАЗ; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Марка/обозначение автомобиля ВАЗ-2106 размечено ORG; модель выдаёт фрагмент как LOC.
+**Review:** The vehicle brand/model is annotated ORG; the model emits a fragment as LOC.
 
 ## 157. FP · row_id=1004789 · geographic_adjective_FP
 
@@ -1881,11 +1881,11 @@
 
 **Gold:** ["Україні"]
 
-**Предсказание:** ["Україні", "південно"]
+**Prediction:** ["Україні", "південно"]
 
-**Фокус:** південно; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** південно; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Юго-восточный ветер — направление ветра, не именованная локация.
+**Review:** A south-easterly wind describes direction, not a named location.
 
 ## 158. FP · row_id=1001672 · generic_word_FP
 
@@ -1893,11 +1893,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["специфіці"]
+**Prediction:** ["специфіці"]
 
-**Фокус:** специфіці; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** специфіці; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Специфіці» — абстрактное существительное; регион рядом не делает слово именем места.
+**Review:** The focal abstract noun does not become a place name merely because a region is mentioned nearby.
 
 ## 159. FP · row_id=1008393 · generic_word_FP
 
@@ -1905,11 +1905,11 @@
 
 **Gold:** ["Києва", "Київ"]
 
-**Предсказание:** ["Києва", "поручнів", "пограбували", "Київ"]
+**Prediction:** ["Києва", "поручнів", "пограбували", "Київ"]
 
-**Фокус:** поручнів; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** поручнів; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Поручни — предмет, не географическое имя.
+**Review:** Railings are an object, not a geographic name.
 
 ## 160. FP · row_id=1005941 · generic_place_FP
 
@@ -1917,11 +1917,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["вулиці."]
+**Prediction:** ["вулиці."]
 
-**Фокус:** вулиці.; частота в пилотном fit: 2; UNK: False.
+**Focal surface:** вулиці.; pilot fit frequency: 2; UNK: False.
 
-**Разбор:** «На вулиці» без названия улицы не является именованным адресом.
+**Review:** An unnamed street is not a named address.
 
 ## 161. FP · row_id=1006381 · generic_word_FP
 
@@ -1929,11 +1929,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["багатолюдних"]
+**Prediction:** ["багатолюдних"]
 
-**Фокус:** багатолюдних; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** багатолюдних; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Прилагательное «багатолюдних» описывает объекты, а не называет место.
+**Review:** The focal adjective describes crowded objects rather than naming a place.
 
 ## 162. FP · row_id=1000562 · generic_word_FP
 
@@ -1941,11 +1941,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["ЛКП", "паспортистки", "довідку"]
+**Prediction:** ["ЛКП", "паспортистки", "довідку"]
 
-**Фокус:** паспортистки; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** паспортистки; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Название профессии «паспортистки» не является LOC; соседние ЛКП/справка тоже дают лишние предсказания.
+**Review:** A profession is not LOC; the neighboring institution abbreviation and certificate word also trigger extra predictions.
 
 ## 163. FP · row_id=1003404 · generic_word_FP
 
@@ -1953,11 +1953,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["нарколога", "держслужбу"]
+**Prediction:** ["нарколога", "держслужбу"]
 
-**Фокус:** нарколога; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** нарколога; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Специалист «нарколога» — человек по профессии, не локация.
+**Review:** A medical specialist is a person by occupation, not a location.
 
 ## 164. FP · row_id=1007360 · generic_place_FP
 
@@ -1965,11 +1965,11 @@
 
 **Gold:** ["Камчатці", "Росія"]
 
-**Предсказание:** ["Камчатці", "Росія", "болото"]
+**Prediction:** ["Камчатці", "Росія", "болото"]
 
-**Фокус:** болото; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** болото; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Болото» употреблено как общий тип местности без имени.
+**Review:** The swamp word is a generic terrain type without a proper name.
 
 ## 165. FP · row_id=1006727 · ORG_as_LOC
 
@@ -1977,11 +1977,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Держбюджеті"]
+**Prediction:** ["Держбюджеті"]
 
-**Фокус:** Держбюджеті; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Держбюджеті; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Держбюджеті» совпадает с вспомогательной ORG-меткой; по смыслу речь о бюджете, не месте.
+**Review:** The focal budget term matches an auxiliary ORG label; the context concerns a budget, not a place.
 
 ## 166. FP · row_id=1006654 · generic_word_FP
 
@@ -1989,11 +1989,11 @@
 
 **Gold:** ["Луганська", "Старобільську"]
 
-**Предсказание:** ["Луганська", "Старобільську", "твоя", "утворення області"]
+**Prediction:** ["Луганська", "Старобільську", "твоя", "утворення області"]
 
-**Фокус:** твоя; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** твоя; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Местоимение «твоя» из названия выставки не является LOC.
+**Review:** A possessive pronoun in an exhibition title is not LOC.
 
 ## 167. FP · row_id=1003031 · nonlocation_named_item
 
@@ -2001,11 +2001,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Бердянська"]
+**Prediction:** ["Бердянська"]
 
-**Фокус:** Бердянська; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** Бердянська; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** «Бердянська» здесь — название корабля, а не упоминание города.
+**Review:** The focal geographic-looking name refers to a ship here, not the city.
 
 ## 168. FP · row_id=1002968 · possible_annotation_omission
 
@@ -2013,11 +2013,11 @@
 
 **Gold:** ["Києва"]
 
-**Предсказание:** ["Києва", "талліннському аеропорту", "покришки"]
+**Prediction:** ["Києва", "талліннському аеропорту", "покришки"]
 
-**Фокус:** талліннському аеропорту; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** талліннському аеропорту; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Талліннському аеропорту» семантически выглядит локацией, но отсутствует в gold. Проверить полноту/правило для объектов с географическим прилагательным.
+**Review:** Tallinn airport looks semantically like a location but is absent from gold. Check completeness and the treatment of objects with geographic adjectives.
 
 ## 169. FP · row_id=1006499 · ORG_as_LOC
 
@@ -2025,11 +2025,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["ПППУ", "Україна", "УНІАН"]
+**Prediction:** ["ПППУ", "Україна", "УНІАН"]
 
-**Фокус:** УНІАН; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** УНІАН; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** УНІАН — размеченная организация/агентство; LOC gold отсутствует.
+**Review:** The news agency is annotated ORG and has no LOC gold.
 
 ## 170. FP · row_id=1002810 · ORG_metonymy_policy
 
@@ -2037,11 +2037,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Кабміні"]
+**Prediction:** ["Кабміні"]
 
-**Фокус:** Кабміні; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Кабміні; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Кабмин — учреждение, иногда метонимия здания. Уточнить политику, а не считать любую такую строку городом.
+**Review:** The cabinet is an institution, sometimes used metonymically for its building. Clarify the policy rather than treating every such string as a city.
 
 ## 171. FP · row_id=1004964 · nested_ORG_policy
 
@@ -2049,11 +2049,11 @@
 
 **Gold:** ["РФ"]
 
-**Предсказание:** ["України", "РФ"]
+**Prediction:** ["України", "РФ"]
 
-**Фокус:** України; частота в пилотном fit: 266; UNK: False.
+**Focal surface:** України; pilot fit frequency: 266; UNK: False.
 
-**Разбор:** Страна внутри полного названия Администрации президента размечена только как часть ORG.
+**Review:** The country is included only within the complete presidential-administration ORG span.
 
 ## 172. FP · row_id=1007522 · possible_annotation_omission
 
@@ -2061,11 +2061,11 @@
 
 **Gold:** ["Росії"]
 
-**Предсказание:** ["України", "Росії"]
+**Prediction:** ["України", "Росії"]
 
-**Фокус:** України; частота в пилотном fit: 266; UNK: False.
+**Focal surface:** України; pilot fit frequency: 266; UNK: False.
 
-**Разбор:** Страна в «Президент України» не размечена LOC, а Норвегия ошибочно попала в PER. В этом тексте есть кандидаты на шум типов.
+**Review:** The country in a presidential title is not labeled LOC, and Norway is included in PER. This sentence contains candidates for type-label noise.
 
 ## 173. FP · row_id=1009823 · generic_word_FP
 
@@ -2073,11 +2073,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Туреччина", "праві", "самооборону"]
+**Prediction:** ["Туреччина", "праві", "самооборону"]
 
-**Фокус:** праві; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** праві; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Праві» — юридическое основание. Отдельно Турция в начале не размечена LOC, поэтому в тексте есть и возможный пропуск gold.
+**Review:** The focal word denotes a legal right, not a place. Turkey at the start is also unannotated, so a possible gold omission coexists in this text.
 
 ## 174. FP · row_id=1000142 · generic_word_FP
 
@@ -2085,11 +2085,11 @@
 
 **Gold:** ["Укрaїнa"]
 
-**Предсказание:** ["працівники", "Укрaїнa"]
+**Prediction:** ["працівники", "Укрaїнa"]
 
-**Фокус:** працівники; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** працівники; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Работники лагеря — люди, не название места.
+**Review:** Camp employees are people, not a place name.
 
 ## 175. FP · row_id=1008146 · PER_as_LOC
 
@@ -2097,11 +2097,11 @@
 
 **Gold:** ["Данії"]
 
-**Предсказание:** ["Данії", "Мохаммеда"]
+**Prediction:** ["Данії", "Мохаммеда"]
 
-**Фокус:** Мохаммеда; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Мохаммеда; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Имя пророка совпадает с PER-аннотацией; ошибочно предсказан LOC.
+**Review:** The prophet's name matches a PER annotation but is predicted as LOC.
 
 ## 176. FP · row_id=1004418 · generic_word_FP
 
@@ -2109,11 +2109,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["туриста"]
+**Prediction:** ["туриста"]
 
-**Фокус:** туриста; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** туриста; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Турист — человек по роли, не локация.
+**Review:** A tourist is a person by role, not a location.
 
 ## 177. FP · row_id=1000671 · generic_place_FP
 
@@ -2121,11 +2121,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["кріслі"]
+**Prediction:** ["кріслі"]
 
-**Фокус:** кріслі; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** кріслі; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Кріслі» обозначает предмет/общее место, не именованную географию.
+**Review:** A chair is an object/generic place, not named geography.
 
 ## 178. FP · row_id=1007618 · generic_word_FP
 
@@ -2133,11 +2133,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["тодішніх"]
+**Prediction:** ["тодішніх"]
 
-**Фокус:** тодішніх; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** тодішніх; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Временное определение «тодішніх» не является именованной сущностью места.
+**Review:** The temporal modifier is not a location named entity.
 
 ## 179. FP · row_id=1005242 · generic_word_FP
 
@@ -2145,11 +2145,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["красивому"]
+**Prediction:** ["красивому"]
 
-**Фокус:** красивому; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** красивому; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Оценочное прилагательное «красивому» не является географическим именем.
+**Review:** The evaluative adjective is not a geographic name.
 
 ## 180. FP · row_id=1009845 · generic_word_FP
 
@@ -2157,11 +2157,11 @@
 
 **Gold:** ["Ужгороді"]
 
-**Предсказание:** ["затишному", "Ужгороді"]
+**Prediction:** ["затишному", "Ужгороді"]
 
-**Фокус:** затишному; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** затишному; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Описательное «затишному» перед домом не является названием.
+**Review:** The descriptive adjective before a house is not a name.
 
 ## 181. FP · row_id=1008575 · generic_word_FP
 
@@ -2169,11 +2169,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["краху"]
+**Prediction:** ["краху"]
 
-**Фокус:** краху; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** краху; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Краху» — абстрактное последствие, не локация.
+**Review:** The focal word is an abstract consequence, not a location.
 
 ## 182. FP · row_id=1001476 · nonlocation_named_item
 
@@ -2181,11 +2181,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Репортері"]
+**Prediction:** ["Репортері"]
 
-**Фокус:** Репортері; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Репортері; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Репортері» в контексте гороскопа скорее название издания/раздела; LOC не подтверждён.
+**Review:** In the horoscope context, the focal name is more likely a publication or section title; LOC is not established.
 
 ## 183. FP · row_id=1006149 · generic_word_FP
 
@@ -2193,11 +2193,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["клітинах"]
+**Prediction:** ["клітинах"]
 
-**Фокус:** клітинах; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** клітинах; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Клітинах» относится к биологическим клеткам, не географии.
+**Review:** The focal word refers to biological cells, not geography.
 
 ## 184. FP · row_id=1004753 · numeric_normalization
 
@@ -2205,11 +2205,11 @@
 
 **Gold:** ["Києві"]
 
-**Предсказание:** ["1984", "Києві", "’", "групових"]
+**Prediction:** ["1984", "Києві", "’", "групових"]
 
-**Фокус:** 1984; частота в пилотном fit: 1; UNK: True.
+**Focal surface:** 1984; pilot fit frequency: 1; UNK: True.
 
-**Разбор:** 1984 — год рождения, не LOC; нормализация в пустую строку не удаляет FP из метрики.
+**Review:** 1984 is a birth year, not LOC; normalization to an empty string does not remove the FP from the metric.
 
 ## 185. FP · row_id=1007024 · generic_word_FP
 
@@ -2217,11 +2217,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["енергетиці"]
+**Prediction:** ["енергетиці"]
 
-**Фокус:** енергетиці; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** енергетиці; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Енергетиці» — отрасль, не именованное место.
+**Review:** Energy is an industry here, not a named place.
 
 ## 186. FP · row_id=1008661 · PER_context_FP
 
@@ -2229,11 +2229,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["мадам", "Жекіль", "передмісті"]
+**Prediction:** ["мадам", "Жекіль", "передмісті"]
 
-**Фокус:** мадам; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** мадам; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Мадам» — обращение перед именем героини, не место.
+**Review:** Madame is a form of address before a character's name, not a location.
 
 ## 187. FP · row_id=1004770 · ORG_as_LOC
 
@@ -2241,11 +2241,11 @@
 
 **Gold:** ["Закатальского району", "Закатала"]
 
-**Предсказание:** ["АР", "тісній", "Виконавчою", "Закатальского району", "барельєфі Т", "Шевченка", "Закатала"]
+**Prediction:** ["АР", "тісній", "Виконавчою", "Закатальского району", "барельєфі Т", "Шевченка", "Закатала"]
 
-**Фокус:** Виконавчою; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Виконавчою; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Прилагательное «Виконавчою» — начало названия органа власти; вспомогательная ORG-граница тоже выглядит обрезанной.
+**Review:** The adjective starts the name of a government body. The auxiliary ORG boundary also looks truncated.
 
 ## 188. FP · row_id=1007943 · generic_word_FP
 
@@ -2253,11 +2253,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["профільному"]
+**Prediction:** ["профільному"]
 
-**Фокус:** профільному; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** профільному; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Профільному» описывает комитет, а не географическую сущность.
+**Review:** The adjective describes a committee rather than a geographic entity.
 
 ## 189. FP · row_id=1008786 · PER_as_LOC
 
@@ -2265,11 +2265,11 @@
 
 **Gold:** ["Бразилії"]
 
-**Предсказание:** ["Бразилії", "Жаїр", "Болсонару"]
+**Prediction:** ["Бразилії", "Жаїр", "Болсонару"]
 
-**Фокус:** Болсонару; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Болсонару; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Фамилия президента совпадает с PER; тип предсказан неверно.
+**Review:** The president's surname matches PER; the predicted type is wrong.
 
 ## 190. FP · row_id=1003192 · ORG_context_FP
 
@@ -2277,11 +2277,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["комунальному"]
+**Prediction:** ["комунальному"]
 
-**Фокус:** комунальному; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** комунальному; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Прилагательное перед коммунальным предприятием не является LOC. Названия станций в этом gold отнесены к ORG: политика требует уточнения.
+**Review:** The adjective before a municipal enterprise is not LOC. Station names are annotated ORG in this gold, requiring a policy clarification.
 
 ## 191. FP · row_id=1009813 · nested_ORG_policy
 
@@ -2289,11 +2289,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Республіки"]
+**Prediction:** ["Республіки"]
 
-**Фокус:** Республіки; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Республіки; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Республіки» — лишь часть названия страны внутри полного названия медицинской ассоциации.
+**Review:** The focal word is only part of a country name inside a complete medical-association name.
 
 ## 192. FP · row_id=1000452 · generic_word_FP
 
@@ -2301,11 +2301,11 @@
 
 **Gold:** ["Луцьку"]
 
-**Предсказание:** ["Луцьку", "заручниками"]
+**Prediction:** ["Луцьку", "заручниками"]
 
-**Фокус:** заручниками; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** заручниками; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Заложники — люди по роли, не локация.
+**Review:** Hostages are people by role, not a location.
 
 ## 193. FP · row_id=1004693 · generic_word_FP
 
@@ -2313,11 +2313,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["воля"]
+**Prediction:** ["воля"]
 
-**Фокус:** воля; частота в пилотном fit: 1; UNK: False.
+**Focal surface:** воля; pilot fit frequency: 1; UNK: False.
 
-**Разбор:** «Воля» — абстрактное понятие в этом контексте.
+**Review:** The focal word denotes an abstract concept in this context.
 
 ## 194. FP · row_id=1009280 · geographic_adjective_policy
 
@@ -2325,11 +2325,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["нью", "йоркського"]
+**Prediction:** ["нью", "йоркського"]
 
-**Фокус:** йоркського; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** йоркського; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** «Нью-йоркского балета» — географическое определение учреждения, не прямое называние города.
+**Review:** The geographic adjective modifies a ballet institution rather than directly naming the city.
 
 ## 195. FP · row_id=1002311 · nested_title_policy
 
@@ -2337,11 +2337,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["України"]
+**Prediction:** ["України"]
 
-**Фокус:** України; частота в пилотном fit: 266; UNK: False.
+**Focal surface:** України; pilot fit frequency: 266; UNK: False.
 
-**Разбор:** Украина входит в название Конституции и общего законодательства. Нужны правила вложенных географических имён в документах.
+**Review:** Ukraine occurs within a constitution title and a general legislative phrase. Specify the treatment of geographic names embedded in document titles.
 
 ## 196. FP · row_id=1005298 · generic_place_FP
 
@@ -2349,11 +2349,11 @@
 
 **Gold:** ["Драбинівці", "Новосанжарського району"]
 
-**Предсказание:** ["Новосанжарського району", "майданчику"]
+**Prediction:** ["Новосанжарського району", "майданчику"]
 
-**Фокус:** майданчику; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** майданчику; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Хоккейная площадка без собственного имени не является целевой именованной локацией.
+**Review:** An unnamed hockey rink is not the target named location.
 
 ## 197. FP · row_id=1001913 · geographic_adjective_policy
 
@@ -2361,11 +2361,11 @@
 
 **Gold:** ["РФ"]
 
-**Предсказание:** ["РФ", "Мінські"]
+**Prediction:** ["РФ", "Мінські"]
 
-**Фокус:** Мінські; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** Мінські; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** «Мінські домовленості» — название соглашений, не прямое упоминание города Минска.
+**Review:** The Minsk agreements are the name of agreements, not a direct reference to the city.
 
 ## 198. FP · row_id=1001884 · generic_word_FP
 
@@ -2373,11 +2373,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["світ"]
+**Prediction:** ["світ"]
 
-**Фокус:** світ; частота в пилотном fit: 15; UNK: False.
+**Focal surface:** світ; pilot fit frequency: 15; UNK: False.
 
-**Разбор:** «На світ» — идиоматическое выражение о рождении, не географическая сущность.
+**Review:** The focal phrase is an idiom about birth, not a geographic entity.
 
 ## 199. FP · row_id=1004106 · ORG_as_LOC
 
@@ -2385,11 +2385,11 @@
 
 **Gold:** []
 
-**Предсказание:** ["Мінкульті"]
+**Prediction:** ["Мінкульті"]
 
-**Фокус:** Мінкульті; частота в пилотном fit: 0; UNK: True.
+**Focal surface:** Мінкульті; pilot fit frequency: 0; UNK: True.
 
-**Разбор:** Минкульт совпадает с ORG-аннотацией; это учреждение, а не LOC по данному gold.
+**Review:** The ministry abbreviation matches ORG; it is an institution rather than LOC under this gold.
 
 ## 200. FP · row_id=1002941 · generic_place_FP
 
@@ -2397,8 +2397,8 @@
 
 **Gold:** []
 
-**Предсказание:** ["будинок"]
+**Prediction:** ["будинок"]
 
-**Фокус:** будинок; частота в пилотном fit: 0; UNK: False.
+**Focal surface:** будинок; pilot fit frequency: 0; UNK: False.
 
-**Разбор:** Неназванный дом — общий объект, а не именованный адрес.
+**Review:** An unnamed house is a generic object, not a named address.

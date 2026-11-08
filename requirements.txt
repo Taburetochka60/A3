@@ -8,3 +8,4 @@ nbformat==5.11.1
 ipython==9.18.1
 kaggle==2.2.4
 scikit-learn==1.9.1
+duckdb==2.0.0

@@ -1,0 +1,27 @@
+{
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 8,
+  "arms": [
+    "UA_12k",
+    "UA_12k_plus_RU_12k",
+    "UA_12k_plus_UA_12k"
+  ],
+  "base": "Same frozen 12000 fit groups used by existing pilot",
+  "auxiliary_size": 12000,
+  "extra_UA_size": 12000,
+  "architecture": "Existing embedding64 + one-layer BiGRU64x2 + BIO head, dropout .2",
+  "vocabulary_cap": 30000,
+  "weights": "Fixed from base UA12k for every arm",
+  "optimizer": "AdamW lr=.002 weight_decay=.01",
+  "checkpoint": "Same fixed 4000 texts, best of eight epochs by official-code F1",
+  "Russian_diagnostic": "2000 sampled sentences from document-disjoint RU validation, evaluated only after checkpoint selection",
+  "contrast": "RU addition vs base; extra UA vs base; RU vs extra UA at matched rows/updates",
+  "max_train_tokens": 128,
+  "reason": "One window per training sentence, matching optimizer-update counts between 24k controls",
+  "protected": "No calibration, final audit, sample26 target scores or test labels",
+  "uncertainty": "Seed deltas and 2000 paired checkpoint-document bootstrap resamples, conditional on selected models"
+}

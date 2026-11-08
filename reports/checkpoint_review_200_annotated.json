@@ -31,7 +31,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Покровському районі» не совпала с «Покровському»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -68,7 +68,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "multiword_name",
-    "context_review_note": "Название гостиницы потеряло первый компонент и апостроф; остался только «Палас».",
+    "context_review_note": "The hotel name loses its first component and apostrophe; only the second component is returned.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -108,7 +108,7 @@
       "Слов'янського Митрофана"
     ],
     "context_review_tag": "granularity_policy",
-    "context_review_note": "Gold объединяет город и область в одну сущность; предсказана только область. Зафиксировать правило вложенности адреса.",
+    "context_review_note": "Gold combines the city and region into one entity; only the region is predicted. Specify the address-nesting convention.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -147,7 +147,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "address_boundary",
-    "context_review_note": "Разорвано название улицы с инициалом; «вулиці» и «Ковпака» предсказаны отдельно.",
+    "context_review_note": "The street name with an initial is fragmented; the street-type word and surname are predicted separately.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -188,7 +188,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "entity_type_context",
-    "context_review_note": "В этом же тексте «Дніпро» — название программы, а «Міасс» размечен ORG; это смешивает типы с географическими словами.",
+    "context_review_note": "Elsewhere in this sentence, Dnipro names a program and Miass is annotated as ORG. Geographic words can therefore occur under other entity types.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -224,7 +224,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Чорнобильської зони» не совпала с «зони»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -264,7 +264,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "split_location",
-    "context_review_note": "Одно название путепровода разбито на две предсказанные сущности.",
+    "context_review_note": "One bridge name is split into two predicted entities.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -303,7 +303,7 @@
       "Черкаський і Канівс"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Gold «Москви, у тому чи» захватывает обрывок следующей фразы. Предсказание «Москви» выглядит семантически разумнее, но считается ошибкой.",
+    "context_review_note": "The gold span includes Moscow followed by a truncated fragment of the next phrase. The shorter prediction looks semantically more reasonable but is scored as wrong.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -344,7 +344,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "granularity_policy",
-    "context_review_note": "Gold разделяет «Івано-Франківська» на части; модель дополнительно захватывает сказуемое.",
+    "context_review_note": "Gold splits the hyphenated city name; the model additionally absorbs the following predicate.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -380,7 +380,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Антарктиді» не совпала с «Антарктиді розпускаються»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -419,7 +419,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Заході» не совпала с «Заході говоритимуть»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -459,7 +459,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Донецькому напрямку» не совпала с «Донецькому»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -499,7 +499,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Донеччині» не совпала с «Донеччині виявили»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -538,7 +538,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "granularity_policy",
-    "context_review_note": "Дефисное название в gold разбито; помимо этого модель захватывает следующие слова.",
+    "context_review_note": "Gold splits the hyphenated name, while the model also captures following words.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -579,7 +579,7 @@
       "Сергій Кислиця"
     ],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Криму» не совпала с «Криму переслідують»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -626,7 +626,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Москві» не совпала с «Москві уточнили»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -664,7 +664,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Обєднаного королівства» не совпала с «королівства»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -705,7 +705,7 @@
       "Сантьяго"
     ],
     "context_review_tag": "multiword_name",
-    "context_review_note": "Для Карибских островов потеряно определение. Второй город в gold отдельно разбит по дефису.",
+    "context_review_note": "The modifier in the Caribbean Islands name is lost. The other city in gold is also split at its hyphen.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -745,7 +745,7 @@
       "Ярослав Грибальський"
     ],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Львова» не совпала с «Львова згори»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -780,7 +780,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "coordinated_locations",
-    "context_review_note": "Gold объединяет две площади и союз в одну сущность; модель находит лишь первое определение.",
+    "context_review_note": "Gold combines two squares and their conjunction into one entity; the model finds only the first modifier.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -818,7 +818,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Австралії» не совпала с «Австралії приблизно»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -854,7 +854,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "merged_locations",
-    "context_review_note": "Улица и город слиты в один адресный фрагмент; gold требует двух отдельных сущностей.",
+    "context_review_note": "The street and city are merged into one address fragment; gold requires two separate entities.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -892,7 +892,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Полтаві» не совпала с «Полтаві розпочинає»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -929,7 +929,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "coordinated_locations",
-    "context_review_note": "Три области перечисления размечены одной сущностью, а модель выдаёт три. Это вопрос гранулярности, а не полного незнания географии.",
+    "context_review_note": "Three coordinated regions form one gold entity, while the model emits three. This is a granularity issue, not complete failure to recognize geography.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -967,7 +967,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Мінську» не совпала с «Мінську дівчина піднялася»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1006,7 +1006,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "address_boundary",
-    "context_review_note": "В адресе остался только родовой термин «вулиця»: имя улицы и номер не извлечены.",
+    "context_review_note": "Only the generic street-type word remains; the street name and number are not extracted.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1046,7 +1046,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "merged_locations",
-    "context_review_note": "Маріуполь и Донецька область объединены моделью, хотя gold разделяет их.",
+    "context_review_note": "The model merges Mariupol and Donetsk region, while gold keeps them separate.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1085,7 +1085,7 @@
       "Дідух"
     ],
     "context_review_tag": "boundary_and_aux_quality",
-    "context_review_note": "К городу добавлено «імені». Вспомогательный ORG-span также выглядит обрезанным; вспомогательные метки нельзя считать безошибочными.",
+    "context_review_note": "The word meaning named after is added to the city. The auxiliary ORG span also looks truncated; auxiliary labels should not be assumed error-free.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1127,7 +1127,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "coordinated_locations",
-    "context_review_note": "Gold объединяет две области союзом; модель разделяет перечисление.",
+    "context_review_note": "Gold joins two regions with a conjunction; the model separates the coordinated names.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1171,7 +1171,7 @@
       "Дар'я Лопатецька"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "LOC «Нідерландів Аранчі Рус» включает имя теннисистки. Нужна проверка типа и конца gold-span.",
+    "context_review_note": "The LOC span combines the Netherlands with the tennis player's name. Review the gold type and end boundary.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1210,7 +1210,7 @@
       "Костянтин Малофєєв"
     ],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Європі» не совпала с «усій Європі»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1245,7 +1245,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "Остров Лідо распознан, но gold исключает слово «острові». Нужно единое правило для родовых терминов.",
+    "context_review_note": "Lido island is recognized, but gold excludes the generic island word. A consistent rule for such descriptors is needed.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1281,7 +1281,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "split_location",
-    "context_review_note": "Устойчивое название «Європейського Союзу» разбито на два фрагмента.",
+    "context_review_note": "The established name European Union is split into two fragments.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1321,7 +1321,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "boundary_and_granularity",
-    "context_review_note": "Есть лишние пространственные слова; другое название «Аль-Хасака» в gold разбито по дефису.",
+    "context_review_note": "Extra spatial words are included; another hyphenated name in gold is split into parts.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1359,7 +1359,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "multiword_name",
-    "context_review_note": "Из названия Древней Олимпии осталось только определение. «Олімпійського вогню» в LOC также требует проверки политики типов.",
+    "context_review_note": "Only the modifier remains from Ancient Olympia. The Olympic flame being labeled LOC also calls for a type-policy review.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1401,7 +1401,7 @@
       "Шумков"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Gold «Росію, ховаюч» обрывается внутри следующего глагола; короткое предсказание «Росію» не обязательно семантическая ошибка.",
+    "context_review_note": "The gold span ends inside the following verb after Russia. Predicting just the country is not necessarily a semantic error.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1442,7 +1442,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Східній Азії» не совпала с «Азії»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1478,7 +1478,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Модель выдала цельное «Івано-Франківську», gold требует двух частей. Не исправлять модель механическим разрезанием всех дефисов.",
+    "context_review_note": "The model emits the complete hyphenated city name, while gold requires two parts. Do not fix this by mechanically splitting every hyphenated name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1518,7 +1518,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Помимо несовпадения дефисной гранулярности добавлено «свідоцтво»; это две разные проблемы.",
+    "context_review_note": "Beyond the hyphen-granularity mismatch, a following noun is absorbed. These are two distinct issues.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1553,7 +1553,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "quote_convention",
-    "context_review_note": "Модель исключила закрывающую кавычку, которая входит в gold. Опубликованный regex не удаляет её ожидаемым образом.",
+    "context_review_note": "The model excludes a closing quotation mark that belongs to gold. The published regex does not remove it as one might expect.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1590,7 +1590,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Название линии частично объединено моделью, а gold разделяет компоненты и включает слово «лінії».",
+    "context_review_note": "The model partially combines a metro-line name; gold separates components and includes the generic line word.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1625,7 +1625,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «Лівадійський палац» не совпала с «палац»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1664,7 +1664,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "address_boundary",
-    "context_review_note": "Из адреса потеряны «вул.» и номер. В тексте есть и другие адреса без LOC-меток; полноту разметки нужно проверить.",
+    "context_review_note": "The street abbreviation and number are omitted. Other addresses in this text lack LOC labels; annotation completeness needs review.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1702,7 +1702,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Цельное название города против разделённого gold; это не просто неправильный топоним.",
+    "context_review_note": "A complete city name conflicts with split gold. This is not simply a wrong place name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1740,7 +1740,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "possible_text_corruption",
-    "context_review_note": "«Кримужурнал» выглядит склейкой текста и подписи источника. Даже корректные символьные границы не гарантируют чистый обучающий пример.",
+    "context_review_note": "A location word appears fused with a source/publication fragment. Bounds-valid offsets do not guarantee a clean training example.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1779,7 +1779,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Граница «РСР Грузія» не совпала с «РСР»; отношение: missing_name_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: missing_name_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1815,7 +1815,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "merged_locations",
-    "context_review_note": "Модель объединяет населённый пункт, район и область; gold отделяет область.",
+    "context_review_note": "The model merges the settlement, district and region; gold keeps the region separate.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1852,7 +1852,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "vocabulary_cap",
-    "context_review_note": "Поверхность встречалась в пилоте, но часть её токенов стала UNK: знакомая сущность не гарантирует наличие всех слов в ограниченном словаре.",
+    "context_review_note": "The surface appeared in the pilot, but a component maps to UNK. A seen entity does not guarantee that all its words survived the vocabulary cap.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1891,7 +1891,7 @@
       "Гуїдо Мантега"
     ],
     "context_review_tag": "hyphen_split",
-    "context_review_note": "Обе части Буэнос-Айреса найдены отдельно; требуется сохранить цельное название.",
+    "context_review_note": "Both parts of Buenos Aires are found separately; the full name should be retained.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1927,7 +1927,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "merged_locations",
-    "context_review_note": "Село Мурафа и область слиты; оба географических компонента присутствуют в предсказании.",
+    "context_review_note": "The village and region are merged; both geographic components are present in the prediction.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -1966,7 +1966,7 @@
       "Брюховецького"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Дніпра» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2007,7 +2007,7 @@
       "Джозеф Байден"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "«Путіна» в данном контексте относится к человеку, но находится в LOC gold. «Росії» в этом же тексте не имеет LOC-метки.",
+    "context_review_note": "Putin refers to a person in this context but is included in LOC gold. Russia elsewhere in the same sentence has no LOC annotation.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2050,7 +2050,7 @@
       "Володимира Литвина"
     ],
     "context_review_tag": "building_or_ORG_policy",
-    "context_review_note": "Gold содержит только «Ради», а контекст говорит о здании Верховной Рады. Нужно уточнить границы и политику зданий/учреждений.",
+    "context_review_note": "Gold contains only a fragment of the parliamentary name, while the context refers to a building. Clarify boundaries and the building/institution convention.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2090,7 +2090,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Брюсселя» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2126,7 +2126,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Шотландія» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2164,7 +2164,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Сан-Фернандо» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2199,7 +2199,7 @@
       "Сомалі"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Сомаліленд» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2235,7 +2235,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_omission",
-    "context_review_note": "Модель пропускает размеченные части страны, но дополнительно находит неразмеченное «України». Это кандидат на проверку полноты gold.",
+    "context_review_note": "The model misses the annotated parts of the country but also finds an unannotated Ukraine mention. This is a candidate for a gold-completeness check.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2270,7 +2270,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "vocabulary_cap",
-    "context_review_note": "Название ранее встречалось как LOC, но его токен отсутствует в сохранённом словаре пилота.",
+    "context_review_note": "The name appeared as LOC before, but its token is missing from the saved pilot vocabulary.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2303,7 +2303,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "seen_context_miss",
-    "context_review_note": "Знакомый Львов пропущен в начале короткого предложения; нельзя объяснить ошибку только новизной слов.",
+    "context_review_note": "A seen Lviv surface is missed at the start of a short sentence. Word novelty alone cannot explain the error.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2340,7 +2340,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Керченську протоку» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2373,7 +2373,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Російська Федерація» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 2; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 2; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2408,7 +2408,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_location_FP",
-    "context_review_note": "Река Путилівка пропущена, вместо неё предсказано общее описание «заповідну зону».",
+    "context_review_note": "The river name is missed, and a generic protected-area description is predicted instead.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2443,7 +2443,7 @@
       "Захар Беркут"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "«Схід Сокола» в контексте прямо описывает название фильма, а не место.",
+    "context_review_note": "The context explicitly describes a film title, rather than a place, but it appears in LOC gold.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2477,7 +2477,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Дрогобич» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2515,7 +2515,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Запорозьку Січ» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2554,7 +2554,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Костопільському» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2589,7 +2589,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "administrative_policy",
-    "context_review_note": "Сельсовет может обозначать учреждение или территорию; для основного gold нужно единое правило. Предсказано другое учреждение «ОТГ».",
+    "context_review_note": "A village council can refer to an institution or territory. Gold needs a consistent policy; the prediction instead names another administrative entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2623,7 +2623,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Косово» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2661,7 +2661,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "possible_type_error",
-    "context_review_note": "«Ворскла» здесь играет футбольный финал: контекст указывает на клуб, хотя gold размечает LOC.",
+    "context_review_note": "Vorskla is playing in a football final here: context indicates a club, although gold labels LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2695,7 +2695,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Каїр» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2731,7 +2731,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Січі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2768,7 +2768,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_gold_fragment",
-    "context_review_note": "Gold — только «Будинку» из полного названия учреждения. Нужна проверка того, считаются ли такие обобщённые фрагменты целевыми именами.",
+    "context_review_note": "Gold contains only a generic building-word fragment from an institution name. Check whether such fragments are intended target names.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2803,7 +2803,7 @@
       "Софія Київська."
     ],
     "context_review_tag": "nested_ORG_policy",
-    "context_review_note": "Страна внутри названия церкви размечена LOC, тогда как в других примерах страны внутри учреждений исключены; нужна проверка последовательности политики.",
+    "context_review_note": "A country inside a church name is labeled LOC, whereas geographic components inside institutions are excluded in other cases. Check policy consistency.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2836,7 +2836,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Земля» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2878,7 +2878,7 @@
       "Йосифа Сталіна"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Панську» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2920,7 +2920,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Тегеран» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2953,7 +2953,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "ORG_region_policy",
-    "context_review_note": "«Східного партнерства» — политическая инициатива/объединение в этом контексте; проверить правило LOC versus ORG.",
+    "context_review_note": "Eastern Partnership denotes a political initiative or grouping in this context; review the LOC-versus-ORG convention.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -2991,7 +2991,7 @@
       "Теодоріна Обіанга Нгеми"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Екваторіальної Гвінеї» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3024,7 +3024,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Слов'янську» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3057,7 +3057,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Делі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3094,7 +3094,7 @@
       "Холанда"
     ],
     "context_review_tag": "name_fragment_policy",
-    "context_review_note": "В тексте «Олд Траффорд», gold содержит только «Траффорд»; отдельно проверить название объекта и его метонимическое употребление.",
+    "context_review_note": "The text contains Old Trafford, while gold includes only its second component. Check both object-name boundaries and metonymic usage.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3127,7 +3127,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Вайомінг» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3160,7 +3160,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "«Шлапак» в конце заголовка выглядит атрибуцией высказывания человеку, а не географическим объектом.",
+    "context_review_note": "The final surname in the headline looks like attribution to a speaker, rather than a geographic entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3198,7 +3198,7 @@
       "Леона"
     ],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Название вулкана Серро-Негро размечено двумя сущностями. Это отличается от некоторых других дефисных имён.",
+    "context_review_note": "The volcano name is annotated as two entities, unlike some other hyphenated names.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3234,7 +3234,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "possible_type_error",
-    "context_review_note": "Полные названия спортивных команд в контексте матча попали в LOC gold; не считать это бесспорным пропуском города.",
+    "context_review_note": "Full sports-team names in a match context appear as LOC gold. This is not an unambiguous failure to find a city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3288,7 +3288,7 @@
       "Небрасці"
     ],
     "context_review_tag": "possible_annotation_omission",
-    "context_review_note": "В длинном списке штатов размечена только часть названий; дополнительные разумные предсказания могут формально считаться FP.",
+    "context_review_note": "Only some state names in a long list are annotated. Additional reasonable predictions can therefore count as FP.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3321,7 +3321,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Молдові» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3354,7 +3354,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Бессарабці» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3391,7 +3391,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Білоуської» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3424,7 +3424,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Атлантику» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3457,7 +3457,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "insufficient_context",
-    "context_review_note": "По одной фразе о переводе имени «Каракурт» недостаточно контекста, чтобы подтвердить географический тип.",
+    "context_review_note": "A single phrase explaining the translation of this name provides insufficient context to confirm its geographic type.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3499,7 +3499,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "unusual_landmark_names",
-    "context_review_note": "Обычные слова здесь — собственные названия скал. Жёсткий словарь только городов или запрет общих слов ухудшит такие случаи.",
+    "context_review_note": "Ordinary words are proper names of rocks in this context. A city-only dictionary or a blanket common-word ban would hurt these cases.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3533,7 +3533,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Орлівку» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3570,7 +3570,7 @@
       "Дмитро Бібіков"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Вишгорода» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3608,7 +3608,7 @@
       "Ігоря Коломойського"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Бельбек» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3641,7 +3641,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Іванчі» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3674,7 +3674,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Грузія» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 3; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 3; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3707,7 +3707,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Шотландії» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 1; UNK в упоминании: False. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 1; UNK in the mention: False. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3742,7 +3742,7 @@
       "Віталій Марків"
     ],
     "context_review_tag": "detection_miss",
-    "context_review_note": "Размеченное географическое имя «Карачун» не пересекается ни с одним предсказанием. Частота поверхности в 12k fit: 0; UNK в упоминании: True. Новизна/OOV — наблюдаемые факторы, не доказанная причина.",
+    "context_review_note": "The annotated location has no overlap with any prediction. Pilot training frequency: 0; UNK in the mention: True. Novelty/OOV are observed factors, not proven causes.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3780,7 +3780,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Gold «України окр» обрезан внутри следующего слова. Модель тоже переудлиняет span; обе проблемы следует разделить.",
+    "context_review_note": "Gold ends inside the word following Ukraine. The model also overextends the span; these two problems should be separated.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3819,7 +3819,7 @@
       "Меланії"
     ],
     "context_review_tag": "split_location",
-    "context_review_note": "Полное название США разбито на два предсказания.",
+    "context_review_note": "The complete United States name is split into two predictions.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3859,7 +3859,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "В конец города захвачена первая часть слова «вокально-інструментальний».",
+    "context_review_note": "The city absorbs the first component of the following hyphenated adjective.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3901,7 +3901,7 @@
       "Наталі Альохіної"
     ],
     "context_review_tag": "quote_convention",
-    "context_review_note": "Лишняя закрывающая кавычка; это настоящее несовпадение строк по опубликованному scorer.",
+    "context_review_note": "An extra closing quote causes a real string mismatch under the published scorer.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3939,7 +3939,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "address_components",
-    "context_review_note": "Граница адреса не включает «, 2-4». Удаление цифр scorer не гарантирует совпадение: пунктуация тоже влияет.",
+    "context_review_note": "The address boundary excludes its comma and building-number suffix. Digit removal does not guarantee a match because punctuation also matters.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -3988,7 +3988,7 @@
       "Сейрак Маргариян"
     ],
     "context_review_tag": "address_and_PER",
-    "context_review_note": "У адреса потерян номер и запятая, а в этом же тексте имена художников дополнительно выдаются как LOC.",
+    "context_review_note": "The address loses its number and comma; artist names in the same sentence are also emitted as LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4036,7 +4036,7 @@
       "Данила"
     ],
     "context_review_tag": "quote_and_entity_type",
-    "context_review_note": "Лишняя кавычка после Львова; параллельно имена людей и слова учреждения вызывают FP.",
+    "context_review_note": "An extra quote follows Lviv; person names and institution words also generate FP in this sentence.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4074,7 +4074,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "missing_multiword_tail",
-    "context_review_note": "От полного названия государства осталось только прилагательное.",
+    "context_review_note": "Only the adjective remains from the full country name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4115,7 +4115,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "После названия улицы захвачен глагол; границы объекта и следующего события не отделены.",
+    "context_review_note": "The street name absorbs the following verb; the object boundary is not separated from the next event.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4156,7 +4156,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_convention",
-    "context_review_note": "К первому городу добавлен разделительный дефис маршрута.",
+    "context_review_note": "The route-separating hyphen is appended to the first city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4197,7 +4197,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "Gold включает «міста», предсказание заканчивается на «районі». Требуется уточнить родовые термины в аннотациях.",
+    "context_review_note": "Gold includes the generic city word, while the prediction stops at district. Clarify generic descriptors in the annotation rules.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4238,7 +4238,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Gold объединяет разные города/страны «Мінську Україна» через границу обстоятельства и подлежащего; нужны отдельные сущности.",
+    "context_review_note": "Gold merges Minsk and Ukraine across an adverbial/subject boundary. These are candidates for separate entities.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4275,7 +4275,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "К названию города добавлены субъект и глагол следующей части предложения.",
+    "context_review_note": "The city absorbs the subject and verb of the following clause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4310,7 +4310,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_modifier",
-    "context_review_note": "Из географического названия «Східній Україні» выпало определение.",
+    "context_review_note": "The geographic modifier is dropped from Eastern Ukraine.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4345,7 +4345,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Білорусі доволі» не совпала с «Білорусі»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4383,7 +4383,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_granularity",
-    "context_review_note": "Здесь gold требует цельное название Ивано-Франковска, в отличие от нескольких FN-кейсов, где оно разделено.",
+    "context_review_note": "Gold requires a complete hyphenated city here, unlike several FN cases where the same city is split.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4421,7 +4421,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "hyphen_split",
-    "context_review_note": "Из Тель-Авива осталась только первая часть.",
+    "context_review_note": "Only the first part of Tel Aviv remains.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4461,7 +4461,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "К названию страны добавлен пространственный родовой компонент «сході».",
+    "context_review_note": "A generic directional component is added to the country name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4499,7 +4499,7 @@
       "Сальвадора Далі"
     ],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Модель нашла цельное «Кітті-Хок» после слова «місті»; gold размечает «Кітті» как LOC, а «Хок» как PER.",
+    "context_review_note": "The model finds the complete hyphenated city after the word city; gold labels the first part LOC and the second part PER.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4535,7 +4535,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Из района потерян родовой термин, одновременно пропущен Кривой Рог.",
+    "context_review_note": "The generic district word is dropped, and Kryvyi Rih is also missed.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4571,7 +4571,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_split",
-    "context_review_note": "Дефисное название области разделено на два предсказания.",
+    "context_review_note": "The hyphenated region name is split into two predictions.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4607,7 +4607,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_name_material",
-    "context_review_note": "Выпало «регіоні»; общее «сході країни» дополнительно предсказано как имя.",
+    "context_review_note": "The generic region word is lost; a generic eastern-part description is additionally predicted as a name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4648,7 +4648,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "punctuation_gold_policy",
-    "context_review_note": "Gold «Одесі, » содержит запятую и пробел. Модель находит город, но scorer считает строку другой.",
+    "context_review_note": "Gold contains Odesa followed by a comma and a space. The city is found, but the scorer treats its string as different.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4689,7 +4689,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_error",
-    "context_review_note": "Gold заканчивается внутри «Мартелло»; модель ещё и разбивает сложное название. Нельзя свести весь случай к незнакомому слову.",
+    "context_review_note": "Gold ends inside the final component of the name; the model also fragments it. This cannot be reduced to an unknown-word problem.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4724,7 +4724,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Карпатах здорожчав» не совпала с «Карпатах»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4764,7 +4764,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "hyphen_split",
-    "context_review_note": "Киево-Печерская лавра разбита на две сущности.",
+    "context_review_note": "The Kyiv-Pechersk Lavra name is split into two entities.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4804,7 +4804,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_modifier",
-    "context_review_note": "Потеряно «Західної»; «територіями» не является именованным местом в этом контексте.",
+    "context_review_note": "The western modifier is omitted. An additional generic territory noun is not a named place in this context.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4839,7 +4839,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "Добавлено родовое слово с опечаткой «аеропот» перед Чикаго.",
+    "context_review_note": "A misspelled generic airport word is included before Chicago.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4876,7 +4876,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "Gold включает предлог «на», предсказан сам Подол. Нужно явно описать правило предлогов в названиях.",
+    "context_review_note": "Gold includes a preposition, while only the place name is predicted. Specify whether prepositions belong in names.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4912,7 +4912,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_split",
-    "context_review_note": "Имя города Зіді-Бузід разбито на две части.",
+    "context_review_note": "The hyphenated city name is split into two parts.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4949,7 +4949,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_modifier",
-    "context_review_note": "Вместо Московской области осталось общее слово «області».",
+    "context_review_note": "Only the generic region word remains; the proper modifier is lost.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -4987,7 +4987,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "hyphen_and_punctuation",
-    "context_review_note": "Парк-Сіті разбит, к одной части добавлена скобка.",
+    "context_review_note": "The hyphenated city is fragmented, and a bracket is added to one component.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5024,7 +5024,7 @@
       "Андрій Волокітін"
     ],
     "context_review_tag": "quote_convention",
-    "context_review_note": "К названию Львова присоединена закрывающая кавычка.",
+    "context_review_note": "A closing quote is attached to the Lviv name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5061,7 +5061,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "В span попало начало скобочного пояснения о количестве людей.",
+    "context_review_note": "The span captures the beginning of a parenthetical explanation about a count of people.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5096,7 +5096,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "К району добавлено подлежащее следующего сообщения.",
+    "context_review_note": "The district absorbs the subject of the next statement.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5131,7 +5131,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "boundary_convention",
-    "context_review_note": "Добавлено родовое «місту», тогда как gold содержит только Харків.",
+    "context_review_note": "A generic city descriptor is added, while gold contains only Kharkiv.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5169,7 +5169,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "После города захвачены глагол и объект события.",
+    "context_review_note": "The city absorbs a verb and the object of the event.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5204,7 +5204,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "possible_type_error",
-    "context_review_note": "Gold «Діми Кийкова» в контексте болезни обозначает человека, но находится в LOC.",
+    "context_review_note": "The gold name refers to a person in a leukemia context, but it is labeled LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5244,7 +5244,7 @@
       "Урсули фон дер Ляєн"
     ],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Угорщині розбудовується» не совпала с «Угорщині»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5283,7 +5283,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "missing_modifier",
-    "context_review_note": "Потеряно собственное определение «Чорним», осталось общее «морем».",
+    "context_review_note": "The proper modifier Black is omitted, leaving only the generic sea word.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5322,7 +5322,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor",
-    "context_review_note": "К улице добавлен переход «в напрямку» перед другим названием.",
+    "context_review_note": "The street absorbs a directional transition before another name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5359,7 +5359,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "coordinated_locations",
-    "context_review_note": "Gold объединяет альтернативное перечисление морей, модель оставляет только первое определение.",
+    "context_review_note": "Gold combines an alternative list of seas, while the model keeps only the first modifier.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5394,7 +5394,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "extra_neighbor_material",
-    "context_review_note": "Граница «Японії свіжим» не совпала с «Японії»; отношение: extra_neighbor_material. Это видно по исходным смещениям, но само по себе не доказывает причину ошибки.",
+    "context_review_note": "The focal span's boundary differs from its counterpart; observed relation: extra_neighbor_material. Original offsets establish this relation, not its cause.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5434,7 +5434,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Вильотів» обозначает действие/рейсы, а не именованное место.",
+    "context_review_note": "The focal word describes departures/flights, not a named place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5469,7 +5469,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Переговоры — событие; здесь нет LOC gold.",
+    "context_review_note": "Negotiations are an event; this sentence has no LOC gold.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5503,7 +5503,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "«Горище» — общее место без собственного имени, не целевая географическая сущность.",
+    "context_review_note": "An unnamed attic is a generic place, not a target geographic named entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5540,7 +5540,7 @@
       "Артему Бєсєдіну"
     ],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Прилагательное из анатомического термина ошибочно выдано как LOC.",
+    "context_review_note": "An adjective from an anatomical term is incorrectly emitted as LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5573,7 +5573,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "numeric_normalization",
-    "context_review_note": "Число 166 ошибочно выделено. После нормализации получается пустая строка, которая всё равно считается FP, а не [] .",
+    "context_review_note": "The number 166 is incorrectly extracted. It normalizes to an empty string, which still counts as FP rather than an empty list.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5607,7 +5607,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Шлунком» и «кишечником» — анатомические слова, а не география.",
+    "context_review_note": "The stomach and intestine words are anatomical terms, not geography.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5642,7 +5642,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "nested_ORG_policy",
-    "context_review_note": "Казахстан входит в размеченное название МВД. Это может быть политика отсутствия вложенных LOC, а не путаница всей организации с местом.",
+    "context_review_note": "Kazakhstan is part of the annotated ministry name. This may reflect a non-nested LOC policy rather than confusion of the entire institution with a place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5675,7 +5675,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Глагол «підказувала» не обозначает место.",
+    "context_review_note": "The focal verb does not denote a place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5709,7 +5709,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Компот» — обычное существительное; контекст о приготовлении пищи.",
+    "context_review_note": "Compote is an ordinary noun in a food-preparation context.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5746,7 +5746,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Курсах» относится к валютному курсу, не географическому объекту.",
+    "context_review_note": "The focal word refers to an exchange rate, not a geographic object.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5779,7 +5779,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Святі» обозначает мероприятие без собственного имени.",
+    "context_review_note": "The focal word denotes an event without a proper place name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5821,7 +5821,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_region_FP",
-    "context_review_note": "«Усіх областях» — обобщённое описание, а не собственное название области.",
+    "context_review_note": "An all-regions phrase is a generic description, not the proper name of a region.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5865,7 +5865,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "ORG_as_LOC",
-    "context_review_note": "Марка/обозначение автомобиля ВАЗ-2106 размечено ORG; модель выдаёт фрагмент как LOC.",
+    "context_review_note": "The vehicle brand/model is annotated ORG; the model emits a fragment as LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5901,7 +5901,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "geographic_adjective_FP",
-    "context_review_note": "Юго-восточный ветер — направление ветра, не именованная локация.",
+    "context_review_note": "A south-easterly wind describes direction, not a named location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5934,7 +5934,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Специфіці» — абстрактное существительное; регион рядом не делает слово именем места.",
+    "context_review_note": "The focal abstract noun does not become a place name merely because a region is mentioned nearby.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -5975,7 +5975,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Поручни — предмет, не географическое имя.",
+    "context_review_note": "Railings are an object, not a geographic name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6008,7 +6008,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "«На вулиці» без названия улицы не является именованным адресом.",
+    "context_review_note": "An unnamed street is not a named address.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6041,7 +6041,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Прилагательное «багатолюдних» описывает объекты, а не называет место.",
+    "context_review_note": "The focal adjective describes crowded objects rather than naming a place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6078,7 +6078,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Название профессии «паспортистки» не является LOC; соседние ЛКП/справка тоже дают лишние предсказания.",
+    "context_review_note": "A profession is not LOC; the neighboring institution abbreviation and certificate word also trigger extra predictions.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6112,7 +6112,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Специалист «нарколога» — человек по профессии, не локация.",
+    "context_review_note": "A medical specialist is a person by occupation, not a location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6150,7 +6150,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "«Болото» употреблено как общий тип местности без имени.",
+    "context_review_note": "The swamp word is a generic terrain type without a proper name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6185,7 +6185,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "ORG_as_LOC",
-    "context_review_note": "«Держбюджеті» совпадает с вспомогательной ORG-меткой; по смыслу речь о бюджете, не месте.",
+    "context_review_note": "The focal budget term matches an auxiliary ORG label; the context concerns a budget, not a place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6224,7 +6224,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Местоимение «твоя» из названия выставки не является LOC.",
+    "context_review_note": "A possessive pronoun in an exhibition title is not LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6257,7 +6257,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "nonlocation_named_item",
-    "context_review_note": "«Бердянська» здесь — название корабля, а не упоминание города.",
+    "context_review_note": "The focal geographic-looking name refers to a ship here, not the city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6294,7 +6294,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "possible_annotation_omission",
-    "context_review_note": "«Талліннському аеропорту» семантически выглядит локацией, но отсутствует в gold. Проверить полноту/правило для объектов с географическим прилагательным.",
+    "context_review_note": "Tallinn airport looks semantically like a location but is absent from gold. Check completeness and the treatment of objects with geographic adjectives.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6335,7 +6335,7 @@
       "Лев ГНАТЕНКО"
     ],
     "context_review_tag": "ORG_as_LOC",
-    "context_review_note": "УНІАН — размеченная организация/агентство; LOC gold отсутствует.",
+    "context_review_note": "The news agency is annotated ORG and has no LOC gold.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6368,7 +6368,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "ORG_metonymy_policy",
-    "context_review_note": "Кабмин — учреждение, иногда метонимия здания. Уточнить политику, а не считать любую такую строку городом.",
+    "context_review_note": "The cabinet is an institution, sometimes used metonymically for its building. Clarify the policy rather than treating every such string as a city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6408,7 +6408,7 @@
       "Андрій Богдан"
     ],
     "context_review_tag": "nested_ORG_policy",
-    "context_review_note": "Страна внутри полного названия Администрации президента размечена только как часть ORG.",
+    "context_review_note": "The country is included only within the complete presidential-administration ORG span.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6447,7 +6447,7 @@
       "Норвегію"
     ],
     "context_review_tag": "possible_annotation_omission",
-    "context_review_note": "Страна в «Президент України» не размечена LOC, а Норвегия ошибочно попала в PER. В этом тексте есть кандидаты на шум типов.",
+    "context_review_note": "The country in a presidential title is not labeled LOC, and Norway is included in PER. This sentence contains candidates for type-label noise.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6482,7 +6482,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Праві» — юридическое основание. Отдельно Турция в начале не размечена LOC, поэтому в тексте есть и возможный пропуск gold.",
+    "context_review_note": "The focal word denotes a legal right, not a place. Turkey at the start is also unannotated, so a possible gold omission coexists in this text.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6520,7 +6520,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Работники лагеря — люди, не название места.",
+    "context_review_note": "Camp employees are people, not a place name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6558,7 +6558,7 @@
       "Мохаммеда"
     ],
     "context_review_tag": "PER_as_LOC",
-    "context_review_note": "Имя пророка совпадает с PER-аннотацией; ошибочно предсказан LOC.",
+    "context_review_note": "The prophet's name matches a PER annotation but is predicted as LOC.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6591,7 +6591,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Турист — человек по роли, не локация.",
+    "context_review_note": "A tourist is a person by role, not a location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6626,7 +6626,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "«Кріслі» обозначает предмет/общее место, не именованную географию.",
+    "context_review_note": "A chair is an object/generic place, not named geography.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6659,7 +6659,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Временное определение «тодішніх» не является именованной сущностью места.",
+    "context_review_note": "The temporal modifier is not a location named entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6694,7 +6694,7 @@
       "Леся Нікітюк"
     ],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Оценочное прилагательное «красивому» не является географическим именем.",
+    "context_review_note": "The evaluative adjective is not a geographic name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6730,7 +6730,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Описательное «затишному» перед домом не является названием.",
+    "context_review_note": "The descriptive adjective before a house is not a name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6765,7 +6765,7 @@
       "Грушевського"
     ],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Краху» — абстрактное последствие, не локация.",
+    "context_review_note": "The focal word is an abstract consequence, not a location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6798,7 +6798,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "nonlocation_named_item",
-    "context_review_note": "«Репортері» в контексте гороскопа скорее название издания/раздела; LOC не подтверждён.",
+    "context_review_note": "In the horoscope context, the focal name is more likely a publication or section title; LOC is not established.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6831,7 +6831,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Клітинах» относится к биологическим клеткам, не географии.",
+    "context_review_note": "The focal word refers to biological cells, not geography.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6875,7 +6875,7 @@
       "Вікторії Сєдих"
     ],
     "context_review_tag": "numeric_normalization",
-    "context_review_note": "1984 — год рождения, не LOC; нормализация в пустую строку не удаляет FP из метрики.",
+    "context_review_note": "1984 is a birth year, not LOC; normalization to an empty string does not remove the FP from the metric.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6908,7 +6908,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Енергетиці» — отрасль, не именованное место.",
+    "context_review_note": "Energy is an industry here, not a named place.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6945,7 +6945,7 @@
       "Жекіль"
     ],
     "context_review_tag": "PER_context_FP",
-    "context_review_note": "«Мадам» — обращение перед именем героини, не место.",
+    "context_review_note": "Madame is a form of address before a character's name, not a location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -6993,7 +6993,7 @@
       "Т.Г.Шевченка"
     ],
     "context_review_tag": "ORG_as_LOC",
-    "context_review_note": "Прилагательное «Виконавчою» — начало названия органа власти; вспомогательная ORG-граница тоже выглядит обрезанной.",
+    "context_review_note": "The adjective starts the name of a government body. The auxiliary ORG boundary also looks truncated.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7028,7 +7028,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Профільному» описывает комитет, а не географическую сущность.",
+    "context_review_note": "The adjective describes a committee rather than a geographic entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7067,7 +7067,7 @@
       "Жаїр Болсонару"
     ],
     "context_review_tag": "PER_as_LOC",
-    "context_review_note": "Фамилия президента совпадает с PER; тип предсказан неверно.",
+    "context_review_note": "The president's surname matches PER; the predicted type is wrong.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7105,7 +7105,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "ORG_context_FP",
-    "context_review_note": "Прилагательное перед коммунальным предприятием не является LOC. Названия станций в этом gold отнесены к ORG: политика требует уточнения.",
+    "context_review_note": "The adjective before a municipal enterprise is not LOC. Station names are annotated ORG in this gold, requiring a policy clarification.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7140,7 +7140,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "nested_ORG_policy",
-    "context_review_note": "«Республіки» — лишь часть названия страны внутри полного названия медицинской ассоциации.",
+    "context_review_note": "The focal word is only part of a country name inside a complete medical-association name.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7178,7 +7178,7 @@
       "Максим Плохой"
     ],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "Заложники — люди по роли, не локация.",
+    "context_review_note": "Hostages are people by role, not a location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7211,7 +7211,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«Воля» — абстрактное понятие в этом контексте.",
+    "context_review_note": "The focal word denotes an abstract concept in this context.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7247,7 +7247,7 @@
       "Ніколай Хюбер"
     ],
     "context_review_tag": "geographic_adjective_policy",
-    "context_review_note": "«Нью-йоркского балета» — географическое определение учреждения, не прямое называние города.",
+    "context_review_note": "The geographic adjective modifies a ballet institution rather than directly naming the city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7280,7 +7280,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "nested_title_policy",
-    "context_review_note": "Украина входит в название Конституции и общего законодательства. Нужны правила вложенных географических имён в документах.",
+    "context_review_note": "Ukraine occurs within a constitution title and a general legislative phrase. Specify the treatment of geographic names embedded in document titles.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7317,7 +7317,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "Хоккейная площадка без собственного имени не является целевой именованной локацией.",
+    "context_review_note": "An unnamed hockey rink is not the target named location.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7353,7 +7353,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "geographic_adjective_policy",
-    "context_review_note": "«Мінські домовленості» — название соглашений, не прямое упоминание города Минска.",
+    "context_review_note": "The Minsk agreements are the name of agreements, not a direct reference to the city.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7388,7 +7388,7 @@
       "Даринка"
     ],
     "context_review_tag": "generic_word_FP",
-    "context_review_note": "«На світ» — идиоматическое выражение о рождении, не географическая сущность.",
+    "context_review_note": "The focal phrase is an idiom about birth, not a geographic entity.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7423,7 +7423,7 @@
     ],
     "PER_annotations": [],
     "context_review_tag": "ORG_as_LOC",
-    "context_review_note": "Минкульт совпадает с ORG-аннотацией; это учреждение, а не LOC по данному gold.",
+    "context_review_note": "The ministry abbreviation matches ORG; it is an institution rather than LOC under this gold.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   },
@@ -7456,7 +7456,7 @@
     "ORG_annotations": [],
     "PER_annotations": [],
     "context_review_tag": "generic_place_FP",
-    "context_review_note": "Неназванный дом — общий объект, а не именованный адрес.",
+    "context_review_note": "An unnamed house is a generic object, not a named address.",
     "reviewed_by": "Codex: AI-assisted contextual review, not independent human adjudication",
     "gold_changed": false
   }

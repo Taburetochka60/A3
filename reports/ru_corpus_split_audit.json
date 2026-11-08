@@ -1,0 +1,251 @@
+{
+  "uk": {
+    "canon_duplicate_groups": 2512,
+    "canon_duplicate_excess": 2523,
+    "exact_duplicate_groups": 2445,
+    "exact_duplicate_excess": 2454
+  },
+  "ru": {
+    "canon_duplicate_groups": 250054,
+    "canon_duplicate_excess": 525636,
+    "exact_duplicate_groups": 249385,
+    "exact_duplicate_excess": 523501
+  },
+  "cross_corpus": [],
+  "partitions": [
+    {
+      "partition": "excluded_RU_duplicate",
+      "rows": 170104,
+      "documents": 80596,
+      "LOC_mentions": 76097.0,
+      "empty_LOC_fraction": 0.7153035789869727
+    },
+    {
+      "partition": "excluded_RU_valid_overlap_doc",
+      "rows": 1602493,
+      "documents": 132569,
+      "LOC_mentions": 759620.0,
+      "empty_LOC_fraction": 0.6916086372920194
+    },
+    {
+      "partition": "excluded_alignment",
+      "rows": 5148,
+      "documents": 2449,
+      "LOC_mentions": 7479.0,
+      "empty_LOC_fraction": 0.0
+    },
+    {
+      "partition": "excluded_label_conflict",
+      "rows": 6346,
+      "documents": 4959,
+      "LOC_mentions": 8756.0,
+      "empty_LOC_fraction": 0.28663725181216515
+    },
+    {
+      "partition": "ru_fit",
+      "rows": 5440386,
+      "documents": 532263,
+      "LOC_mentions": 2484003.0,
+      "empty_LOC_fraction": 0.6940057194471128
+    },
+    {
+      "partition": "ru_valid",
+      "rows": 804363,
+      "documents": 73953,
+      "LOC_mentions": 372218.0,
+      "empty_LOC_fraction": 0.6924137485190144
+    }
+  ],
+  "RU_documents": 739190,
+  "RU_rows": 8028840,
+  "duplicate_doc_sent_groups": 0,
+  "duplicate_doc_sent_excess": 0,
+  "canonical_duplicate_groups_with_LOC_surface_conflicts": 4902,
+  "protected_UA_document_exclusions": 0,
+  "RU_validation_overlap_document_exclusions": 132569,
+  "active_cross_partition_docs": 0,
+  "active_cross_partition_canonical_texts": 0,
+  "protected_UA_matches_in_active_RU": 0,
+  "split_sha256": "23c17736c799113691b3eddd6bce6eb34c4d971ae1623cc8df87bd60ac535e1b",
+  "duckdb_version": "2.0.0",
+  "split_rule": "BLAKE2b(42:ru:doc_id) mod 10: 0=RU valid. Whole-doc exclusions for protected UA/external texts and RU fit/valid canonical overlap. Fit-only row-level alignment/conflict/dedup exclusions.",
+  "limitations": "No fuzzy/semantic/translation-equivalence matching. LOC surface-set conflict is a flag, not independent semantic adjudication.",
+  "entity_surfaces": {
+    "uk": {
+      "distinct_surfaces": 44824,
+      "mentions": 345114,
+      "singleton_surfaces": 31435,
+      "top20": [
+        {
+          "surface": "україни",
+          "n": 24452
+        },
+        {
+          "surface": "україні",
+          "n": 16859
+        },
+        {
+          "surface": "сша",
+          "n": 8862
+        },
+        {
+          "surface": "росії",
+          "n": 7705
+        },
+        {
+          "surface": "україна",
+          "n": 7431
+        },
+        {
+          "surface": "києві",
+          "n": 6544
+        },
+        {
+          "surface": "києва",
+          "n": 4062
+        },
+        {
+          "surface": "україну",
+          "n": 4036
+        },
+        {
+          "surface": "криму",
+          "n": 3510
+        },
+        {
+          "surface": "рф",
+          "n": 3349
+        },
+        {
+          "surface": "росія",
+          "n": 3132
+        },
+        {
+          "surface": "донбасі",
+          "n": 3064
+        },
+        {
+          "surface": "київ",
+          "n": 2633
+        },
+        {
+          "surface": "польщі",
+          "n": 2455
+        },
+        {
+          "surface": "львові",
+          "n": 2278
+        },
+        {
+          "surface": "європи",
+          "n": 2119
+        },
+        {
+          "surface": "франції",
+          "n": 2027
+        },
+        {
+          "surface": "львова",
+          "n": 1971
+        },
+        {
+          "surface": "росією",
+          "n": 1878
+        },
+        {
+          "surface": "укрaїнa",
+          "n": 1837
+        }
+      ]
+    },
+    "ru": {
+      "distinct_surfaces": 130797,
+      "mentions": 3708173,
+      "singleton_surfaces": 73710,
+      "top20": [
+        {
+          "surface": "россии",
+          "n": 315086
+        },
+        {
+          "surface": "сша",
+          "n": 212503
+        },
+        {
+          "surface": "рф",
+          "n": 99331
+        },
+        {
+          "surface": "украины",
+          "n": 86016
+        },
+        {
+          "surface": "москве",
+          "n": 65507
+        },
+        {
+          "surface": "москвы",
+          "n": 60854
+        },
+        {
+          "surface": "россия",
+          "n": 41482
+        },
+        {
+          "surface": "великобритании",
+          "n": 32841
+        },
+        {
+          "surface": "германии",
+          "n": 26717
+        },
+        {
+          "surface": "франции",
+          "n": 26042
+        },
+        {
+          "surface": "сирии",
+          "n": 25649
+        },
+        {
+          "surface": "грузии",
+          "n": 25516
+        },
+        {
+          "surface": "украине",
+          "n": 25333
+        },
+        {
+          "surface": "россию",
+          "n": 22691
+        },
+        {
+          "surface": "ес",
+          "n": 21175
+        },
+        {
+          "surface": "белоруссии",
+          "n": 18653
+        },
+        {
+          "surface": "израиля",
+          "n": 18376
+        },
+        {
+          "surface": "россией",
+          "n": 17350
+        },
+        {
+          "surface": "турции",
+          "n": 16758
+        },
+        {
+          "surface": "москва",
+          "n": 15107
+        }
+      ]
+    }
+  },
+  "shared_conservative_LOC_surfaces": 3336,
+  "experiment_selection_sha256": "49cbe217cda80d88f1accea76af54fbd994bcda2ae53fb5a389059217ea350d8"
+}
