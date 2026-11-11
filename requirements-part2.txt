@@ -1,0 +1,5 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+tokenizers==0.23.3

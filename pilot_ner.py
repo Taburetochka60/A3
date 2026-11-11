@@ -48,13 +48,13 @@ def documents(frame):
     return docs
 
 
-def vocabulary(docs,limit=30000):
-    counts=Counter(token_key(t.value) for d in docs for t in d['tokens'])
+def vocabulary(docs,limit=30000,key=token_key):
+    counts=Counter(key(t.value) for d in docs for t in d['tokens'])
     return {word:i+2 for i,(word,_) in enumerate(counts.most_common(limit))}
 
 
-def encode(docs,vocab):
-    for doc in docs:doc['ids']=[vocab.get(token_key(t.value),1) for t in doc['tokens']]
+def encode(docs,vocab,key=token_key):
+    for doc in docs:doc['ids']=[vocab.get(key(t.value),1) for t in doc['tokens']]
 
 
 def training_loader(docs,seed=SEED):
@@ -93,7 +93,7 @@ def train_epoch(model,loader,optimizer,weights,device):
     return dict(train_weighted_ce=numerator/denominator,mean_gradient_norm=float(np.mean(norms)),max_gradient_norm=max(norms))
 
 
-def infer_probabilities(model,docs,device):
+def infer_probabilities(model,docs,device,batch_size=64):
     """Gold-free windowed inference, safe for unlabeled competition texts."""
     rows=[];metadata=[];doc_windows=[]
     for i,d in enumerate(docs):
@@ -102,7 +102,7 @@ def infer_probabilities(model,docs,device):
             rows.append((d['ids'][a:b],[IGNORE]*(b-a)));metadata.append((i,a,b))
     model.eval();per_doc=[[] for _ in docs];offset=0
     with torch.no_grad():
-        for ids,lengths,_ in DataLoader(rows,batch_size=64,collate_fn=collate_ner):
+        for ids,lengths,_ in DataLoader(rows,batch_size=batch_size,collate_fn=collate_ner):
             probs=model(ids.to(device),lengths.to(device)).softmax(-1).cpu().numpy()
             for p,length in zip(probs,lengths.tolist()):
                 i,a,b=metadata[offset];offset+=1
