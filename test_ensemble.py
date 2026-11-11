@@ -136,6 +136,25 @@ class TrainMemberTest(unittest.TestCase):
         self.assertEqual(record['span_precision'], 1.)
         self.assertEqual(part2.score.__module__, 'part2')
 
+    def test_wandb_failure_does_not_stop_training(self):
+        import part2
+        from ensemble_members import train_member
+        original = part2.train
+
+        def train():
+            if part2.start_run(None, 'abcdefgh', dict(name='x'), {}) is not None:
+                raise AssertionError('expected no run')
+            return 'trained'
+        def refuse(*a, **k):
+            raise RuntimeError('run ID abcdefgh is in use')
+        start, part2.start_run, part2.train = part2.start_run, refuse, train
+        try:
+            with self.assertWarns(UserWarning):
+                self.assertEqual(train_member(), 'trained')
+            self.assertIs(part2.start_run, refuse)
+        finally:
+            part2.start_run, part2.train = start, original
+
 
 class SearchTest(unittest.TestCase):
     def test_sweep_matches_part2_score(self):

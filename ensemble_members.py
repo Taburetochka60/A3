@@ -100,19 +100,35 @@ def train_member(*args, **kwargs):
     validation metrics from part2.score also contain 'precision', so every NER epoch
     raises TypeError. Here part2.score reports span precision as 'span_precision' while
     training runs; nothing else changes, and it stays harmless once part2 is fixed.
+
+    W&B is only logging: if wandb.init fails (no access to the entity, a run ID in use),
+    the member trains without it and a warning says why.
     """
+    import warnings
     import part2
-    original = part2.score
+    original, original_start = part2.score, part2.start_run
 
     def score(*a, **k):
         result = original(*a, **k)
         result['span_precision'] = result.pop('precision')
         return result
-    part2.score = score
+
+    def start_run(*a, **k):
+        try:
+            return original_start(*a, **k)
+        except Exception as error:
+            warnings.warn(f'W&B logging off for this member ({type(error).__name__}: {error}); training continues')
+            try:
+                import wandb
+                wandb.finish(exit_code=1)
+            except Exception:
+                pass
+            return None
+    part2.score, part2.start_run = score, start_run
     try:
         return part2.train(*args, **kwargs)
     finally:
-        part2.score = original
+        part2.score, part2.start_run = original, original_start
 
 
 # kind -> function(checkpoint, device) returning (predict(docs) -> reference-token probabilities, info).
