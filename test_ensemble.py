@@ -122,6 +122,21 @@ class ExportTest(unittest.TestCase):
                 export_member(member, dict(checkpoint=items), Path(folder)/'bundles')
 
 
+class TrainMemberTest(unittest.TestCase):
+    def test_validation_metrics_no_longer_clash_with_precision_mode(self):
+        import part2
+        from ensemble_members import train_member
+        items = docs(); original = part2.train
+        part2.train = lambda: dict(precision='bf16', **part2.score(items, oracle(items)))
+        try:
+            record = train_member()
+        finally:
+            part2.train = original
+        self.assertEqual(record['precision'], 'bf16')
+        self.assertEqual(record['span_precision'], 1.)
+        self.assertIs(part2.score.__module__, 'part2')
+
+
 class SearchTest(unittest.TestCase):
     def test_sweep_matches_part2_score(self):
         items = docs(); p = blend(dict(a=oracle(items, .7), b=noise(items, 0)), dict(a=2., b=1.))

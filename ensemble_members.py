@@ -93,6 +93,28 @@ def part2_predictor(checkpoint, device='cpu'):
     return predict, info
 
 
+def train_member(*args, **kwargs):
+    """part2.train for a new member, working around a clash in its epoch record.
+
+    part2.train builds dict(..., precision=<mixed-precision mode>, **metrics), and the
+    validation metrics from part2.score also contain 'precision', so every NER epoch
+    raises TypeError. Here part2.score reports span precision as 'span_precision' while
+    training runs; nothing else changes, and it stays harmless once part2 is fixed.
+    """
+    import part2
+    original = part2.score
+
+    def score(*a, **k):
+        result = original(*a, **k)
+        result['span_precision'] = result.pop('precision')
+        return result
+    part2.score = score
+    try:
+        return part2.train(*args, **kwargs)
+    finally:
+        part2.score = original
+
+
 # kind -> function(checkpoint, device) returning (predict(docs) -> reference-token probabilities, info).
 # The n-gram model needs its own encoder and hashing code before it can be registered here.
 PREDICTORS = {'part2': part2_predictor}
