@@ -18,6 +18,9 @@ import pandas as pd
 from ner_data import tokenize_offsets
 from pilot_ner import documents
 from part2_data import fingerprint, read_split, save_json, text_group
+from part2_compat import pin_grouping_hash
+
+pin_grouping_hash()  # Colab runs Python 3.13; without this every read_split rejects the frozen split
 
 PROTECTED = ['fit', 'checkpoint', 'calibration', 'audit']
 UK_SPLITS = {'checkpoint', 'calibration', 'audit'}
