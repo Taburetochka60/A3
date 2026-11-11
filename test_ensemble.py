@@ -134,7 +134,7 @@ class TrainMemberTest(unittest.TestCase):
             part2.train = original
         self.assertEqual(record['precision'], 'bf16')
         self.assertEqual(record['span_precision'], 1.)
-        self.assertIs(part2.score.__module__, 'part2')
+        self.assertEqual(part2.score.__module__, 'part2')
 
 
 class SearchTest(unittest.TestCase):
