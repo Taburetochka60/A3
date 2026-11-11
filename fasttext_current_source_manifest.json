@@ -1,0 +1,23 @@
+{
+  "files": {
+    "part2.py": "5cfd293f5d8c31e25647905711beea0c1472bdc2d07f571f0024990276475db8",
+    "part2_data.py": "18f0100bf6d05999063ecde4d0009aba9d8765eb71228ccfcf7d024ebe8b0f69",
+    "part2_split.json": "fb93675d35dd60a8aff2f9618ec88fc48f6cf521b1607ca2dce03a29a4ff5cfd",
+    "ner_data.py": "9b3d13c4d2afd048bbf28771cab420b1f7bd217fa96b8c9dce959703cba53a60",
+    "pilot_ner.py": "94c2d7b4b55fcadf4948beb4b3f6dafdd7cbe345e06be715f6ac3718107fc989",
+    "recurrent_model.py": "33f0ddfe9d722a044df6fd3546c917046c3aac83df49826a60af0a3628047ae1",
+    "metrics.py": "694c5d62ae9a30c961e3dd12bdc5e07f76e33568a9a7e2ff5237e709e35dc35a",
+    "validation.py": "8d1fde6af4d8cddadd6c8ad1b69d43277579ce2e238fe3542a0a002773161123",
+    "experiments/__init__.py": "91dec22fddb338ad8b3988205bd175dff69c0a1de4f07ddbc22ed5132c3102e0",
+    "experiments/representation.py": "faaab21eb113735e44ca41fff78006f10168c9887801fdc17eb9f5cff33d4aaa",
+    "experiments/tracking.py": "ea4aa66f269d8e31d16c4fd0f2b4e3a4f0bb3edfcb64898341c00672f5a4fe70",
+    "experiments/fasttext_embeddings.py": "e537896b43b8bbcfbbb634fa5761ef34691219a232d92d47b1f04723de810932",
+    "experiments/fasttext_experiment.py": "9407e27cc0ee7a1f610318feeb163bbbceaea66ddd4046c5e257bd34a2609cef",
+    "experiments/fasttext_subword.py": "715e85aabe5b3934ee6ef80d724abb03a1141ec58532f86b358474abb3a376b6",
+    "test_fasttext.py": "387bd1e2e2e450dcc1c1b56b7bb60a957f92300027c602906893996560b0b44c",
+    "test_fasttext_subword.py": "da7e87b4580a1918a0e1ca769f41e44f3c10f2b8f1c90cc3a883cf722c9f27bc",
+    "requirements-fasttext.txt": "ca950a5563b3eacfcfdde23edb76bfd5a964d9e97b2c7e395aa1fa9b2637a007",
+    "docs/FASTTEXT_PROTOCOL.md": "68dc7663bc2acc40ec09718f990b087240d06b47f1e8fcefe2c6370822c3b584"
+  },
+  "source_id": "11c815476495d5c15d79cc00b5a4c99ae9fe320918505e4af0452013dc97867c"
+}

@@ -1,0 +1,8 @@
+# Keep Colab's working CUDA PyTorch installation.
+numpy
+pandas
+matplotlib
+scikit-learn
+pybind11>=2.13
+fasttext==0.9.3
+wandb==0.31.0

@@ -2,6 +2,73 @@
 
 This repository contains EDA, metric analysis, a validation strategy, adversarial validation, and a short BiGRU NER pilot. Full-scale training and ensembling have not been completed. The trained pilot uses the shared recurrent encoder and NER head in `recurrent_model.py`.
 
+## Part 2: one BiLSTM pipeline
+
+Use [A3_colab.ipynb](A3_colab.ipynb). The code is in `part2.py`, `part2_data.py` and one self-contained `part2_split.json`. The notebook has six steps: setup, load, prepare, train, evaluate and predict.
+
+On Drive, use `MyDrive/KSE_AI301_A3/`:
+- `project/`: the three Part 2 source/split files, `requirements-part2.txt`, and the existing `ner_data.py`, `pilot_ner.py`, `recurrent_model.py`, `metrics.py`, `validation.py`.
+- `data/`: `uk_geo_dataset.csv`, `test.csv`, `labeling_sample.csv`.
+- `part2_model/checkpoint.pt`: the saved baseline checkpoint, which includes its vocabulary. Data and weights stay outside Git.
+
+Start a fresh Colab session. Set `ACTION = 'predict'` to load and verify the saved model, or `ACTION = 'train'` to start a separate GPU reproduction from scratch. Run all cells. Training reads no old results folders and resumes only its own checkpoints in `results/part2/`. Prediction checks checkpoint, vocabulary, split, original offsets and the final submission hash. Outputs go to `results/part2/predict/` or `results/part2/train/`; old results stay unchanged. Kaggle upload is manual.
+
+The fixed model is a two-layer BiLSTM, embedding/hidden size 64, dropout .2, AdamW LR .002, weight decay .01, seed 42, batch 128, maximum 15 epochs and patience 6. It uses strict filtering and threshold .8. The frozen split keeps 100,000 fit / 4,000 checkpoint / 2,000 calibration / 4,000 audit rows, the original CV/AV folds and all 477 test IDs. Grouping-code and derived-data hashes protect the split; vocabulary fits training rows only. The frozen groups cover verified copies, not every possible paraphrase.
+
+Measured baseline F1: checkpoint before calibration **.76384840**, 3-fold CV **.70673575**, calibration **.79520000**, independent audit **.79032897**. Public F1 **.46103** was reported by the student and was not independently checked here. The original saved model and predictions are the baseline, not a promise that a new GPU run is bit-identical.
+
+`EXPERIMENTS` is a small list for GRU/LSTM, depth, data size, Adam/AdamW, LR/decay, scheduler and word/BPE comparisons. Use the same `train()` function with `configuration(**changes)` and a separate output folder. These clean comparisons have not been rerun. In an approved Colab experiment, use:
+
+```python
+from part2 import EXPERIMENTS, configuration
+cfg = configuration(**EXPERIMENTS[2])
+trial = train(cfg, data['fit'], data['checkpoint'], spec,
+              ROOT/'results/experiments'/cfg['name'], WORK/'runs')
+```
+
+For data composition, pass a unique subset of frozen fit rows and set `train_rows` to its size. Adding other source rows requires a separate verified split; never edit the baseline manifest in place. `score()` accepts a decoder, filter and threshold for development checks without changing the baseline. `select_postprocessing()` uses checkpoint/calibration only. Audit is not evaluated by default; a final audit is an explicit step after choices are frozen. Never use hidden test labels or individual organizer examples for tuning.
+
+Tests: `python -m unittest discover -v`. AI assistance is disclosed in [AI_USE.md](AI_USE.md). The sections below keep the earlier team baseline and Russian-data work.
+
+### FastText experiments and inference
+
+Three fresh 300d BiLSTMs compare random word embeddings, Ukrainian FastText initialization, and FastText with fixed OOV vectors in both training and inference. The n-grams model stays a read-only reference. All use the frozen rows; epochs use checkpoint raw F1. Final comparison uses threshold .8 and strict filtering. Read [the protocol](docs/FASTTEXT_PROTOCOL.md).
+
+Measured Colab F1 (same partitions, strict/.8):
+
+| Model | Checkpoint | Calibration |
+| --- | ---: | ---: |
+| Character n-grams reference | .831981 | .803997 |
+| FastText Subword | .819229 | .816946 |
+
+These scores do not show a Kaggle improvement. The CSV in `reports/fasttext_comparison_template.csv` is a template, not the run ledger. Actual checkpoints and results stay on [Drive](https://drive.google.com/drive/folders/1viE7HfbOPskF1pXQcfSWUHnFE7bxWzOU); tracking is in [W&B](https://wandb.ai/dtkach-kse/ai301-a3). No weights or generated submissions enter Git.
+
+For the trained model, keep Drive `fasttext_subword_source/` unchanged. `fasttext_source_manifest.json` is its historical snapshot (`9b66382e…`), not the current Git file list. `fasttext_submission.py` pins that snapshot, checks the selected checkpoint, vocabulary and split, and adds only missing test OOV vectors from the same official binary. It compares old predictions with absolute tolerance .0005 and requires exact entities and offsets. No audit tuning or training runs during inference.
+
+In a separate Colab notebook, mount Drive and run:
+
+```python
+from google.colab import drive
+import subprocess, sys
+
+drive.mount('/content/drive')
+ROOT = '/content/drive/MyDrive/KSE_AI301_A3'
+subprocess.check_call([sys.executable, ROOT + '/fasttext_submission.py'])
+```
+
+Keep the three original CSVs in `ROOT/data/` and all trained artifacts in their existing paths. The [Drive script](https://drive.google.com/file/d/16SIOQUldqBPL2PvAODOX1ukU3U87o_M6/view?usp=drivesdk) produces `ROOT/submissions/submission_fasttext_subword.csv`, its spans CSV and metadata JSON. It keeps 477 IDs in their original order and refuses different existing outputs. Cached vectors are reused. Loading the large binary needs about 9 GiB available host RAM; use High-RAM only if the check requires it.
+
+For a new GPU reproduction, the local `A3_fasttext_colab.ipynb` uses the corrected Git source and a separate `fasttext_current_source_manifest.json`. Prepare its ordinary source folder with:
+
+```python
+from experiments.fasttext_experiment import make_source
+make_source('.', '/tmp/fasttext_current_source')
+```
+
+Upload that folder and the local notebook to Drive, then Run All on a GPU. Keep Colab PyTorch. New runs go to `results/fasttext_reproduction/`; do not resume historical runs with a different source ID. W&B uses Secrets/environment and saves local CSV/checkpoints during outages. The official FastText archive stays in `cache/fasttext/`. This corrected source has passed CPU tests; no GPU retraining was performed for these fixes.
+
+Tests: `python -m unittest test_fasttext test_fasttext_subword test_part2 test_fasttext_submission -v`. AI assistance is disclosed in `AI_USE.md`.
+
 ## Results and deliverables
 
 - [EDA and metric report](reports/EDA_AND_METRIC_ANALYSIS.md): findings, tables, limitations, and recommendations.
