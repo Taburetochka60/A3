@@ -1,0 +1,122 @@
+import json
+import tempfile
+from pathlib import Path
+import unittest
+
+import numpy as np
+import pandas as pd
+
+from ner_data import Token
+from pilot_ner import documents
+from part2 import score
+from ensemble import blend, greedy_search, run_search, subset_search, sweep
+from ensemble_members import load_bundle, save_bundle, to_reference
+
+TEXTS = [('Вибух у Києві та Львові.', [(8, 13), (17, 23)]),
+         ('Новини з Харкова', [(9, 16)]),
+         ('Без локацій тут', [])]
+
+
+def docs():
+    frame = pd.DataFrame(dict(text=[t for t, _ in TEXTS], loc_markers=[json.dumps(s) for _, s in TEXTS]),
+                         index=[10, 11, 12])
+    return documents(frame)
+
+
+def oracle(items, confidence=.95):
+    result = []
+    for d in items:
+        p = np.full((len(d['tokens']), 3), (1-confidence)/2)
+        p[np.arange(len(d['tokens'])), d['bio']] = confidence
+        result.append(p)
+    return result
+
+
+def noise(items, seed):
+    rng = np.random.default_rng(seed)
+    return [rng.dirichlet(np.ones(3), len(d['tokens'])) for d in items]
+
+
+class ReferenceAlignmentTest(unittest.TestCase):
+    def test_first_piece_of_each_word(self):
+        reference = [Token('Києві', 0, 5), Token('.', 5, 6)]
+        pieces = [Token('Киє', 0, 3), Token('ві', 3, 5), Token('.', 5, 6)]
+        p = np.array([[.1, .8, .1], [.1, .1, .8], [.9, .05, .05]])
+        np.testing.assert_allclose(to_reference(reference, pieces, p), p[[0, 2]])
+
+    def test_rejects_pieces_crossing_words(self):
+        reference = [Token('Київ', 0, 4), Token('і', 5, 6)]
+        with self.assertRaises(ValueError):
+            to_reference(reference, [Token('Київ і', 0, 6)], np.ones((1, 3))/3)
+
+
+class BundleTest(unittest.TestCase):
+    def test_round_trip_and_mismatch(self):
+        items = docs(); p = oracle(items)
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)/'m'/'checkpoint.npz'
+            save_bundle(path, items, p, dict(member='m'))
+            loaded, meta = load_bundle(path, items)
+            self.assertEqual(meta['member'], 'm')
+            for a, b in zip(loaded, p):
+                np.testing.assert_allclose(a, b, atol=1e-6)
+            with self.assertRaises(ValueError):
+                load_bundle(path, items[::-1])
+
+
+class ExportTest(unittest.TestCase):
+    def test_part2_checkpoint_to_bundles(self):
+        import torch
+        from ensemble_members import export_member
+        from recurrent_model import NERModel
+        from part2 import CONFIG
+        items = docs()
+        encoding = dict(kind='word', vocabulary={'києві': 2, 'у': 3}, size=4)
+        torch.manual_seed(0)
+        model = NERModel(encoding['size'], **CONFIG['encoder'])
+        with tempfile.TemporaryDirectory() as folder:
+            checkpoint = Path(folder)/'best.pt'
+            torch.save(dict(model=model.state_dict(), config=CONFIG, encoding=encoding, epoch=1, split_hash='x'), checkpoint)
+            member = dict(name='word', kind='part2', checkpoint=checkpoint)
+            export_member(member, dict(checkpoint=items, test=items), Path(folder)/'bundles')
+            loaded, meta = load_bundle(Path(folder)/'bundles'/'word'/'test.npz', items)
+            self.assertEqual(meta['model']['tokenizer'], 'word')
+            self.assertEqual([len(p) for p in loaded], [len(d['tokens']) for d in items])
+            torch.save(dict(model=model.state_dict(), config=CONFIG, encoding=encoding, epoch=2, split_hash='x'), checkpoint)
+            with self.assertRaises(ValueError):
+                export_member(member, dict(checkpoint=items), Path(folder)/'bundles')
+
+
+class SearchTest(unittest.TestCase):
+    def test_sweep_matches_part2_score(self):
+        items = docs(); p = blend(dict(a=oracle(items, .7), b=noise(items, 0)), dict(a=2., b=1.))
+        for row in sweep(items, p, [0., .5, .8]):
+            self.assertEqual(row['f1'], score(items, p, row['threshold'], 'strict')['f1'])
+
+    def test_blend_is_normalised_average(self):
+        items = docs(); a, b = oracle(items), noise(items, 1)
+        mixed = blend(dict(a=a, b=b, c=b), dict(a=1., b=3., c=0.))
+        np.testing.assert_allclose(mixed[0], (a[0]+3*b[0])/4)
+
+    def test_search_prefers_accurate_member(self):
+        items = docs(); members = dict(good=oracle(items), bad1=noise(items, 2), bad2=noise(items, 3))
+        trace = greedy_search(members, items, rounds=3)
+        self.assertEqual(trace.added.iloc[0], 'good')
+        self.assertEqual(subset_search(members, items).iloc[0].members, 'good')
+
+    def test_run_search_writes_recipe(self):
+        items = docs(); members = dict(good=oracle(items), bad=noise(items, 4))
+        with tempfile.TemporaryDirectory() as folder:
+            for name, p in members.items():
+                for split in ['testlike_select', 'checkpoint']:
+                    save_bundle(Path(folder)/'bundles'/name/f'{split}.npz', items, p, dict(member=name))
+            result, table = run_search(Path(folder)/'bundles', list(members),
+                                       dict(testlike_select=items, checkpoint=items), Path(folder)/'search', rounds=2)
+            self.assertEqual(list(result['final']['weights']), ['good'])
+            self.assertEqual(result['final']['select_f1'], 1.)
+            self.assertTrue((Path(folder)/'search'/'recipe.json').exists())
+            self.assertEqual(set(table.split), {'testlike_select', 'checkpoint'})
+
+
+if __name__ == '__main__':
+    unittest.main()
