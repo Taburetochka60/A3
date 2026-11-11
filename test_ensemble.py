@@ -72,6 +72,19 @@ class MultilinePostTest(unittest.TestCase):
         self.assertEqual([doc['text'][a:b] for a, b in doc['spans']], ['Києві', 'Львові', 'Харкова'])
 
 
+class GroupingHashTest(unittest.TestCase):
+    def test_pinned_hash_matches_frozen_split(self):
+        import part2_data
+        from part2_compat import pin_grouping_hash
+        original = part2_data.grouping_hash
+        try:
+            pin_grouping_hash()
+            self.assertEqual(part2_data.read_split('part2_split.json')['grouping']['implementation_sha256'],
+                             part2_data.grouping_hash())
+        finally:
+            part2_data.grouping_hash = original
+
+
 class BundleTest(unittest.TestCase):
     def test_round_trip_and_mismatch(self):
         items = docs(); p = oracle(items)
