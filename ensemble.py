@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from metrics import score_details
@@ -33,6 +34,28 @@ def sweep(docs, probabilities, thresholds=THRESHOLDS, policy='strict'):
 
 def best(rows):
     return max(rows, key=lambda r: (r['f1'], -r['threshold']))
+
+
+def document_counts(docs, probabilities, threshold, policy='strict'):
+    """Per-document tp/fp/fn; their column sums are exactly the competition counts."""
+    locations, _, _ = decode(docs, probabilities, threshold, policy)
+    rows = [score_details([[d['text'][a:b] for a, b in d['spans']]], [l]) for d, l in zip(docs, locations)]
+    return np.array([[r['tp'], r['fp'], r['fn']] for r in rows])
+
+
+def bootstrap_delta(a, b, samples=2000, seed=42, chunk=250):
+    """Paired bootstrap over documents of F1(b) - F1(a), given document_counts of both."""
+    def f1(c):
+        return 2*c[..., 0]/np.maximum(2*c[..., 0]+c[..., 1]+c[..., 2], 1)
+    rng = np.random.default_rng(seed)
+    deltas = []
+    for start in range(0, samples, chunk):
+        w = rng.multinomial(len(a), np.full(len(a), 1/len(a)), size=min(chunk, samples-start))
+        deltas.append(f1(w@b)-f1(w@a))
+    deltas = np.concatenate(deltas)
+    low, high = np.quantile(deltas, [.025, .975])
+    return dict(delta=float(f1(b.sum(0))-f1(a.sum(0))), low=float(low), high=float(high),
+                share_positive=float((deltas > 0).mean()))
 
 
 def blend(members, weights):

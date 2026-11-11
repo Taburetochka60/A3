@@ -9,7 +9,9 @@ import pandas as pd
 from ner_data import Token
 from pilot_ner import documents
 from part2 import score
-from ensemble import blend, greedy_search, run_search, subset_search, sweep
+from metrics import score_details
+from ensemble import blend, bootstrap_delta, document_counts, greedy_search, run_search, subset_search, sweep
+from ensemble_data import compose_frame, compose_posts
 from ensemble_members import load_bundle, save_bundle, to_reference
 
 TEXTS = [('Вибух у Києві та Львові.', [(8, 13), (17, 23)]),
@@ -32,6 +34,11 @@ def oracle(items, confidence=.95):
     return result
 
 
+def part2_locations(items, p):
+    from part2 import decode
+    return decode(items, p, 0., 'strict')[0]
+
+
 def noise(items, seed):
     rng = np.random.default_rng(seed)
     return [rng.dirichlet(np.ones(3), len(d['tokens'])) for d in items]
@@ -48,6 +55,21 @@ class ReferenceAlignmentTest(unittest.TestCase):
         reference = [Token('Київ', 0, 4), Token('і', 5, 6)]
         with self.assertRaises(ValueError):
             to_reference(reference, [Token('Київ і', 0, 6)], np.ones((1, 3))/3)
+
+
+class MultilinePostTest(unittest.TestCase):
+    def test_posts_reach_target_lengths(self):
+        posts = compose_posts([5, 6, 7, 8], [3, 3, 3, 3], [6], np.random.default_rng(0))
+        self.assertEqual([p['rows'] for p in posts], [[5, 6], [7, 8]])
+
+    def test_spans_point_to_same_surfaces(self):
+        rows = pd.DataFrame(dict(text=[t for t, _ in TEXTS], loc_markers=[json.dumps(s) for _, s in TEXTS]),
+                            index=[10, 11, 12])
+        frame = compose_frame(rows, [dict(rows=[10, 11, 12], separator='\n\n')])
+        (doc,) = documents(frame)
+        self.assertEqual(doc['row_id'], 10)
+        self.assertEqual(doc['text'].count('\n\n'), 2)
+        self.assertEqual([doc['text'][a:b] for a, b in doc['spans']], ['Києві', 'Львові', 'Харкова'])
 
 
 class BundleTest(unittest.TestCase):
@@ -92,6 +114,18 @@ class SearchTest(unittest.TestCase):
         items = docs(); p = blend(dict(a=oracle(items, .7), b=noise(items, 0)), dict(a=2., b=1.))
         for row in sweep(items, p, [0., .5, .8]):
             self.assertEqual(row['f1'], score(items, p, row['threshold'], 'strict')['f1'])
+
+    def test_document_counts_sum_to_metric(self):
+        items = docs(); p = noise(items, 5)
+        counts = document_counts(items, p, 0.)
+        total = score_details([[d['text'][a:b] for a, b in d['spans']] for d in items],
+                              part2_locations(items, p))
+        self.assertEqual(counts.sum(0).tolist(), [total['tp'], total['fp'], total['fn']])
+
+    def test_bootstrap_of_identical_members_is_zero(self):
+        items = docs(); counts = document_counts(items, oracle(items), .5)
+        r = bootstrap_delta(counts, counts, samples=100)
+        self.assertEqual((r['delta'], r['low'], r['high']), (0., 0., 0.))
 
     def test_blend_is_normalised_average(self):
         items = docs(); a, b = oracle(items), noise(items, 1)
