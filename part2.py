@@ -17,6 +17,7 @@ from pilot_ner import class_weights, infer_probabilities, seed_all
 from recurrent_model import NERModel, DomainModel
 from validation import collate as collate_domain
 from part2_data import file_hash, fingerprint, save_json, fit_encoding, encode_documents
+from wandb_logger import start_run, log_epoch, finish_run
 
 CONFIG = dict(name='CLEAN_LSTM2_100k', seed=42, train_rows=100000, batch_size=128,
     encoder=dict(rnn_type='lstm', num_layers=2, embedding_dim=64, hidden_size=64,
@@ -217,6 +218,7 @@ def train(config, training, validation, spec, folder, work_dir='/content/a3_runs
         scaler.load_state_dict(saved['scaler']); restore_rng(saved['rng'])
         if precision == 'bf16' and not hardware['bf16']:
             precision = 'fp16'; scaler = torch.amp.GradScaler('cuda', init_scale=1024.)
+    logger = start_run(folder, identity, config, hardware, domain=domain)
     last_save = segment_start = time.monotonic()
 
     def save_progress():
@@ -272,6 +274,7 @@ def train(config, training, validation, spec, folder, work_dir='/content/a3_runs
             peak_gpu_gb=torch.cuda.max_memory_allocated()/2**30,
             precision=precision, **metrics)
         progress['history'].append(record)
+        log_epoch(logger, record)
         if fixed_epochs is not None or metrics['f1'] > progress['best']:
             progress['best'] = metrics.get('f1', -1.); progress['bad'] = 0
             torch.save(dict(model=model.state_dict(), config=config, encoding=state, epoch=epoch,
@@ -291,6 +294,7 @@ def train(config, training, validation, spec, folder, work_dir='/content/a3_runs
         epochs=len(progress['history']), seconds=progress['seconds'], class_counts=counts, hardware=hardware,
         history=progress['history'])
     save_json(folder/'result.json', result)
+    finish_run(logger, result)
     del model; torch.cuda.empty_cache()
     return result
 
