@@ -1,0 +1,9 @@
+model,partition,status,precision,recall,f1,oov_recall,iv_recall,training_seconds,parameters,checkpoint_bytes,fasttext_dictionary_coverage,checkpoint_sha256
+random,checkpoint,template,,,,,,,,,,
+random,calibration,template,,,,,,,,,,
+fasttext,checkpoint,template,,,,,,,,,,
+fasttext,calibration,template,,,,,,,,,,
+reference,checkpoint,previously_measured,0.8473642800944139,0.8171471927162367,0.83198146,,,177.69991729399862,3134979,13404410,,ed3c9e14bba969a129d3f70e670e05b968815bb93e4586fb1161cc0f7afeaa29
+reference,calibration,previously_measured,0.8021472392638037,0.8058551617873652,0.80399693,,,177.69991729399862,3134979,13404410,,ed3c9e14bba969a129d3f70e670e05b968815bb93e4586fb1161cc0f7afeaa29
+fasttext_subword,checkpoint,template,,,,,,,,,,
+fasttext_subword,calibration,template,,,,,,,,,,

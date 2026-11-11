@@ -70,7 +70,8 @@ def text_group(text):
 
 def grouping_hash():
     functions = [fingerprint, grouping_text, normalized_words, separator_signature, text_group]
-    return fingerprint([ast.dump(ast.parse(inspect.getsource(f)), include_attributes=False) for f in functions])
+    options = {'show_empty': True} if 'show_empty' in inspect.signature(ast.dump).parameters else {}
+    return fingerprint([ast.dump(ast.parse(inspect.getsource(f)), include_attributes=False, **options) for f in functions])
 
 
 def documents_hash(docs, with_ids=False):

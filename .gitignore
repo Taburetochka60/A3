@@ -226,3 +226,9 @@ __marimo__/
 *.pt
 *.pth
 *.ckpt
+# FastText experiment cache and generated outputs
+cc.uk.300.bin*
+/cache/fasttext/
+/results/fasttext_v1/
+/results/fasttext_reproduction/
+/submissions/
