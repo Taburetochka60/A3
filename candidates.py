@@ -117,7 +117,7 @@ def overlap(texts, candidates):
 
 
 def build_all(test_csv, source_dir, out_dir):
-    """Every candidate for S1 (reproduction), S2, S3, S4 (rule U) and S6 (cutoff 0.9); returns the sanity tables."""
+    """Every candidate for S1 (reproduction), S2, S3, S4 (rule U), S6 (cutoff 0.9) and S8 (both); returns the sanity tables."""
     test = pd.read_csv(test_csv, keep_default_na=False)
     texts, signatures = test.text.tolist(), signature_lines(test.text)
     raw = {name: load_spans(Path(source_dir)/file, test) for name, file in SOURCES.items() if (Path(source_dir)/file).exists()}
@@ -129,7 +129,7 @@ def build_all(test_csv, source_dir, out_dir):
         candidates['S1_ngrams_AB'+tag] = members['ngrams']
         candidates['S2_fasttext_AB'+tag] = members['fasttext']
         candidates[f'S3_vote2_{"_".join(voters)}_AB'+tag] = vote(texts, [members[n] for n in voters], 2)
-    for name in [n for n in candidates if not n.endswith('_t090')]:
+    for name in list(candidates):
         candidates[name+'_U'] = drop_countries(texts, candidates[name])
     out_dir = Path(out_dir)
     for name, spans in candidates.items():

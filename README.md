@@ -1,6 +1,6 @@
 # Assignment 3: EDA and Metric Analysis
 
-This repository contains EDA, metric analysis, a validation strategy, adversarial validation, and a short BiGRU NER pilot. Full-scale training and ensembling have not been completed. The trained pilot uses the shared recurrent encoder and NER head in `recurrent_model.py`.
+This repository contains EDA, metric analysis, a validation strategy, adversarial validation, and a short BiGRU NER pilot (sections below), the Part 2 BiLSTM pipeline with word, character n-gram, BPE and FastText representations, and the Part 3 ensemble and post-processing that produce the final submission (public F1 **0.57580**; see [Part 3](#part-3-ensembling-post-processing-and-leaderboard)). The pilot uses the shared recurrent encoder and NER head in `recurrent_model.py`.
 
 ## Part 2: one BiLSTM pipeline
 
@@ -68,6 +68,80 @@ make_source('.', '/tmp/fasttext_current_source')
 Upload that folder and the local notebook to Drive, then Run All on a GPU. Keep Colab PyTorch. New runs go to `results/fasttext_reproduction/`; do not resume historical runs with a different source ID. W&B uses Secrets/environment and saves local CSV/checkpoints during outages. The official FastText archive stays in `cache/fasttext/`. This corrected source has passed CPU tests; no GPU retraining was performed for these fixes.
 
 Tests: `python -m unittest test_fasttext test_fasttext_subword test_part2 test_fasttext_submission -v`. AI assistance is disclosed in `AI_USE.md`.
+
+## Part 3: ensembling, post-processing and leaderboard
+
+### All experiments: offline and leaderboard scores
+
+Offline F1 is the competition metric on the frozen `part2_split.json` partitions (threshold .8, strict filter unless stated). "Organiser rows" are the 26 labelled rows in `labeling_sample.csv`. Public F1 is from `kaggle competitions submissions`; every submission the team made is listed.
+
+| # | Experiment | Offline F1 | Public F1 |
+|---|---|---|---|
+| 1 | Word BiLSTM, frozen baseline (`submission.csv`) | calibration .7952, 3-fold CV .7067, audit .7903 | .46103 |
+| 2 | Character n-gram BiLSTM (`submission_candidate.csv`) | calibration .8040, checkpoint .8320; 3-fold OOF .803 vs .758 for the baseline | .50370 |
+| 3 | FastText Subword BiLSTM (`submission_fasttext_subword.csv`) | calibration .8169, checkpoint .8192 | .50898 |
+| 4 | BPE BiLSTM, retrained in the probe (`bpe_t080_strict.csv`) | checkpoint .8092 on BPE pieces, .826 on whole words | .47471 |
+| 5 | Greedy probability blend: BPE .50, word seed 43 .33, word seed 44 .17, threshold 0 (`greedy_calibration_t000_strict.csv`) | checkpoint .8453 vs .8404 for tuned BPE alone (+.0049, 95% CI [−.008, +.019]); organiser rows .543 | .50211 |
+| 6 | **S1**: experiment 2 + post-processing A+B (`ngrams_postAB.csv`) | member as in 2; A+B on the organiser rows (greedy predictions): .543 → .676 | .55606 |
+| 7 | **S2**: experiment 3 + A+B (`S2_fasttext_AB.csv`) | member as in 3 | .56320 |
+| 8 | **S3**: vote ≥2 of 3 over experiments 3, 2 and 5 cut at .8, each after A+B (`S3_vote2_fasttext_ngrams_greedy_AB.csv`) | not measured: the FastText and n-gram members have test predictions only | **.57580** |
+
+Organiser baselines on the same leaderboard: RNN .55118, BERT .59296.
+
+### What the leaderboard gap is
+
+Offline F1 is .80–.85 for every model, public F1 was .46–.51 before post-processing. The gap is a format shift, not leakage or a weak model:
+
+- Training rows are single news sentences (0% multi-line, median 91 characters). Test texts are Telegram posts: 85% multi-line, 52% with emoji, 7% Russian, median 264 characters. The 26 organiser rows come from the same channels as the test.
+- The organisers never label channel signatures (6 of 6 in their sample, e.g. "Київ — пряма трансляція 👈"); about 90 test texts carry such a line, and the models tag the place name in it.
+- Models trained on single sentences do not stop a span at a line break ("ТЦ Аркадія\n\n📍"); the metric compares lower-cased strings with digits removed, so the attached junk turns a correct location into a false positive.
+- We over-predict: the n-gram submission has 1.62 distinct strings per text against 1.23 gold strings per organiser row.
+
+A test-like split did not fix model selection. `ensemble_data.py` ranks training rows by a TF-IDF + logistic-regression adversarial classifier (AUC .968) and packs the most test-like rows into multi-line posts sized like test texts (`ensemble_split.json`, 261 selection + 255 report posts). The word baseline scores .695/.746 there, .800 on checkpoint and .523 on the organiser rows: harder than checkpoint, but still far from the leaderboard. Only the organiser rows have tracked the leaderboard, so they were used for direction only (never for tuning) and Kaggle for decisions.
+
+### Probability ensemble (probe)
+
+`ensemble_probe_colab.ipynb` trains members on the same fit rows through `ensemble_members.train_member` (wrapping `part2.train`), exports per-token O/B/I probabilities on a shared word tokenisation (`export_member`, verified against each member's logged F1), and searches blends in `ensemble.py`: greedy weighted averaging, all subsets of up to four members, and thresholds {0, .5, .6, .7, .8, .9}, chosen on calibration and reported on checkpoint with a paired bootstrap over documents.
+
+- Members: word BiLSTM seeds 42 (frozen), 43, 44; a 2-layer BiGRU; BPE BiLSTM.
+- Equal-weight averages lose to BPE alone at .8: all five −.021 [−.039, −.003], three word seeds −.032 [−.051, −.013]. BPE is about .04 stronger than each word model, and averaged probabilities are flatter, so more correct spans fall below .8.
+- Averaging seeds helps within one family: the 3-seed average scores .807 on checkpoint against .783–.800 per seed.
+- Diversity: word models disagree on 5–7% of checkpoint texts (the GRU included, so it adds nothing beyond another seed), BPE on about 9%.
+- The greedy blend chose threshold 0 on calibration. On the organiser rows threshold 0 was the worst choice in 12 of 12 model/decoding combinations, with .8–.9 best; the final vote therefore cuts it at .8.
+
+### Post-processing for Telegram posts (`postprocess.py`)
+
+Applied to any `*_spans.csv` that `part2.export_submission` writes next to a submission; it reads the unlabelled test texts only.
+
+- **Rule A**: trim non-alphanumeric characters at both ends (keeping a closing quote whose opener is inside), cut a span at a line break or a spaced dash, complete words cut at a hyphen or apostrophe ("-Франківську" → "Івано-Франківську"), drop spans with fewer than two letters (the metric deletes digits).
+- **Rule B**: drop spans inside a signature line (a line repeated verbatim in at least four test texts), an @handle or a link.
+
+### String-level vote (`candidates.py`)
+
+The probability ensemble needs every member on the same tokens, and the FastText member needs the 7 GB vector file for unseen words, so the final ensemble votes on output strings instead. Each member's spans get rules A+B; a string (normalised exactly as the metric does) is kept when at least two of the three members predict it, with the surface form of the first member in the order FastText, n-gram, greedy. `cutoff` re-filters the greedy spans from threshold 0 to .8; this equals decoding at .8 because `part2.decode` keeps a span when its mean B+I probability reaches the threshold. The vote keeps 1.27 strings per text against 1.49 for S1.
+
+Adoption rules were fixed before submitting: strong-evidence changes (A+B) are kept unless they lose more than .01; weak-evidence changes (the vote, rules below) only if they gain at least .01, since .01 public F1 is about seven strings. A+B gained +.052 and +.054 on two different models. The vote gained +.0126 over S2: it passes the rule but is within what we consider noise (under about .02).
+
+### Failed ideas
+
+- Threshold 0 (chosen on calibration): worst on the organiser rows in every case.
+- Equal-weight probability averaging: worse than the best single member at a fixed threshold.
+- The test-like split: harder than checkpoint but did not track the leaderboard.
+- A stronger in-distribution model: a word BiLSTM on all ~1M rows reached checkpoint .86 after two epochs but did not improve the organiser rows (local diagnostic run, not submitted); the third epoch was worse there.
+
+### Conclusions
+
+The recurrent models are adequate for the training distribution (offline F1 .80–.85), but not for the test format without decoding changes. Robustness to unseen words (character n-grams, FastText, BPE) was worth +.04–.05 public F1; format-aware post-processing a further +.05; voting three different representations a further +.013. The remaining gap to the organisers' BERT baseline is mostly labelling conventions (countries, places inside organisation names, unlabelled stations) that the training labels do not share.
+
+### Reproduce Part 3
+
+```bash
+python3 -m unittest test_ensemble                                  # Part 3 tests
+python3 postprocess.py <model>_spans.csv data/test.csv <out>.csv    # rules A+B on one model (S1, S2)
+python3 candidates.py data/test.csv data/submissions data/submissions/candidates   # S1-S3 and variants
+```
+
+`candidates.py` expects the members' spans files in `data/submissions/`: `submission_candidate_spans.csv` (n-grams), `submission_fasttext_subword_spans.csv`, `greedy_calibration_t000_strict_spans.csv` and `bpe_t080_strict_spans.csv`, all on Drive `KSE_AI301_A3/`. It also writes `sanity.csv` (strings per text, strings added and removed against S1) and `overlap.csv`. The probe runs in `ensemble_probe_colab.ipynb` on a Colab GPU; open it from GitHub (branch `ensemble`) and mount Drive from the sidebar. Probe runs log to W&B project `ai301-a3`, including per-layer `gradient_flow/*`.
 
 ## Results and deliverables
 
