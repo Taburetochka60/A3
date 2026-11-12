@@ -278,5 +278,54 @@ class PostprocessTest(unittest.TestCase):
                 postprocess_submission(folder/'bad_spans.csv', folder/'test.csv', folder/'bad.csv')
 
 
+class CandidatesTest(unittest.TestCase):
+    TEXT = 'Вибух у Києві, Львові та Україні. Біля Українки тихо, у києві теж'
+
+    def span(self, value, confidence=1.):
+        a = self.TEXT.index(value)
+        return a, a+len(value), confidence
+
+    def test_vote_keeps_strings_with_enough_models_and_the_first_models_surface(self):
+        from candidates import vote
+        first = [[self.span('Києві'), self.span('Україні')]]
+        second = [[self.span('києві'), self.span('Львові')]]
+        third = [[self.span('Львові'), self.span('Українки')]]
+        kept = vote([self.TEXT], [first, second, third], 2)[0]
+        self.assertEqual([self.TEXT[a:b] for a, b, _ in kept], ['Києві', 'Львові'])
+        self.assertEqual(len(vote([self.TEXT], [first, second, third], 1)[0]), 4)
+        self.assertEqual(vote([self.TEXT], [first, second, third], 3)[0], [])
+        self.assertEqual(vote([self.TEXT], [first, [[self.span('Києві,')]]], 2)[0], [])   # the metric keeps the comma
+        kept = vote([self.TEXT], [[[self.span('Києві')]], [[self.span('Києві')]]], 2)[0]
+        self.assertEqual(len(kept), 1)
+
+    def test_cutoff_and_rule_u(self):
+        from candidates import cutoff, drop_countries
+        spans = [[self.span('Києві', .85), self.span('Україні', .95), self.span('Українки', .9)]]
+        self.assertEqual(len(cutoff(spans, .9)[0]), 2)
+        self.assertEqual(len(cutoff(spans, .8)[0]), 3)
+        kept = drop_countries([self.TEXT], spans)[0]
+        self.assertEqual([self.TEXT[a:b] for a, b, _ in kept], ['Києві', 'Українки'])
+
+    def test_clean_keeps_confidences(self):
+        from candidates import clean
+        text = 'ДТП біля ТЦ Аркадія\n\n📍 вул. Хрещатик'
+        a = text.index('ТЦ')
+        kept = clean([text], [[(a, text.index('📍')+1, .9), (a, a+10, .8)]], set())[0]
+        self.assertEqual(kept, [(a, a+10, .9)])
+
+    def test_written_files_load_back(self):
+        from candidates import load_spans, write
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            test = pd.DataFrame(dict(text_id=[3, 4], text=[self.TEXT, 'Нічого'], locations=['[]', '[]']))
+            write(folder/'c.csv', test, [[self.span('Києві', .9)], []])
+            out = pd.read_csv(folder/'c.csv')
+            self.assertEqual(list(out.columns), ['text_id', 'locations'])
+            self.assertEqual([json.loads(x) for x in out.locations], [['Києві'], []])
+            self.assertEqual(load_spans(folder/'c_spans.csv', test), [[self.span('Києві', .9)], []])
+            with self.assertRaises(ValueError):
+                load_spans(folder/'c_spans.csv', test.iloc[::-1])
+
+
 if __name__ == '__main__':
     unittest.main()
