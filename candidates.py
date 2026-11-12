@@ -25,7 +25,8 @@ from postprocess import postprocess, signature_lines
 SOURCES = dict(fasttext='submission_fasttext_subword_spans.csv',        # 0.50898, decoded at 0.8/strict
                ngrams='submission_candidate_spans.csv',                 # 0.50370, decoded at 0.8/strict
                greedy='greedy_calibration_t000_strict_spans.csv',       # 0.50211, decoded at 0/strict
-               bpe='bpe_t080_strict_spans.csv')                         # 0.47471, decoded at 0.8/strict
+               bpe='bpe_t080_strict_spans.csv',                         # 0.47471, decoded at 0.8/strict
+               greedy_chunked='greedy_chunked_t080_strict_spans.csv')   # greedy weights, chunked, 0.8/strict
 COUNTRIES = {'україна', 'україни', 'україні', 'україну', 'україною',
              'украина', 'украины', 'украине', 'украину', 'украиной'}
 
@@ -117,7 +118,7 @@ def overlap(texts, candidates):
 
 
 def build_all(test_csv, source_dir, out_dir):
-    """Every candidate for S1 (reproduction), S2, S3, S4 (rule U), S6 (cutoff 0.9) and S8 (both); returns the sanity tables."""
+    """Every candidate for S1 (reproduction), S2, S3, S4 (rule U), S5 (chunked greedy), S6 (cutoff 0.9) and S8; returns the sanity tables."""
     test = pd.read_csv(test_csv, keep_default_na=False)
     texts, signatures = test.text.tolist(), signature_lines(test.text)
     raw = {name: load_spans(Path(source_dir)/file, test) for name, file in SOURCES.items() if (Path(source_dir)/file).exists()}
@@ -131,6 +132,10 @@ def build_all(test_csv, source_dir, out_dir):
         candidates[f'S3_vote2_{"_".join(voters)}_AB'+tag] = vote(texts, [members[n] for n in voters], 2)
     for name in list(candidates):
         candidates[name+'_U'] = drop_countries(texts, candidates[name])
+    if 'greedy_chunked' in raw:                  # S5: S3 with the greedy member decoded chunk by chunk
+        members = {name: clean(texts, cutoff(raw[name], .8), signatures) for name in ['fasttext', 'ngrams', 'greedy_chunked']}
+        candidates['S5_vote2_fasttext_ngrams_greedychunked_AB'] = vote(texts, list(members.values()), 2)
+        candidates['S5b_greedy_chunked_AB'] = members['greedy_chunked']
     out_dir = Path(out_dir)
     for name, spans in candidates.items():
         write(out_dir/f'{name}.csv', test, spans)

@@ -96,6 +96,78 @@ def part2_predictor(checkpoint, device='cpu'):
     return predict, info
 
 
+ABBREVIATIONS = {'вул', 'м', 'просп', 'пр', 'пл', 'обл', 'р', 'ім', 'ст', 'буд', 'смт', 'ул', 'г'}
+TERMINAL = set('.!?…')
+
+
+def sentence_end(tokens, i, line_start):
+    """tokens[i] ends a run of .!?… and the text continues like a new sentence."""
+    following = tokens[i+1].value
+    if following[0].islower() or following[0].isdigit():
+        return False
+    j = i
+    while j > line_start and tokens[j-1].value in TERMINAL:
+        j -= 1
+    word = tokens[j-1].value if j > line_start else ''
+    return not (tokens[i].value == '.' and j == i and (word.lower() in ABBREVIATIONS or len(word) == 1 and word.isalpha()))
+
+
+def chunk_ranges(doc, signatures):
+    """Token ranges [i, j) predicted on their own: the post's lines, cut into sentences.
+
+    Lines in signatures (postprocess.signature_lines, the same definition as rule B) and
+    lines with an @handle are skipped, like the boilerplate rule B drops. A line is cut after
+    .!?… unless the word before is an abbreviation ("вул.", "м.") or a single letter, or
+    the next token starts lower-case or with a digit.
+    """
+    tokens, lines, start = doc['tokens'], [], 0
+    for i in range(len(tokens)+1):
+        if i == len(tokens) or tokens[i].value == '\n':
+            if start < i:
+                lines.append((start, i))
+            start = i+1
+    result = []
+    for a, b in lines:
+        line = doc['text'][tokens[a].start:tokens[b-1].end]
+        if line in signatures or '@' in line:
+            continue
+        begin = a
+        for i in range(a, b-1):
+            if tokens[i].value in TERMINAL and tokens[i+1].value not in TERMINAL and sentence_end(tokens, i, a):
+                result.append((begin, i+1)); begin = i+1
+        result.append((begin, b))
+    return result
+
+
+def chunked(predict, signatures):
+    """Wrap a predict(docs) function: every chunk is predicted as its own document and stitched back.
+
+    Training rows are single sentences, test texts multi-line posts. Tokens outside every chunk
+    (line breaks, skipped lines) get O=1, so they never start or continue a span.
+    """
+    from ner_data import Token, tokenize_offsets
+
+    def predict_chunks(docs):
+        pieces, owners = [], []
+        for n, d in enumerate(docs):
+            for i, j in chunk_ranges(d, signatures):
+                offset = d['tokens'][i].start
+                text = d['text'][offset:d['tokens'][j-1].end]
+                tokens = [Token(t.value, t.start-offset, t.end-offset) for t in d['tokens'][i:j]]
+                if tokenize_offsets(text) != tokens:
+                    raise ValueError(f"Chunking changed the word grid of document {d['row_id']}")
+                pieces.append(dict(row_id=d['row_id'], text_id=d.get('text_id', d['row_id']), text=text,
+                                   tokens=tokens, spans=[], bio=None))
+                owners.append((n, i, j))
+        result = [np.tile([1., 0., 0.], (len(d['tokens']), 1)) for d in docs]
+        for (n, i, j), p in zip(owners, predict(pieces) if pieces else []):
+            if np.shape(p) != (j-i, 3):
+                raise ValueError('Chunk probabilities do not match its tokens')
+            result[n][i:j] = p
+        return result
+    return predict_chunks
+
+
 def train_member(*args, **kwargs):
     """part2.train for a new member, working around a clash in its epoch record.
 
@@ -140,16 +212,21 @@ PREDICTORS = {'part2': part2_predictor}
 
 
 def export_member(member, docs_by_split, out_dir, device='cpu'):
-    """Write <out_dir>/<name>/<split>.npz; resumable, and refuses a different checkpoint under the same name."""
+    """Write <out_dir>/<name>/<split>.npz; resumable, and refuses a different checkpoint under the same name.
+
+    A member with a 'signatures' set is predicted chunk by chunk (see chunked).
+    """
     folder = Path(out_dir)/member['name']
     sha = file_hash(member['checkpoint'])
     if (folder/'meta.json').exists() and json.loads((folder/'meta.json').read_text())['checkpoint_sha256'] != sha:
         raise ValueError(f"{member['name']}: bundles exist for another checkpoint; use a new member name")
     todo = {s: d for s, d in docs_by_split.items() if not (folder/f'{s}.npz').exists()}
     meta = dict(member=member['name'], kind=member['kind'], checkpoint=str(member['checkpoint']),
-                checkpoint_sha256=sha, wandb_run=member.get('wandb_run'))
+                checkpoint_sha256=sha, wandb_run=member.get('wandb_run'), chunked='signatures' in member)
     if todo:
         predict, info = PREDICTORS[member['kind']](member['checkpoint'], device)
+        if 'signatures' in member:          # chunked decoding; verify such members through the unchunked name
+            predict = chunked(predict, member['signatures'])
         meta['model'] = info
         for split, docs in todo.items():
             save_bundle(folder/f'{split}.npz', docs, predict(docs), dict(meta, split=split))

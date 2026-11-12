@@ -327,5 +327,49 @@ class CandidatesTest(unittest.TestCase):
                 load_spans(folder/'c_spans.csv', test.iloc[::-1])
 
 
+class ChunkedTest(unittest.TestCase):
+    POST = ('Вибух на вул. Хрещатик у м. Київ. Пожежа в Ірпені!\n\n'
+            'Ще 2 км. до Бучі\nПиши @kyiv_news\nКиїв — пряма трансляція 👈')
+    SIGNATURES = {'Київ — пряма трансляція 👈'}
+
+    def doc(self, text):
+        from ner_data import tokenize_offsets
+        return dict(row_id=7, text_id=7, text=text, tokens=tokenize_offsets(text), spans=[], bio=None)
+
+    @staticmethod
+    def positional(docs):
+        """Context-dependent fake model: each row depends on the token's position and the document length."""
+        result = []
+        for d in docs:
+            n = len(d['tokens'])
+            o = np.array([(k+1)/(n+2) for k in range(n)])
+            result.append(np.stack([o, (1-o)/3, 2*(1-o)/3], 1))
+        return result
+
+    def test_lines_sentences_and_skipped_boilerplate(self):
+        from ensemble_members import chunk_ranges
+        d = self.doc(self.POST)
+        chunks = [self.POST[d['tokens'][i].start:d['tokens'][j-1].end] for i, j in chunk_ranges(d, self.SIGNATURES)]
+        self.assertEqual(chunks, ['Вибух на вул. Хрещатик у м. Київ.', 'Пожежа в Ірпені!', 'Ще 2 км. до Бучі'])
+
+    def test_stitched_probabilities(self):
+        from ensemble_members import chunk_ranges, chunked
+        d = self.doc(self.POST)
+        p = chunked(self.positional, self.SIGNATURES)([d])[0]
+        self.assertEqual(p.shape, (len(d['tokens']), 3))
+        covered = {k for i, j in chunk_ranges(d, self.SIGNATURES) for k in range(i, j)}
+        for k, t in enumerate(d['tokens']):
+            if k not in covered:
+                np.testing.assert_array_equal(p[k], [1., 0., 0.])
+                self.assertTrue(t.value == '\n' or t.start >= self.POST.index('Пиши'))
+        i, j = chunk_ranges(d, self.SIGNATURES)[1]
+        np.testing.assert_allclose(p[i:j], self.positional([self.doc('Пожежа в Ірпені!')])[0])
+
+    def test_one_sentence_equals_plain_prediction(self):
+        from ensemble_members import chunked
+        d = self.doc('Обстріл Харкова та Сум')
+        np.testing.assert_allclose(chunked(self.positional, set())([d])[0], self.positional([d])[0])
+
+
 if __name__ == '__main__':
     unittest.main()
