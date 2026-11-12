@@ -10,7 +10,7 @@ No model runs here: every candidate re-filters spans that a model already predic
   drop_countries rule U: drop exact forms of "Україна"/"Украина". No organiser gold string is a
                  country while 31% of training LOC spans are; "Українка" (a town) stays.
 
-    python3 candidates.py data/test.csv data/submissions data/submissions/candidates
+    python3 -m Oleksandr.candidates data/test.csv data/submissions data/submissions/candidates
 """
 from collections import Counter
 import json
@@ -20,13 +20,13 @@ import sys
 import pandas as pd
 
 from metrics import hard_processing
-from postprocess import postprocess, signature_lines
+from Oleksandr.postprocess import postprocess, signature_lines
 
-SOURCES = dict(fasttext='submission_fasttext_subword_spans.csv',        # 0.50898, decoded at 0.8/strict
-               ngrams='submission_candidate_spans.csv',                 # 0.50370, decoded at 0.8/strict
-               greedy='greedy_calibration_t000_strict_spans.csv',       # 0.50211, decoded at 0/strict
-               bpe='bpe_t080_strict_spans.csv',                         # 0.47471, decoded at 0.8/strict
-               greedy_chunked='greedy_chunked_t080_strict_spans.csv')   # greedy weights, chunked, 0.8/strict
+SOURCES = dict(fasttext='submission_fasttext_subword_spans.csv',
+               ngrams='submission_candidate_spans.csv',
+               greedy='greedy_calibration_t000_strict_spans.csv',
+               bpe='bpe_t080_strict_spans.csv',
+               greedy_chunked='greedy_chunked_t080_strict_spans.csv')
 COUNTRIES = {'україна', 'україни', 'україні', 'україну', 'україною',
              'украина', 'украины', 'украине', 'украину', 'украиной'}
 
@@ -123,7 +123,7 @@ def build_all(test_csv, source_dir, out_dir):
     texts, signatures = test.text.tolist(), signature_lines(test.text)
     raw = {name: load_spans(Path(source_dir)/file, test) for name, file in SOURCES.items() if (Path(source_dir)/file).exists()}
     missing = sorted(set(SOURCES)-set(raw))
-    voters = ['fasttext', 'ngrams', 'greedy' if 'greedy' in raw else 'bpe']   # bpe stands in until the greedy file arrives
+    voters = ['fasttext', 'ngrams', 'greedy' if 'greedy' in raw else 'bpe']
     candidates = {}
     for t, tag in [(.8, ''), (.9, '_t090')]:
         members = {name: clean(texts, cutoff(raw[name], t), signatures) for name in voters}
@@ -132,7 +132,7 @@ def build_all(test_csv, source_dir, out_dir):
         candidates[f'S3_vote2_{"_".join(voters)}_AB'+tag] = vote(texts, [members[n] for n in voters], 2)
     for name in list(candidates):
         candidates[name+'_U'] = drop_countries(texts, candidates[name])
-    if 'greedy_chunked' in raw:                  # S5: S3 with the greedy member decoded chunk by chunk
+    if 'greedy_chunked' in raw:
         members = {name: clean(texts, cutoff(raw[name], .8), signatures) for name in ['fasttext', 'ngrams', 'greedy_chunked']}
         candidates['S5_vote2_fasttext_ngrams_greedychunked_AB'] = vote(texts, list(members.values()), 2)
         candidates['S5b_greedy_chunked_AB'] = members['greedy_chunked']

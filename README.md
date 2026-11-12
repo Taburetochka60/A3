@@ -71,6 +71,8 @@ Tests: `python -m unittest test_fasttext test_fasttext_subword test_part2 test_f
 
 ## Part 3: ensembling, post-processing and leaderboard
 
+All Part 3 code, tests and notebooks are in [`Oleksandr/`](Oleksandr/).
+
 ### All experiments: offline and leaderboard scores
 
 Offline F1 is the competition metric on the frozen `part2_split.json` partitions (threshold .8, strict filter unless stated). "Organiser rows" are the 26 labelled rows in `labeling_sample.csv`. Public F1 is from `kaggle competitions submissions`; every submission the team made is listed.
@@ -99,11 +101,11 @@ Offline F1 is .80–.85 for every model, public F1 was .46–.51 before post-pro
 - Models trained on single sentences do not stop a span at a line break ("ТЦ Аркадія\n\n📍"); the metric compares lower-cased strings with digits removed, so the attached junk turns a correct location into a false positive.
 - We over-predict: the n-gram submission has 1.62 distinct strings per text against 1.23 gold strings per organiser row.
 
-A test-like split did not fix model selection. `ensemble_data.py` ranks training rows by a TF-IDF + logistic-regression adversarial classifier (AUC .968) and packs the most test-like rows into multi-line posts sized like test texts (`ensemble_split.json`, 261 selection + 255 report posts). The word baseline scores .695/.746 there, .800 on checkpoint and .523 on the organiser rows: harder than checkpoint, but still far from the leaderboard. Only the organiser rows have tracked the leaderboard, so they were used for direction only (never for tuning) and Kaggle for decisions.
+A test-like split did not fix model selection. `Oleksandr/ensemble_data.py` ranks training rows by a TF-IDF + logistic-regression adversarial classifier (AUC .968) and packs the most test-like rows into multi-line posts sized like test texts (`Oleksandr/ensemble_split.json`, 261 selection + 255 report posts). The word baseline scores .695/.746 there, .800 on checkpoint and .523 on the organiser rows: harder than checkpoint, but still far from the leaderboard. Only the organiser rows have tracked the leaderboard, so they were used for direction only (never for tuning) and Kaggle for decisions.
 
 ### Probability ensemble (probe)
 
-`ensemble_probe_colab.ipynb` trains members on the same fit rows through `ensemble_members.train_member` (wrapping `part2.train`), exports per-token O/B/I probabilities on a shared word tokenisation (`export_member`, verified against each member's logged F1), and searches blends in `ensemble.py`: greedy weighted averaging, all subsets of up to four members, and thresholds {0, .5, .6, .7, .8, .9}, chosen on calibration and reported on checkpoint with a paired bootstrap over documents.
+`Oleksandr/ensemble_probe_colab.ipynb` trains members on the same fit rows through `ensemble_members.train_member` (wrapping `part2.train`), exports per-token O/B/I probabilities on a shared word tokenisation (`export_member`, verified against each member's logged F1), and searches blends in `Oleksandr/ensemble.py`: greedy weighted averaging, all subsets of up to four members, and thresholds {0, .5, .6, .7, .8, .9}, chosen on calibration and reported on checkpoint with a paired bootstrap over documents.
 
 - Members: word BiLSTM seeds 42 (frozen), 43, 44; a 2-layer BiGRU; BPE BiLSTM.
 - Equal-weight averages lose to BPE alone at .8: all five −.021 [−.039, −.003], three word seeds −.032 [−.051, −.013]. BPE is about .04 stronger than each word model, and averaged probabilities are flatter, so more correct spans fall below .8.
@@ -111,14 +113,14 @@ A test-like split did not fix model selection. `ensemble_data.py` ranks training
 - Diversity: word models disagree on 5–7% of checkpoint texts (the GRU included, so it adds nothing beyond another seed), BPE on about 9%.
 - The greedy blend chose threshold 0 on calibration. On the organiser rows threshold 0 was the worst choice in 12 of 12 model/decoding combinations, with .8–.9 best; the final vote therefore cuts it at .8.
 
-### Post-processing for Telegram posts (`postprocess.py`)
+### Post-processing for Telegram posts (`Oleksandr/postprocess.py`)
 
 Applied to any `*_spans.csv` that `part2.export_submission` writes next to a submission; it reads the unlabelled test texts only.
 
 - **Rule A**: trim non-alphanumeric characters at both ends (keeping a closing quote whose opener is inside), cut a span at a line break or a spaced dash, complete words cut at a hyphen or apostrophe ("-Франківську" → "Івано-Франківську"), drop spans with fewer than two letters (the metric deletes digits).
 - **Rule B**: drop spans inside a signature line (a line repeated verbatim in at least four test texts), an @handle or a link.
 
-### String-level vote (`candidates.py`)
+### String-level vote (`Oleksandr/candidates.py`)
 
 The probability ensemble needs every member on the same tokens, and the FastText member needs the 7 GB vector file for unseen words, so the final ensemble votes on output strings instead. Each member's spans get rules A+B; a string (normalised exactly as the metric does) is kept when at least two of the three members predict it, with the surface form of the first member in the order FastText, n-gram, greedy. `cutoff` re-filters the greedy spans from threshold 0 to .8; this equals decoding at .8 because `part2.decode` keeps a span when its mean B+I probability reaches the threshold. The vote keeps 1.27 strings per text against 1.49 for S1.
 
@@ -140,12 +142,12 @@ The recurrent models are adequate for the training distribution (offline F1 .80�
 ### Reproduce Part 3
 
 ```bash
-python3 -m unittest test_ensemble                                  # Part 3 tests
-python3 postprocess.py <model>_spans.csv data/test.csv <out>.csv    # rules A+B on one model (S1, S2)
-python3 candidates.py data/test.csv data/submissions data/submissions/candidates   # S1-S3 and variants
+python3 -m unittest Oleksandr.test_ensemble
+python3 -m Oleksandr.postprocess <model>_spans.csv data/test.csv <out>.csv
+python3 -m Oleksandr.candidates data/test.csv data/submissions data/submissions/candidates
 ```
 
-`candidates.py` expects the members' spans files in `data/submissions/`: `submission_candidate_spans.csv` (n-grams), `submission_fasttext_subword_spans.csv`, `greedy_calibration_t000_strict_spans.csv` and `bpe_t080_strict_spans.csv`, all on Drive `KSE_AI301_A3/`. It also writes `sanity.csv` (strings per text, strings added and removed against S1) and `overlap.csv`. The probe runs in `ensemble_probe_colab.ipynb` on a Colab GPU; open it from GitHub (branch `ensemble`) and mount Drive from the sidebar. Probe runs log to W&B project `ai301-a3`, including per-layer `gradient_flow/*`.
+Run them from the repository root. `candidates` expects the members' spans files in `data/submissions/`: `submission_candidate_spans.csv` (n-grams), `submission_fasttext_subword_spans.csv`, `greedy_calibration_t000_strict_spans.csv` and `bpe_t080_strict_spans.csv`, all on Drive `KSE_AI301_A3/`. It also writes `sanity.csv` (strings per text, strings added and removed against S1) and `overlap.csv`. The probe runs in `Oleksandr/ensemble_probe_colab.ipynb` on a Colab GPU; open it from GitHub (branch `ensemble`) and mount Drive from the sidebar. Probe runs log to W&B project `ai301-a3`, including per-layer `gradient_flow/*`.
 
 ## Results and deliverables
 

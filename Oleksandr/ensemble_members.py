@@ -206,8 +206,6 @@ def train_member(*args, **kwargs):
         part2.score, part2.start_run = original, original_start
 
 
-# kind -> function(checkpoint, device) returning (predict(docs) -> reference-token probabilities, info).
-# The n-gram model needs its own encoder and hashing code before it can be registered here.
 PREDICTORS = {'part2': part2_predictor}
 
 
@@ -225,7 +223,7 @@ def export_member(member, docs_by_split, out_dir, device='cpu'):
                 checkpoint_sha256=sha, wandb_run=member.get('wandb_run'), chunked='signatures' in member)
     if todo:
         predict, info = PREDICTORS[member['kind']](member['checkpoint'], device)
-        if 'signatures' in member:          # chunked decoding; verify such members through the unchunked name
+        if 'signatures' in member:
             predict = chunked(predict, member['signatures'])
         meta['model'] = info
         for split, docs in todo.items():
@@ -242,7 +240,7 @@ def verify_member(member, docs_by_split, out_dir, device='cpu'):
     Subword members are logged that way: a span may end inside a word there, while the bundle
     (first piece of each word) always covers whole words, so it cannot reproduce that F1.
     """
-    from ensemble import sweep
+    from Oleksandr.ensemble import sweep
     expected = member.get('expected')
     if not expected:
         return None

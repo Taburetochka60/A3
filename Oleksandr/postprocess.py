@@ -12,7 +12,7 @@ signatures ("Київ — пряма трансляція 👈") that the organi
 
 Rule B reads only the unlabelled test texts, never labels.
 
-    python3 postprocess.py <submission>_spans.csv data/test.csv <output>.csv
+    python3 -m Oleksandr.postprocess <submission>_spans.csv data/test.csv <output>.csv
 """
 from collections import Counter
 import json
@@ -24,7 +24,7 @@ import pandas as pd
 
 SIGNATURE_MIN_TEXTS = 4
 LINK = re.compile(r'https?://|www\.|t\.me/')
-SPAN_BREAK = re.compile(r'\n|\s[-–—]\s')                  # "Чорнобиль - 19", "Київ — пряма трансляція"
+SPAN_BREAK = re.compile(r'\n|\s[-–—]\s')
 JOINERS = "-'’ʼ‘"
 CLOSERS = {'»': '«', '"': '"', '”': '“', ')': '(', '“': '„'}
 
@@ -74,7 +74,7 @@ def boilerplate(text, a, b, signatures):
     start, end = text.rfind('\n', 0, a)+1, text.find('\n', b)
     if text[start:len(text) if end < 0 else end].strip() in signatures:
         return True
-    prefix = re.search(r'\S*$', text[:a]).group()          # the rest of the word the span starts in
+    prefix = re.search(r'\S*$', text[:a]).group()
     return '@' in prefix or bool(LINK.search(prefix))
 
 

@@ -17,7 +17,7 @@ import pandas as pd
 from metrics import score_details
 from part2 import decode, export_submission
 from part2_data import fingerprint, save_json
-from ensemble_members import load_bundle
+from Oleksandr.ensemble_members import load_bundle
 
 THRESHOLDS = (0., .5, .6, .7, .8, .9)
 REPORT = ('testlike_report', 'labeling', 'checkpoint', 'calibration')

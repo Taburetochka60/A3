@@ -10,9 +10,9 @@ from ner_data import Token
 from pilot_ner import documents
 from part2 import score
 from metrics import score_details
-from ensemble import blend, bootstrap_delta, document_counts, greedy_search, run_search, subset_search, sweep
-from ensemble_data import compose_frame, compose_posts
-from ensemble_members import load_bundle, save_bundle, to_reference
+from Oleksandr.ensemble import blend, bootstrap_delta, document_counts, greedy_search, run_search, subset_search, sweep
+from Oleksandr.ensemble_data import compose_frame, compose_posts
+from Oleksandr.ensemble_members import load_bundle, save_bundle, to_reference
 
 TEXTS = [('Вибух у Києві та Львові.', [(8, 13), (17, 23)]),
          ('Новини з Харкова', [(9, 16)]),
@@ -75,7 +75,7 @@ class MultilinePostTest(unittest.TestCase):
 class GroupingHashTest(unittest.TestCase):
     def test_pinned_hash_matches_frozen_split(self):
         import part2_data
-        from part2_compat import pin_grouping_hash
+        from Oleksandr.part2_compat import pin_grouping_hash
         original = part2_data.grouping_hash
         try:
             pin_grouping_hash()
@@ -102,7 +102,7 @@ class BundleTest(unittest.TestCase):
 class ExportTest(unittest.TestCase):
     def test_part2_checkpoint_to_bundles(self):
         import torch
-        from ensemble_members import export_member
+        from Oleksandr.ensemble_members import export_member
         from recurrent_model import NERModel
         from part2 import CONFIG
         items = docs()
@@ -123,7 +123,7 @@ class ExportTest(unittest.TestCase):
 
     def test_bpe_member_is_verified_on_its_own_tokens(self):
         import torch
-        from ensemble_members import export_member, part2_predictor
+        from Oleksandr.ensemble_members import export_member, part2_predictor
         from recurrent_model import NERModel
         from part2 import CONFIG
         from part2_data import fit_encoding
@@ -136,7 +136,7 @@ class ExportTest(unittest.TestCase):
             torch.save(dict(model=model.state_dict(), config=CONFIG, encoding=encoding, epoch=1, split_hash='x'), checkpoint)
             encoded, probabilities = part2_predictor(checkpoint)[0](items, native=True)
             self.assertGreater(sum(map(len, encoded)), 0)
-            logged = score(encoded, probabilities)['f1']         # what part2.train logs for a BPE member
+            logged = score(encoded, probabilities)['f1']
             member = dict(name='bpe', kind='part2', checkpoint=checkpoint,
                           expected=dict(split='checkpoint', threshold=0., policy='original', f1=logged, tokens='member'))
             self.assertAlmostEqual(export_member(member, dict(checkpoint=items), Path(folder)/'bundles'), logged)
@@ -147,7 +147,7 @@ class ExportTest(unittest.TestCase):
 class TrainMemberTest(unittest.TestCase):
     def test_validation_metrics_no_longer_clash_with_precision_mode(self):
         import part2
-        from ensemble_members import train_member
+        from Oleksandr.ensemble_members import train_member
         items = docs(); original = part2.train
         part2.train = lambda: dict(precision='bf16', **part2.score(items, oracle(items)))
         try:
@@ -160,7 +160,7 @@ class TrainMemberTest(unittest.TestCase):
 
     def test_wandb_failure_does_not_stop_training(self):
         import part2
-        from ensemble_members import train_member
+        from Oleksandr.ensemble_members import train_member
         original = part2.train
 
         def train():
@@ -228,7 +228,7 @@ class PostprocessTest(unittest.TestCase):
         return [(self.POST.index(v), self.POST.index(v)+len(v)) for v in values]
 
     def test_spans_stop_at_line_breaks_and_lose_trailing_junk(self):
-        from postprocess import clean_span
+        from Oleksandr.postprocess import clean_span
         (a, b), = self.spans('ТЦ Аркадія\n\n📍')
         self.assertEqual(self.POST[slice(*clean_span(self.POST, a, b))], 'ТЦ Аркадія')
         (a, b), = self.spans("вул. Солом'янська, 28\nПиши")
@@ -236,7 +236,7 @@ class PostprocessTest(unittest.TestCase):
         self.assertIsNone(clean_span('📍\nКиїв', 0, 1))
 
     def test_quotes_hyphenated_names_and_numbers(self):
-        from postprocess import clean_span
+        from Oleksandr.postprocess import clean_span
         def clean(text, value):
             a = text.index(value); span = clean_span(text, a, a+len(value))
             return span and text[slice(*span)]
@@ -253,7 +253,7 @@ class PostprocessTest(unittest.TestCase):
         self.assertEqual(clean('Наші жителі\n\nХуйовий Київ', '\n\nХуйовий Київ'), 'Хуйовий Київ')
 
     def test_signature_lines_handles_and_links_are_dropped(self):
-        from postprocess import postprocess, signature_lines
+        from Oleksandr.postprocess import postprocess, signature_lines
         texts = [self.POST]+[f'Новина {i}\nКиїв — пряма трансляція 👈' for i in range(3)]
         signatures = signature_lines(texts)
         self.assertEqual(signatures, {'Київ — пряма трансляція 👈'})
@@ -263,7 +263,7 @@ class PostprocessTest(unittest.TestCase):
         self.assertEqual(postprocess('див. https://kyiv.ua/news', [(13, 17)], set()), [])
 
     def test_submission_is_rewritten_from_its_spans_file(self):
-        from postprocess import postprocess_submission
+        from Oleksandr.postprocess import postprocess_submission
         with tempfile.TemporaryDirectory() as folder:
             folder = Path(folder)
             pd.DataFrame(dict(text_id=[0, 1], text=[self.POST, 'У Києві тихо'], locations=['[]', '[]'])).to_csv(folder/'test.csv', index=False)
@@ -286,7 +286,7 @@ class CandidatesTest(unittest.TestCase):
         return a, a+len(value), confidence
 
     def test_vote_keeps_strings_with_enough_models_and_the_first_models_surface(self):
-        from candidates import vote
+        from Oleksandr.candidates import vote
         first = [[self.span('Києві'), self.span('Україні')]]
         second = [[self.span('києві'), self.span('Львові')]]
         third = [[self.span('Львові'), self.span('Українки')]]
@@ -294,12 +294,12 @@ class CandidatesTest(unittest.TestCase):
         self.assertEqual([self.TEXT[a:b] for a, b, _ in kept], ['Києві', 'Львові'])
         self.assertEqual(len(vote([self.TEXT], [first, second, third], 1)[0]), 4)
         self.assertEqual(vote([self.TEXT], [first, second, third], 3)[0], [])
-        self.assertEqual(vote([self.TEXT], [first, [[self.span('Києві,')]]], 2)[0], [])   # the metric keeps the comma
+        self.assertEqual(vote([self.TEXT], [first, [[self.span('Києві,')]]], 2)[0], [])
         kept = vote([self.TEXT], [[[self.span('Києві')]], [[self.span('Києві')]]], 2)[0]
         self.assertEqual(len(kept), 1)
 
     def test_cutoff_and_rule_u(self):
-        from candidates import cutoff, drop_countries
+        from Oleksandr.candidates import cutoff, drop_countries
         spans = [[self.span('Києві', .85), self.span('Україні', .95), self.span('Українки', .9)]]
         self.assertEqual(len(cutoff(spans, .9)[0]), 2)
         self.assertEqual(len(cutoff(spans, .8)[0]), 3)
@@ -307,14 +307,14 @@ class CandidatesTest(unittest.TestCase):
         self.assertEqual([self.TEXT[a:b] for a, b, _ in kept], ['Києві', 'Українки'])
 
     def test_clean_keeps_confidences(self):
-        from candidates import clean
+        from Oleksandr.candidates import clean
         text = 'ДТП біля ТЦ Аркадія\n\n📍 вул. Хрещатик'
         a = text.index('ТЦ')
         kept = clean([text], [[(a, text.index('📍')+1, .9), (a, a+10, .8)]], set())[0]
         self.assertEqual(kept, [(a, a+10, .9)])
 
     def test_written_files_load_back(self):
-        from candidates import load_spans, write
+        from Oleksandr.candidates import load_spans, write
         with tempfile.TemporaryDirectory() as folder:
             folder = Path(folder)
             test = pd.DataFrame(dict(text_id=[3, 4], text=[self.TEXT, 'Нічого'], locations=['[]', '[]']))
@@ -347,13 +347,13 @@ class ChunkedTest(unittest.TestCase):
         return result
 
     def test_lines_sentences_and_skipped_boilerplate(self):
-        from ensemble_members import chunk_ranges
+        from Oleksandr.ensemble_members import chunk_ranges
         d = self.doc(self.POST)
         chunks = [self.POST[d['tokens'][i].start:d['tokens'][j-1].end] for i, j in chunk_ranges(d, self.SIGNATURES)]
         self.assertEqual(chunks, ['Вибух на вул. Хрещатик у м. Київ.', 'Пожежа в Ірпені!', 'Ще 2 км. до Бучі'])
 
     def test_stitched_probabilities(self):
-        from ensemble_members import chunk_ranges, chunked
+        from Oleksandr.ensemble_members import chunk_ranges, chunked
         d = self.doc(self.POST)
         p = chunked(self.positional, self.SIGNATURES)([d])[0]
         self.assertEqual(p.shape, (len(d['tokens']), 3))
@@ -366,7 +366,7 @@ class ChunkedTest(unittest.TestCase):
         np.testing.assert_allclose(p[i:j], self.positional([self.doc('Пожежа в Ірпені!')])[0])
 
     def test_one_sentence_equals_plain_prediction(self):
-        from ensemble_members import chunked
+        from Oleksandr.ensemble_members import chunked
         d = self.doc('Обстріл Харкова та Сум')
         np.testing.assert_allclose(chunked(self.positional, set())([d])[0], self.positional([d])[0])
 
