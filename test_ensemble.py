@@ -221,5 +221,62 @@ class SearchTest(unittest.TestCase):
             self.assertEqual(set(table.split), {'testlike_select', 'checkpoint'})
 
 
+class PostprocessTest(unittest.TestCase):
+    POST = 'ДТП біля ТЦ Аркадія\n\n📍 вул. Солом\'янська, 28\nПиши @kyiv_news\nКиїв — пряма трансляція 👈'
+
+    def spans(self, *values):
+        return [(self.POST.index(v), self.POST.index(v)+len(v)) for v in values]
+
+    def test_spans_stop_at_line_breaks_and_lose_trailing_junk(self):
+        from postprocess import clean_span
+        (a, b), = self.spans('ТЦ Аркадія\n\n📍')
+        self.assertEqual(self.POST[slice(*clean_span(self.POST, a, b))], 'ТЦ Аркадія')
+        (a, b), = self.spans("вул. Солом'янська, 28\nПиши")
+        self.assertEqual(self.POST[slice(*clean_span(self.POST, a, b))], "вул. Солом'янська, 28")
+        self.assertIsNone(clean_span('📍\nКиїв', 0, 1))
+
+    def test_quotes_hyphenated_names_and_numbers(self):
+        from postprocess import clean_span
+        def clean(text, value):
+            a = text.index(value); span = clean_span(text, a, a+len(value))
+            return span and text[slice(*span)]
+        self.assertEqual(clean('у парку «Центральний» 5', 'парку «Центральний»'), 'парку «Центральний»')
+        self.assertEqual(clean('з Донецьк" і', 'Донецьк"'), 'Донецьк')
+        self.assertEqual(clean('в Івано-Франківську.', '-Франківську'), 'Івано-Франківську')
+        self.assertEqual(clean('Києво-Святошинському районі', 'Києво-'), 'Києво-Святошинському')
+        self.assertEqual(clean("вул. Мар‘яненка 85", '‘яненка 85'), "Мар‘яненка 85")
+        self.assertIsNone(clean('школа № 38-', '№ 38-'))
+        self.assertEqual(clean('Маршрут 38-ТР', 'ТР'), 'ТР')
+        self.assertEqual(clean('у Пуща-Водиці', 'Водиці'), 'Пуща-Водиці')
+        self.assertIsNone(clean('Маршрут № 38-ТР', '№ 38-'))
+        self.assertEqual(clean('фон:\n\nЧорнобиль - 19\nКиїв - 12', '\n\nЧорнобиль - 19\n'), 'Чорнобиль')
+        self.assertEqual(clean('Наші жителі\n\nХуйовий Київ', '\n\nХуйовий Київ'), 'Хуйовий Київ')
+
+    def test_signature_lines_handles_and_links_are_dropped(self):
+        from postprocess import postprocess, signature_lines
+        texts = [self.POST]+[f'Новина {i}\nКиїв — пряма трансляція 👈' for i in range(3)]
+        signatures = signature_lines(texts)
+        self.assertEqual(signatures, {'Київ — пряма трансляція 👈'})
+        spans = self.spans('ТЦ Аркадія', 'kyiv', 'Київ —')
+        self.assertEqual([self.POST[a:b] for a, b in postprocess(self.POST, spans, signatures)], ['ТЦ Аркадія'])
+        self.assertEqual(len(postprocess(self.POST, spans, signatures, rules='A')), 3)
+        self.assertEqual(postprocess('див. https://kyiv.ua/news', [(13, 17)], set()), [])
+
+    def test_submission_is_rewritten_from_its_spans_file(self):
+        from postprocess import postprocess_submission
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            pd.DataFrame(dict(text_id=[0, 1], text=[self.POST, 'У Києві тихо'], locations=['[]', '[]'])).to_csv(folder/'test.csv', index=False)
+            pd.DataFrame(dict(text_id=[0, 1], spans=[json.dumps([list(s) for s in self.spans('ТЦ Аркадія\n\n📍', 'kyiv')]), '[[2, 7]]'],
+                              confidence=['[1, 1]', '[1]'])).to_csv(folder/'sub_spans.csv', index=False)
+            stats = postprocess_submission(folder/'sub_spans.csv', folder/'test.csv', folder/'out.csv')
+            out = pd.read_csv(folder/'out.csv')
+            self.assertEqual([json.loads(x) for x in out.locations], [['ТЦ Аркадія'], ['Києві']])
+            self.assertEqual((stats['spans_in'], stats['spans_out'], stats['changed']), (3, 2, 2))
+            pd.DataFrame(dict(text_id=[1, 0], spans=['[]', '[]'])).to_csv(folder/'bad_spans.csv', index=False)
+            with self.assertRaises(ValueError):
+                postprocess_submission(folder/'bad_spans.csv', folder/'test.csv', folder/'bad.csv')
+
+
 if __name__ == '__main__':
     unittest.main()
