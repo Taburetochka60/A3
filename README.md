@@ -85,6 +85,8 @@ Offline F1 is the competition metric on the frozen `part2_split.json` partitions
 | 6 | **S1**: experiment 2 + post-processing A+B (`ngrams_postAB.csv`) | member as in 2; A+B on the organiser rows (greedy predictions): .543 → .676 | .55606 |
 | 7 | **S2**: experiment 3 + A+B (`S2_fasttext_AB.csv`) | member as in 3 | .56320 |
 | 8 | **S3**: vote ≥2 of 3 over experiments 3, 2 and 5 cut at .8, each after A+B (`S3_vote2_fasttext_ngrams_greedy_AB.csv`) | not measured: the FastText and n-gram members have test predictions only | **.57580** |
+| 9 | S3 + rule U: drop exact forms of "Україна"/"Украина" (`S3_vote2_fasttext_ngrams_greedy_AB_U.csv`) | organiser rows: none of 32 gold strings is a country, all 5 "Україна" mentions unlabelled | .55495 |
+| 10 | S3 with members cut at .9 instead of .8 (`S3_vote2_fasttext_ngrams_greedy_AB_t090.csv`) | organiser rows: .8–.9 best for single models | .54809 |
 
 Organiser baselines on the same leaderboard: RNN .55118, BERT .59296.
 
@@ -127,11 +129,13 @@ Adoption rules were fixed before submitting: strong-evidence changes (A+B) are k
 - Threshold 0 (chosen on calibration): worst on the organiser rows in every case.
 - Equal-weight probability averaging: worse than the best single member at a fixed threshold.
 - The test-like split: harder than checkpoint but did not track the leaderboard.
+- Rule U (drop country names), suggested by the organiser rows: −.021 against S3. The hidden test does label "Україна"; 26 rows were too few to judge a convention.
+- A stricter cutoff (.9) for the vote members: −.028 against S3. At 1.27 strings per text the vote already removes enough; further precision costs more recall than it gains.
 - A stronger in-distribution model: a word BiLSTM on all ~1M rows reached checkpoint .86 after two epochs but did not improve the organiser rows (local diagnostic run, not submitted); the third epoch was worse there.
 
 ### Conclusions
 
-The recurrent models are adequate for the training distribution (offline F1 .80–.85), but not for the test format without decoding changes. Robustness to unseen words (character n-grams, FastText, BPE) was worth +.04–.05 public F1; format-aware post-processing a further +.05; voting three different representations a further +.013. The remaining gap to the organisers' BERT baseline is mostly labelling conventions (countries, places inside organisation names, unlabelled stations) that the training labels do not share.
+The recurrent models are adequate for the training distribution (offline F1 .80–.85), but not for the test format without decoding changes. Robustness to unseen words (character n-grams, FastText, BPE) was worth +.04–.05 public F1; format-aware post-processing a further +.05; voting three different representations a further +.013. Removing more strings (rule U, cutoff .9) lost .02–.03, so the vote is close to the precision/recall balance; the remaining gap to the organisers' BERT baseline (.593) needs better recall on the test format rather than further filtering.
 
 ### Reproduce Part 3
 
