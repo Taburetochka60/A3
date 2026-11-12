@@ -84,9 +84,12 @@ def part2_predictor(checkpoint, device='cpu'):
     model = NERModel(state['size'], **saved['config']['encoder']).to(device).eval()
     model.load_state_dict(saved['model'])
 
-    def predict(docs):
+    def predict(docs, native=False):
+        """Reference-token probabilities, or (encoded docs, probabilities) on the model's own tokens."""
         encoded = encode_documents(docs, state)
         probabilities = infer_probabilities(model, encoded, torch.device(device), batch_size=128)
+        if native:
+            return encoded, probabilities
         return [to_reference(d['tokens'], e['tokens'], p) for d, e, p in zip(docs, encoded, probabilities)]
     info = dict(config=saved['config'], epoch=saved.get('epoch'), split_sha256=saved.get('split_hash'),
                 tokenizer=state['kind'])
@@ -152,17 +155,26 @@ def export_member(member, docs_by_split, out_dir, device='cpu'):
             save_bundle(folder/f'{split}.npz', docs, predict(docs), dict(meta, split=split))
     if not (folder/'meta.json').exists():
         save_json(folder/'meta.json', meta)
-    return verify_member(member, docs_by_split, out_dir)
+    return verify_member(member, docs_by_split, out_dir, device)
 
 
-def verify_member(member, docs_by_split, out_dir):
-    """Reproduce the F1 logged for this checkpoint; a mismatch means a wrong loader or checkpoint."""
+def verify_member(member, docs_by_split, out_dir, device='cpu'):
+    """Reproduce the F1 logged for this checkpoint; a mismatch means a wrong loader or checkpoint.
+
+    expected['tokens'] == 'member' scores the checkpoint on its own tokens instead of the bundle.
+    Subword members are logged that way: a span may end inside a word there, while the bundle
+    (first piece of each word) always covers whole words, so it cannot reproduce that F1.
+    """
     from ensemble import sweep
     expected = member.get('expected')
     if not expected:
         return None
     docs = docs_by_split[expected['split']]
-    probabilities, _ = load_bundle(Path(out_dir)/member['name']/f"{expected['split']}.npz", docs)
+    if expected.get('tokens') == 'member':
+        predict, _ = PREDICTORS[member['kind']](member['checkpoint'], device)
+        docs, probabilities = predict(docs, native=True)
+    else:
+        probabilities, _ = load_bundle(Path(out_dir)/member['name']/f"{expected['split']}.npz", docs)
     f1 = sweep(docs, probabilities, [expected['threshold']], expected['policy'])[0]['f1']
     if abs(f1-expected['f1']) > expected.get('tolerance', 2e-3):
         raise ValueError(f"{member['name']}: {expected['split']} F1 {f1:.4f} != logged {expected['f1']:.4f}")

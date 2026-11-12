@@ -121,6 +121,28 @@ class ExportTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 export_member(member, dict(checkpoint=items), Path(folder)/'bundles')
 
+    def test_bpe_member_is_verified_on_its_own_tokens(self):
+        import torch
+        from ensemble_members import export_member, part2_predictor
+        from recurrent_model import NERModel
+        from part2 import CONFIG
+        from part2_data import fit_encoding
+        items = docs()
+        encoding = fit_encoding(items, 'bpe')
+        torch.manual_seed(0)
+        model = NERModel(encoding['size'], **CONFIG['encoder'])
+        with tempfile.TemporaryDirectory() as folder:
+            checkpoint = Path(folder)/'best.pt'
+            torch.save(dict(model=model.state_dict(), config=CONFIG, encoding=encoding, epoch=1, split_hash='x'), checkpoint)
+            encoded, probabilities = part2_predictor(checkpoint)[0](items, native=True)
+            self.assertGreater(sum(map(len, encoded)), 0)
+            logged = score(encoded, probabilities)['f1']         # what part2.train logs for a BPE member
+            member = dict(name='bpe', kind='part2', checkpoint=checkpoint,
+                          expected=dict(split='checkpoint', threshold=0., policy='original', f1=logged, tokens='member'))
+            self.assertAlmostEqual(export_member(member, dict(checkpoint=items), Path(folder)/'bundles'), logged)
+            loaded, _ = load_bundle(Path(folder)/'bundles'/'bpe'/'checkpoint.npz', items)
+            self.assertEqual([len(p) for p in loaded], [len(d['tokens']) for d in items])
+
 
 class TrainMemberTest(unittest.TestCase):
     def test_validation_metrics_no_longer_clash_with_precision_mode(self):
